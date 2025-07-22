@@ -1,4 +1,4 @@
-# hammers
+# henna
 `henna` is an evolving collection of visualization utilities for scRNA-seq data analysis.
 
 ## Installation
