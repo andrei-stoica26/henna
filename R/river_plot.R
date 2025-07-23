@@ -35,7 +35,6 @@ riverPlot <- function(df,
                       margins = margin(0, -10, -10, -10),
                       ...){
     aesNames <- colnames(df)
-    stratum <- StatStratum
     p <- ggplot(data=df, aes(axis1=.data[[aesNames[1]]],
                              axis2=.data[[aesNames[2]]],
                              y=.data[[aesNames[3]]])) +
@@ -43,7 +42,7 @@ riverPlot <- function(df,
                       curve_type=curveType,
                       alpha=alpha) +
         geom_stratum(fill=strataFill) +
-        geom_text(stat=stratum, aes(label=after_stat(stratum)),
+        geom_text(stat=StatStratum, aes(label=after_stat(stratum)),
                   size=labelSize) +
         scale_fill_viridis_d(option=viridisPal) +
         theme_void() +
