@@ -1,4 +1,4 @@
-#'@importFrom ggplot2 aes after_stat element_blank element_text geom_text ggplot ggtitle scale_fill_viridis_d margin theme theme_void
+#'@importFrom ggplot2 aes after_stat element_blank element_text geom_text ggplot ggproto ggtitle scale_fill_viridis_d margin theme theme_void
 #'
 NULL
 

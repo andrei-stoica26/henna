@@ -9,8 +9,9 @@ Authors@R: person('Andrei-Florian', 'Stoica',
 Description: henna is an evolving suite comprising visualization tools for 
     scRNA-seq data analysis.
 License: MIT + file LICENSE
+Depends:
+    ggalluvial
 Imports:
-    ggalluvial,
     ggplot2
 Encoding: UTF-8
 LazyData: true

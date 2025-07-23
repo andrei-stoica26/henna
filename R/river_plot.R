@@ -1,4 +1,4 @@
-#'@importFrom ggalluvial geom_alluvium geom_stratum
+#'@import ggalluvial
 #'
 NULL
 
@@ -25,12 +25,12 @@ NULL
 #'
 riverPlot <- function(df,
                       title = 'River plot',
-                      fillColIndex = 1,
+                      fillColIndex = 2,
                       curveType = 'sigmoid',
                       alpha = 0.8,
                       strataFill = 'lightgoldenrod1',
                       labelSize = 3,
-                      viridisPal = 'viridis',
+                      viridisPal = 'turbo',
                       legendPos = 'none',
                       margins = margin(0, -10, -10, -10),
                       ...){
