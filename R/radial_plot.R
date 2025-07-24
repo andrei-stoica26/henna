@@ -3,7 +3,7 @@
 #'@importFrom ggforce geom_circle
 #'@importFrom ggnewscale new_scale_color new_scale_fill
 #'@importFrom ggrepel geom_text_repel
-#'@importFrom stats runif
+#'@importFrom stats runif setNames
 #'@importFrom viridis scale_color_viridis scale_fill_viridis
 #'
 NULL

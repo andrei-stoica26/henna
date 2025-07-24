@@ -14,11 +14,15 @@ Imports:
     ggalluvial,
     ggeasy,
     ggforce,
+    ggraph,
     ggnewscale,
     ggplot2,
     ggrepel,
+    grDevices,
+    magrittr,
     reshape2,
     stats,
+    tidygraph,
     viridis
 Encoding: UTF-8
 LazyData: true
