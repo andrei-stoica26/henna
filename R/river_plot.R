@@ -4,7 +4,7 @@ NULL
 
 #' Create an alluvial plot
 #'
-#' This function creates an alluvial plot
+#' This function creates an alluvial plot.
 #'
 #' @param df A data frame with three columns.
 #' @param title Plot title.
@@ -17,7 +17,7 @@ NULL
 #' @param legendPos Legend position.
 #' @param margins Plot margins. Must be a vector of size 4 listing the desired
 #' top, right, bottom and left margin, in that order.
-#' @param ... Other arguments passed to titlePlot.
+#' @param ... Other arguments passed to centerTitle.
 #'
 #' @return A ggplot object.
 #'
@@ -48,6 +48,6 @@ riverPlot <- function(df,
         theme_void() +
         theme(legend.position=legendPos) +
         theme(plot.margin=margins)
-    p <- titlePlot(p, title, ...)
+    p <- centerTitle(p, title, ...)
     return(p)
 }

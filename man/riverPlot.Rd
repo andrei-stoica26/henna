@@ -40,11 +40,11 @@ riverPlot(
 \item{margins}{Plot margins. Must be a vector of size 4 listing the desired
 top, right, bottom and left margin, in that order.}
 
-\item{...}{Other arguments passed to titlePlot.}
+\item{...}{Other arguments passed to centerTitle.}
 }
 \value{
 A ggplot object.
 }
 \description{
-This function creates an alluvial plot
+This function creates an alluvial plot.
 }

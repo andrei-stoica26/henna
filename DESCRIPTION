@@ -17,6 +17,7 @@ Imports:
     ggnewscale,
     ggplot2,
     ggrepel,
+    reshape2,
     stats,
     viridis
 Encoding: UTF-8

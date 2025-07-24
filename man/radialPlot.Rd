@@ -10,7 +10,8 @@ radialPlot(
   degreeLegendTitle = "Degree",
   groupLegendTitle = "Group",
   extraCircles = 0,
-  palette = rpColors(length(unique(degreesDF[, 3])))
+  palette = rpColors(length(unique(degreesDF[, 3]))),
+  ...
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ degrees on the second column.}
 the points representing the genes.}
 
 \item{palette}{Color palette.}
+
+\item{...}{Other arguments passed to centerTitle.}
 }
 \value{
 A ggplot object.

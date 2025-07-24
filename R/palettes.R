@@ -7,6 +7,8 @@
 #'
 #' @return Number of colors
 #'
+#' @export
+#'
 rpColors <- function(nColors = 10){
     colors <- c('red', 'purple1', 'olivedrab1','darkorange1',
                 'lavender', 'thistle1','green1','violetred4',

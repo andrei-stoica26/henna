@@ -13,7 +13,13 @@ BiocManager::install("andrei-stoica26/henna")
 ```
 ## Functions implemented so far
 
-`riverPlot`: Generates an alluvial plot for a data frame with two categorical 
+`radialPlot`: Plot integer-valued points over concentric circles, with points 
+located more centrally representing higher values.
+
+`rankPlot`: Aggregate multiple ranks available for a group of items in a single
+plot.
+
+`riverPlot`: Generate an alluvial plot for a data frame with two categorical 
 columns and a weights column. 
 Uses [ggalluvial](https://cran.r-project.org/web/packages/ggalluvial/index.html).
 

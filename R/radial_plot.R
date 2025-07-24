@@ -121,7 +121,7 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' This function draws a radial plot for a degrees data frame.
 #'
 #' @inheritParams distFreq
-#' @param title Plot title.
+#' @inheritParams riverPlot
 #' @param degreeLegendTitle Degree legend title.
 #' @param groupLegendTitle Group legend title.
 #' @inheritParams circleCoords
@@ -142,7 +142,8 @@ radialPlot <- function(degreesDF,
                        degreeLegendTitle = 'Degree',
                        groupLegendTitle = 'Group',
                        extraCircles = 0,
-                       palette = rpColors(length(unique(degreesDF[, 3])))){
+                       palette = rpColors(length(unique(degreesDF[, 3]))),
+                       ...){
 
     itemCoordsDF <- itemCoords(degreesDF)
     circleCoordsDF <- circleCoords(itemCoordsDF, extraCircles)
@@ -172,6 +173,6 @@ radialPlot <- function(degreesDF,
                                                              data=itemCoordsDF,
                                                              color=palette[1],
                                                              size=0.8)
-    p <- titlePlot(p, title)
+    p <- centerTitle(p, title, ...)
     return(p)
 }
