@@ -2,7 +2,6 @@
 #' @importFrom grDevices hcl.colors
 #' @importFrom ggraph geom_edge_link geom_node_point geom_node_text ggraph scale_edge_width
 #' @importFrom tidygraph activate as_tbl_graph
-#' @importFrom magrittr `%>%`
 #'
 NULL
 
@@ -138,8 +137,7 @@ networkPlot <- function(df, title = 'Network plot',
     df <- connectedComponents(df)
     vertexComp <- vertexComponents(df)
     nComp <- length(unique(vertexComp))
-    tblGraph <- tblGraph %>% activate("vertices") %>%
-        mutate("component" = vertexComp)
+    tblGraph <- mutate(activate(tblGraph, "vertices"),"component" = vertexComp)
     p <- ggraph(tblGraph, layout="nicely") +
         geom_edge_link(aes(width=weight)) +
         scale_edge_width(range=c(0.1, 0.3)) +

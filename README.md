@@ -13,6 +13,9 @@ BiocManager::install("andrei-stoica26/henna")
 ```
 ## Functions implemented so far
 
+`networkPlot`: Plot a graph using different colors for nodes that are part of 
+different connected components.
+
 `radialPlot`: Plot integer-valued points over concentric circles, with points 
 located more centrally representing higher values.
 
