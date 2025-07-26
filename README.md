@@ -13,6 +13,10 @@ BiocManager::install("andrei-stoica26/henna")
 ```
 ## Functions implemented so far
 
+`hullPlot`: Plot the convex hull of a set of points. Optionally, divide the
+points into 2 or 4 classes of different colors by drawing a vertical and/or
+a horizontal line that intersects the hull.
+
 `networkPlot`: Plot a graph using different colors for nodes that are part of 
 different connected components.
 

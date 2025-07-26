@@ -1,59 +1,9 @@
 #' @importFrom dplyr mutate
-#' @importFrom grDevices hcl.colors
+#' @importFrom grDevices chull hcl.colors
 #' @importFrom ggraph geom_edge_link geom_node_point geom_node_text ggraph scale_edge_width
 #' @importFrom tidygraph activate as_tbl_graph
 #'
 NULL
-
-#' Find the connected components of a graph data frame
-#'
-#' This function finds the connected components of a graph data frame
-#'
-#' @param df A data frame with two categorical columns.
-#' @param colName Name of the connected components column to be added.
-#' @return A data frame with a column indicated the number of the
-#' connected component.
-#'
-#' @examples
-#' df <- data.frame(
-#' gene1 = paste('G', c(1, 2, 6, 7, 8, 9,
-#' 11, 25, 32, 17, 18)),
-#' gene2 = paste('G', c(2, 8, 8, 8, 1, 25,
-#' 32, 24, 24, 26, 26))
-#' )
-#' connectedComponents(df)
-#'
-#' @export
-#'
-connectedComponents <- function(df, colName = 'component'){
-    if(!nrow(df))
-        stop('The dataframe has no rows.')
-    df[[colName]] <- -1
-    rownames(df) <- seq(dim(df)[1])
-    vertices <- unique(c(df[, 1], df[, 2]))
-    seen <- c()
-    nextComp <- 1
-    for (v in vertices){
-        if (v %in% seen)
-            next
-        currVertices <- c(v)
-        while (length(currVertices)){
-            v <- currVertices[1]
-            leftdf <- subset(df, df[, 1] == v)
-            rightdf <- subset(df, df[, 2] == v)
-            seen <- c(seen, v)
-            newEdges <- as.integer(c(rownames(leftdf), rownames(rightdf)))
-            df[newEdges, colName] <- nextComp
-            neighbors <- setdiff(c(leftdf[, 2], rightdf[, 1]),
-                                 c(currVertices, seen))
-            currVertices <- c(currVertices, neighbors)
-            currVertices <- currVertices[-1]
-        }
-        nextComp <- nextComp + 1
-    }
-    df[, colName] <- factor(df[, colName])
-    return(df)
-}
 
 #' Prepare data frame for network plot
 #'

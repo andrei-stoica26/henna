@@ -1,4 +1,4 @@
-#'@importFrom ggplot2 aes after_stat coord_fixed element_blank element_text geom_bar geom_point geom_text ggplot ggproto ggtitle labs scale_color_discrete scale_color_manual scale_fill_viridis_d margin theme theme_classic theme_void xlab
+#'@importFrom ggplot2 aes after_stat coord_fixed element_blank element_text geom_bar geom_point geom_polygon geom_segment geom_text ggplot ggproto ggtitle labs scale_color_discrete scale_color_manual scale_fill_manual scale_fill_viridis_d margin theme theme_classic theme_void xlab
 #'
 NULL
 

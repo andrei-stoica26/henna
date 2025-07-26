@@ -2,7 +2,7 @@
 % Please edit documentation in R/palettes.R
 \name{rpColors}
 \alias{rpColors}
-\title{Create a palette designed to represent dots over a \code{viridis} background.}
+\title{Create a palette designed to represent dots over a \code{viridis} background}
 \usage{
 rpColors(nColors = 10)
 }
@@ -10,7 +10,7 @@ rpColors(nColors = 10)
 \item{nColors}{Number of colors}
 }
 \value{
-Number of colors
+A character vector of colors.
 }
 \description{
 This function returns a 10-color palette used as the default
