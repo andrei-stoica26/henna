@@ -16,3 +16,30 @@ NULL
 #'
 centerTitle <- function(p, title, ...)
     return(p + ggtitle(title) + theme(plot.title=element_text(hjust=0.5, ...)))
+
+
+#' Label points in a ggplot object
+#'
+#' This function labels points in a ggplot object
+#'
+#' @inheritParams centerTitle
+#' @param labelDF Label data frame.
+#' @param labelSize Label size.
+#' @param labelColor Label colors
+#' @param maxOverlaps Maximum overlaps.
+#'
+#' @return A ggplot object.
+#'
+#' @export
+#'
+labelPoints <- function(p, labelDF, labelSize = 2, labelColor = 'black',
+                        maxOverlaps = 10){
+    p <- p + geom_text_repel(data=labelDF,
+                             aes(x=.data[[colnames(labelDF)[1]]],
+                                 y=.data[[colnames(labelDF)[2]]],
+                                 label=rownames(labelDF)),
+                             size = labelSize,
+                             color = labelColor,
+                             max.overlaps = maxOverlaps)
+    return(p)
+}

@@ -96,6 +96,7 @@ splitInTwo <- function(p,
 #' This function finds the coordinates of the points establishing the
 #' four divisions of the hull
 #'
+#' @inheritParams convexHull
 #' @param xInt The coordinate where the vertical line intersects the x axis.
 #' @param yInt The coordinate where the horizontal line intersects the y axis.
 #' @param vCoords The y coordinates of the two points where the vertical line
@@ -108,7 +109,7 @@ splitInTwo <- function(p,
 #'
 #' @keywords internal
 #'
-quadBorders <- function(xInt, yInt, vCoords, hCoords){
+quadBorders <- function(pointsDF, xInt, yInt, vCoords, hCoords){
     a <- c(xInt, hCoords[1], xInt,
            xInt, hCoords[2], xInt,
            xInt, hCoords[1], xInt,
@@ -117,7 +118,9 @@ quadBorders <- function(xInt, yInt, vCoords, hCoords){
            yInt, yInt, vCoords[2],
            yInt, yInt, vCoords[2],
            yInt, yInt, vCoords[1])
-    return(data.frame(a = a, b = b))
+    df <- data.frame(a, b)
+    colnames(df) <- colnames(pointsDF)
+    return(df)
 }
 
 #' Split the convex hull in four parts along two input lines
@@ -230,7 +233,7 @@ splitHull <- function(p,
 
 
     return(splitInFour(p, pointsDF, xInt, yInt,
-                       quadBorders(xInt, yInt, vCoords, hCoords),
+                       quadBorders(pointsDF, xInt, yInt, vCoords, hCoords),
                        legendLabs, alpha))
 }
 
@@ -248,6 +251,11 @@ splitHull <- function(p,
 #' @param xLab x axis label.
 #' @param yLab y axis label.
 #' @param pointShape Point shape.
+#' @inheritParams labelPoints
+#' @param labelSize Label size. Ignored if \code{labelDF} is \code{NULL}.
+#' @param labelColor Label color. Ignored if \code{labelDF} is \code{NULL}.
+#' @param maxOverlaps Maximum overlaps. Ignored if \code{labelDF}
+#' is \code{NULL}.
 #'
 #' @return A ggplot object.
 #'
@@ -271,8 +279,12 @@ hullPlot <- function(pointsDF,
                      yLab = 'y',
                      legendLabs = paste0('Group ', seq(4)),
                      legendPos = 'bottom',
-                     pointShape = 24,
+                     pointShape = 20,
                      alpha = 0.5,
+                     labelDF = NULL,
+                     labelSize = 2,
+                     labelColor = 'black',
+                     maxOverlaps = 10,
                      ...){
 
     if (nrow(pointsDF) < 2)
@@ -283,20 +295,26 @@ hullPlot <- function(pointsDF,
 
     p <- ggplot() + theme_classic() +
         labs(x=xLab, y=yLab) +
-        geom_point(data=pointsDF, aes(.data[[colnames(pointsDF)[1]]],
-                                .data[[colnames(pointsDF)[2]]]),
-                   size=1, shape=pointShape) +
         theme(legend.title=element_blank(),
               legend.position=legendPos)
+
+
+    p <- splitHull(p, pointsDF, hullSegments, xInt, yInt, borderColor,
+                   legendLabs, alpha)
+    p <- p + scale_fill_manual(values=palette, labels=legendLabs)
+
+    p <- p + geom_point(data=pointsDF, aes(.data[[colnames(pointsDF)[1]]],
+                                      .data[[colnames(pointsDF)[2]]]),
+                   size=1, shape=pointShape)
 
     if(showHull)
         p <- p + geom_segment(data=hullSegments,
                               aes(x, y, xend=xEnd, yend=yEnd),
                               linewidth=0.8)
 
-    p <- splitHull(p, pointsDF, hullSegments, xInt, yInt, borderColor,
-                   legendLabs, alpha)
-    p <- p + scale_fill_manual(values=palette, labels=legendLabs)
+    if(!is.null(labelDF))
+        p <- labelPoints(p, labelDF, labelSize, labelColor, maxOverlaps)
+
     p <- centerTitle(p, title, ...)
     return(p)
 }

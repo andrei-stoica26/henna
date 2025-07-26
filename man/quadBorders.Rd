@@ -5,9 +5,11 @@
 \title{Find the coordinates of the points establishing the four divisions of
 the hull}
 \usage{
-quadBorders(xInt, yInt, vCoords, hCoords)
+quadBorders(pointsDF, xInt, yInt, vCoords, hCoords)
 }
 \arguments{
+\item{pointsDF}{A data frame with the x and y coordinates of the points.}
+
 \item{xInt}{The coordinate where the vertical line intersects the x axis.}
 
 \item{yInt}{The coordinate where the horizontal line intersects the y axis.}

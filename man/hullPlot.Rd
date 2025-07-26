@@ -16,8 +16,12 @@ hullPlot(
   yLab = "y",
   legendLabs = paste0("Group ", seq(4)),
   legendPos = "bottom",
-  pointShape = 24,
+  pointShape = 20,
   alpha = 0.5,
+  labelDF = NULL,
+  labelSize = 2,
+  labelColor = "black",
+  maxOverlaps = 10,
   ...
 )
 }
@@ -50,6 +54,15 @@ and/or \code{yInt}are not \code{NULL}).}
 \item{pointShape}{Point shape.}
 
 \item{alpha}{Opaqueness level for the colors of the alluvia.}
+
+\item{labelDF}{Label data frame.}
+
+\item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
+
+\item{labelColor}{Label color. Ignored if \code{labelDF} is \code{NULL}.}
+
+\item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
+is \code{NULL}.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }
