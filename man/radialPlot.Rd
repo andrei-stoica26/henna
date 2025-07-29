@@ -11,6 +11,8 @@ radialPlot(
   groupLegendTitle = "Group",
   extraCircles = 0,
   palette = rpColors(length(unique(degreesDF[, 3]))),
+  labelSize = 3,
+  pointSize = 0.8,
   ...
 )
 }
@@ -28,6 +30,10 @@ degrees on the second column.}
 the points representing the genes.}
 
 \item{palette}{Color palette.}
+
+\item{labelSize}{Label size.}
+
+\item{pointSize}{Point size.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }

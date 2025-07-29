@@ -15,6 +15,7 @@ densityPlot(
   labelSize = 3,
   segType = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.5,
+  nGridPoints = 300,
   expandPerc = 20,
   ...
 )
@@ -51,6 +52,8 @@ set to \code{FALSE}.}
 \item{expandPerc}{Percentage by which the grid will expanded.}
 
 \item{...}{Other arguments passed to centerTitle.}
+
+\item{Number}{of grid points in each direction.}
 }
 \value{
 A ggplot object.

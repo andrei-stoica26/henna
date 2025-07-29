@@ -43,6 +43,7 @@ createPairSegments <- function(df){
 #' \code{drawNN} is set to \code{FALSE}.
 #' @param segWidth Nearest neighbor segment width. Ignored if \code{drawNN} is
 #' set to \code{FALSE}.
+#' @param Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will expanded.
 #'
 #' @return A ggplot object.
@@ -68,6 +69,7 @@ densityPlot <- function(df,
                         segType = c('solid', 'dashed', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
                         segWidth = 0.5,
+                        nGridPoints = 300,
                         expandPerc = 20,
                         ...){
     colorScheme <- match.arg(colorScheme, c('sea', 'custom'))
@@ -90,7 +92,8 @@ densityPlot <- function(df,
     p <- ggplot(df, aes(x=df[, 1], y=df[, 2])) +
         stat_density_2d(aes(fill=after_stat(density)),
                         geom="raster",
-                        contour=FALSE) +
+                        contour=FALSE,
+                        n=nGridPoints) +
         scale_fill_gradientn(colors = palette) + theme_void() +
         expand_limits(x = expandRange(df[, 1]), y = expandRange(df[, 2])) +
         theme(legend.position='none')

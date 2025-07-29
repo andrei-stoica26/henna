@@ -125,6 +125,8 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' @param groupLegendTitle Group legend title.
 #' @inheritParams circleCoords
 #' @param palette Color palette.
+#' @param labelSize Label size.
+#' @param pointSize Point size.
 #'
 #' @return A ggplot object.
 #'
@@ -142,6 +144,8 @@ radialPlot <- function(degreesDF,
                        groupLegendTitle = 'Group',
                        extraCircles = 0,
                        palette = rpColors(length(unique(degreesDF[, 3]))),
+                       labelSize = 3,
+                       pointSize = 0.8,
                        ...){
 
     itemCoordsDF <- itemCoords(degreesDF)
@@ -161,12 +165,12 @@ radialPlot <- function(degreesDF,
               legend.title=element_text(size=10),
               legend.text=element_text(size=10)) +
         geom_text_repel(aes(x, y, label=.data[[colnames(itemCoordsDF)[1]]]),
-                        data=itemCoordsDF, size=3)
+                        data=itemCoordsDF, size=labelSize)
     if (!is.null(groupLegendTitle))
         p <- p + new_scale_color() +
         new_scale_fill() +
         geom_point(aes(x, y, color=.data[[colnames(itemCoordsDF)[5]]]),
-                   data=itemCoordsDF, size=0.8) +
+                   data=itemCoordsDF, size=pointSize) +
         scale_color_discrete(type=palette) +
         labs(color=groupLegendTitle) else p <- p + geom_point(aes(x, y),
                                                              data=itemCoordsDF,
