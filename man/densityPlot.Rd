@@ -7,7 +7,7 @@
 densityPlot(
   df,
   title = "Density plot",
-  colorScheme = c("sea", "custom"),
+  colorScheme = c("sea", "lava", "custom"),
   drawNN = TRUE,
   palette = NULL,
   segColor = "sandybrown",

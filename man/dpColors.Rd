@@ -2,13 +2,16 @@
 % Please edit documentation in R/palettes.R
 \name{dpColors}
 \alias{dpColors}
-\title{Create the default 'sea' palette used by \code{densityPlot}}
+\title{Create a palette designed for \code{densityPlot}}
 \usage{
-dpColors()
+dpColors(palette = c("sea", "lava"))
+}
+\arguments{
+\item{palette}{One of 'sea' and 'lava'.}
 }
 \value{
 A character vector of colors.
 }
 \description{
-This function returns the 'sea' palette used by \code{densityPlot}.
+This function returns a palette designed for \code{densityPlot}.
 }

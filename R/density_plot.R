@@ -60,7 +60,7 @@ createPairSegments <- function(df){
 #'
 densityPlot <- function(df,
                         title = 'Density plot',
-                        colorScheme = c('sea', 'custom'),
+                        colorScheme = c('sea', 'lava', 'custom'),
                         drawNN = TRUE,
                         palette = NULL,
                         segColor = 'sandybrown',
@@ -72,11 +72,17 @@ densityPlot <- function(df,
                         nGridPoints = 300,
                         expandPerc = 20,
                         ...){
-    colorScheme <- match.arg(colorScheme, c('sea', 'custom'))
+    colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'custom'))
     segType <- match.arg(segType, c('solid', 'dashed', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),)
     if (colorScheme == 'sea')
-        palette <- dpColors()
+        palette <- dpColors('sea')
+
+    if (colorScheme == 'lava'){
+        palette <- dpColors('lava')
+        segColor <- 'dodgerblue3'
+    }
+
     if (colorScheme == 'custom'){
         if (is.null(palette))
             stop('The custom color scheme requires an input palette.')

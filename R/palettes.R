@@ -1,16 +1,23 @@
-#' Create the default 'sea' palette used by \code{densityPlot}
+#' Create a palette designed for \code{densityPlot}
 #'
-#' This function returns the 'sea' palette used by \code{densityPlot}.
+#' This function returns a palette designed for \code{densityPlot}.
 #'
+#' @param palette One of 'sea' and 'lava'.
 #' @return A character vector of colors.
 #'
 #' @export
 #'
-dpColors <- function()
-    return(c('midnightblue','dodgerblue4','dodgerblue3',
-             'dodgerblue2','deepskyblue','cyan2',
-             'lightgoldenrodyellow','darkolivegreen1','green'))
-
+dpColors <- function(palette = c('sea', 'lava')){
+    palette <- match.arg(palette, c('sea', 'lava'))
+    if (palette == 'sea')
+        return(c('midnightblue','dodgerblue4','dodgerblue3',
+                 'dodgerblue2','deepskyblue','cyan2',
+                 'lightgoldenrodyellow','darkolivegreen1','green'))
+    if (palette == 'lava')
+        return(c('bisque4','bisque3','bisque2',
+                 'bisque1','bisque','lightyellow',
+                 'goldenrod1','red2','red3'))
+}
 
 #' Create the default \code{hullPlot} palette
 #'
