@@ -101,7 +101,8 @@ densityPlot <- function(df,
                         contour=FALSE,
                         n=nGridPoints) +
         scale_fill_gradientn(colors = palette) + theme_void() +
-        expand_limits(x = expandRange(df[, 1]), y = expandRange(df[, 2])) +
+        expand_limits(x = expandRange(df[, 1], expandPerc),
+                      y = expandRange(df[, 2], expandPerc)) +
         theme(legend.position='none')
 
     if(drawNN){
