@@ -100,16 +100,14 @@ densityPlot <- function(df,
         if(is(lastCol)[1] != 'character'){
             message('Nearest neighbor information not provided.',
                     ' Will be computed.')
-            segmentsDF <- createPairSegments(df)
-        } else{
+        }else{
             extraNames <- setdiff(lastCol, rownames(df))
-            if (extraNames){
-                warning(extraNames[1], ' found in last column but not',
+            if (length(extraNames))
+                warning(extraNames[1], ' found in the last column but not',
                         ' in row names. Nearest neighbor information will be',
                         ' computed to replace the last column.')
-                segmentsDF <- createPairSegments(df)
-            }
         }
+        segmentsDF <- createPairSegments(df)
         p <- p + geom_segment(data=segmentsDF, aes(x, y, xend=xend, yend=yend),
                               color=segColor,
                               linetype=segType,
