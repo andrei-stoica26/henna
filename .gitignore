@@ -1,6 +1,7 @@
 .Rbuildignore
 .Rhistory
 .Rproj.user
+R/.examples.R
 R/.extras.R
 R/.recipes.R
 R/.test_code.R

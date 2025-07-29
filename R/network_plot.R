@@ -66,7 +66,7 @@ vertexComponents <- function(df, colName = 'component'){
 #' @param nodePointSize Point size of graph nodes.
 #' @param nodeTextSize Text size of graph nodes.
 #' @param palette grDevices palette
-#' @param ... Additional parameters passed to titlePlot.
+#'
 #'
 #' @return A network plot.
 #'

@@ -31,7 +31,7 @@ edge weights.}
 
 \item{palette}{grDevices palette}
 
-\item{...}{Additional parameters passed to titlePlot.}
+\item{...}{Other arguments passed to centerTitle.}
 }
 \value{
 A network plot.

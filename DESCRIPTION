@@ -10,6 +10,7 @@ Description: henna is an evolving suite comprising visualization tools for
     scRNA-seq data analysis.
 License: MIT + file LICENSE
 Imports:
+    abdiv,
     dplyr,
     ggalluvial,
     ggeasy,
@@ -19,6 +20,7 @@ Imports:
     ggplot2,
     ggrepel,
     grDevices,
+    methods,
     reshape2,
     stats,
     tidygraph,

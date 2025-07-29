@@ -1,0 +1,124 @@
+#' @importFrom methods is
+#'
+NULL
+
+#' Create segments between points and their nearest neighbors.
+#'
+#' This function creates segments between points and their nearest neighbors.
+#'
+#' @param df A data frame with two columns representing the \code{x}
+#' and \code{y} coordinates of the points.
+#'
+#' @return A data frame with four columns representing the segments between
+#' each point and its nearest neighbor.
+#'
+#' @noRd
+#'
+createPairSegments <- function(df){
+    df <- addNNCol(df)
+    segmentsDF <- cbind(df[, c(1, 2)], df[df$nn, c(1, 2)])
+    colnames(segmentsDF) <- c('x', 'y', 'xend', 'yend')
+    return(segmentsDF)
+}
+
+#' Create density plot
+#'
+#' This function creates a density plot.
+#'
+#' @param df A data frame with at least two columns, representing the \code{x}
+#' and \code{y} coordinates of the points. A score column can also be provided
+#' as the third column. Nearest neighbor information can be provided in the last
+#' column as a character vector with elements selected from the rownames.
+#' @inheritParams riverPlot
+#' @param colorScheme Color scheme.
+#' @param drawNN Whether to draw segments linking each point to its nearest
+#' neighbor.
+#' @param palette Color palette. Used only if color scheme is set to 'custom'.
+#' @param segColor Nearest neighbor segment color. Ignored if \code{drawNN} is
+#' set to \code{FALSE}.
+#' @param pointSize Point size.
+#' @param labelSize Label size.
+#' @param segType Nearest neighbor segment type. Must choose between 'solid',
+#' 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
+#' \code{drawNN} is set to \code{FALSE}.
+#' @param segWidth Nearest neighbor segment width. Ignored if \code{drawNN} is
+#' set to \code{FALSE}.
+#' @param expandPerc Percentage by which the grid will expanded.
+#'
+#' @return A ggplot object.
+#'
+#' @examples
+#' x <- c(1, 2, 3, 4, 6, 7, 8, 10, 12, 11, 3, 6, 4, 1, 13, 13, 14, 18, 16)
+#' y <- c(1, 3, 1, 4, 3, 2, 8, 2, 1, 11, 8, 8, 10, 14, 13, 11, 11, 12,15)
+#' z <- round(runif(19, 75, 100), 2)
+#' df <- data.frame(x, y, z)
+#' rownames(df) <- paste0('p', rownames(df))
+#' densityPlot(df)
+#'
+#' @export
+#'
+densityPlot <- function(df,
+                        title = 'Density plot',
+                        colorScheme = c('sea', 'custom'),
+                        drawNN = TRUE,
+                        palette = NULL,
+                        segColor = 'sandybrown',
+                        pointSize = 1,
+                        labelSize = 3,
+                        segType = c('solid', 'dashed', 'dotted',
+                                    'dotdash', 'longdash', 'twodash'),
+                        segWidth = 0.5,
+                        expandPerc = 20,
+                        ...){
+    colorScheme <- match.arg(colorScheme, c('sea', 'custom'))
+    segType <- match.arg(segType, c('solid', 'dashed', 'dotted',
+                                    'dotdash', 'longdash', 'twodash'),)
+    if (colorScheme == 'sea')
+        palette <- dpColors()
+    if (colorScheme == 'custom'){
+        if (is.null(palette))
+            stop('The custom color scheme requires an input palette.')
+        palette <- palette
+    }
+
+    pointLabs <- rownames(df)
+    if(ncol(df) > 2)
+        if(is(df[, 3])[1] == 'numeric')
+            pointLabs <- mapply(function(x, y) paste0(x, '\n', y),
+                                pointLabs, round(df[, 3], 2))
+
+    p <- ggplot(df, aes(x=df[, 1], y=df[, 2])) +
+        stat_density_2d(aes(fill=after_stat(density)),
+                        geom="raster",
+                        contour=FALSE) +
+        scale_fill_gradientn(colors = palette) + theme_void() +
+        expand_limits(x = expandRange(df[, 1]), y = expandRange(df[, 2])) +
+        theme(legend.position='none')
+
+    if(drawNN){
+        lastCol <- df[, ncol(df)]
+        if(is(lastCol)[1] != 'character'){
+            message('Nearest neighbor information not provided.',
+                    ' Will be computed.')
+            segmentsDF <- createPairSegments(df)
+        } else{
+            extraNames <- setdiff(lastCol, rownames(df))
+            if (extraNames){
+                warning(extraNames[1], ' found in last column but not',
+                        ' in row names. Nearest neighbor information will be',
+                        ' computed to replace the last column.')
+                segmentsDF <- createPairSegments(df)
+            }
+        }
+        p <- p + geom_segment(data=segmentsDF, aes(x, y, xend=xend, yend=yend),
+                              color=segColor,
+                              linetype=segType,
+                              linewidth = segWidth)
+    }
+
+    p <- p + geom_point(size=pointSize) +
+        geom_text_repel(aes(label=pointLabs), size=labelSize)
+
+    p <- centerTitle(p, title, ...)
+    return(p)
+}

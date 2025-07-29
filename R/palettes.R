@@ -1,3 +1,17 @@
+#' Create the default 'sea' palette used by \code{densityPlot}
+#'
+#' This function returns the 'sea' palette used by \code{densityPlot}.
+#'
+#' @return A character vector of colors.
+#'
+#' @export
+#'
+dpColors <- function()
+    return(c('midnightblue','dodgerblue4','dodgerblue3',
+             'dodgerblue2','deepskyblue','cyan2',
+             'lightgoldenrodyellow','darkolivegreen1','green'))
+
+
 #' Create the default \code{hullPlot} palette
 #'
 #' This function returns the default palette used by \code{hullPlot}.
@@ -8,6 +22,7 @@
 #'
 hpColors <- function()
     return(c('gold','purple', 'blue', 'red'))
+
 
 #' Create a palette designed to represent dots over a \code{viridis} background
 #'

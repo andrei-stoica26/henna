@@ -13,6 +13,9 @@ BiocManager::install("andrei-stoica26/henna")
 ```
 ## Functions implemented so far
 
+`densityPlot`: Create a density plot for a set of points, optionally displaying
+segements between each point and its nearest neighbor.
+
 `hullPlot`: Plot the convex hull of a set of points. Optionally, divide the
 points into 2 or 4 classes of different colors by drawing a vertical and/or
 a horizontal line that intersects the hull.
