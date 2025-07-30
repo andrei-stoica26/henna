@@ -10,7 +10,7 @@ splitHull(
   hullSegments,
   xInt = NULL,
   yInt = NULL,
-  borderColor = "navy",
+  borderColor = NULL,
   legendLabs = paste0("Group ", seq(4)),
   alpha = 0.5
 )

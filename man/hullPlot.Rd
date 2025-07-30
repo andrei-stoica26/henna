@@ -9,7 +9,7 @@ hullPlot(
   title = "Hull plot",
   xInt = NULL,
   yInt = NULL,
-  borderColor = "navy",
+  borderColor = NULL,
   palette = hpColors(),
   showHull = FALSE,
   xLab = "x",
@@ -79,6 +79,6 @@ pointsDF <- data.frame(rank = c(1, 2, 4, 7, 10,
 12, 13, 15, 16),
 n = c(1, 1, 2, 3, 3, 2,
 1, 2, 1))
-hullPlot(pointsDF, 8.5)
+hullPlot(pointsDF, 'Hull plot', 7, 1.5)
 
 }

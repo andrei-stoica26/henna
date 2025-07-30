@@ -19,7 +19,7 @@ riverPlot(
 )
 }
 \arguments{
-\item{df}{A data frame with three columns.}
+\item{df}{A data frame with two categorical columns and a numeric column.}
 
 \item{title}{Plot title.}
 
@@ -47,4 +47,14 @@ A ggplot object.
 }
 \description{
 This function creates an alluvial plot.
+}
+\examples{
+df <- data.frame(x = sample(c('a','b', 'c', 'd', 'e', 'f'), 20,
+replace=TRUE),
+y = sample(c('p','q', 'r', 's', 't', 'u', 'v', 'w'), 20,
+replace=TRUE),
+z = runif(20, 1, 3))
+riverPlot(df)
+
+
 }

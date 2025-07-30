@@ -43,6 +43,7 @@ createPairSegments <- function(df){
 #' \code{drawNN} is set to \code{FALSE}.
 #' @param segWidth Nearest neighbor segment width. Ignored if \code{drawNN} is
 #' set to \code{FALSE}.
+#' @param legendPos Legend position.
 #' @param Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will expanded.
 #'
@@ -69,6 +70,7 @@ densityPlot <- function(df,
                         segType = c('solid', 'dashed', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
                         segWidth = 0.5,
+                        legendPos = 'none',
                         nGridPoints = 300,
                         expandPerc = 20,
                         ...){
@@ -103,7 +105,7 @@ densityPlot <- function(df,
         scale_fill_gradientn(colors = palette) + theme_void() +
         expand_limits(x = expandRange(df[, 1], expandPerc),
                       y = expandRange(df[, 2], expandPerc)) +
-        theme(legend.position='none')
+        theme(legend.position=legendPos)
 
     if(drawNN){
         lastCol <- df[, ncol(df)]
@@ -121,7 +123,7 @@ densityPlot <- function(df,
         p <- p + geom_segment(data=segmentsDF, aes(x, y, xend=xend, yend=yend),
                               color=segColor,
                               linetype=segType,
-                              linewidth = segWidth)
+                              linewidth=segWidth)
     }
 
     p <- p + geom_point(size=pointSize) +

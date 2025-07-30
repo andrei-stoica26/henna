@@ -6,7 +6,7 @@ NULL
 #'
 #' This function creates an alluvial plot.
 #'
-#' @param df A data frame with three columns.
+#' @param df A data frame with two categorical columns and a numeric column.
 #' @param title Plot title.
 #' @param fillColIndex Index of column used for coloring the alluvia.
 #' @param curveType Curve type.
@@ -21,6 +21,15 @@ NULL
 #'
 #' @return A ggplot object.
 #'
+#' @examples
+#' df <- data.frame(x = sample(c('a','b', 'c', 'd', 'e', 'f'), 20,
+#' replace=TRUE),
+#' y = sample(c('p','q', 'r', 's', 't', 'u', 'v', 'w'), 20,
+#' replace=TRUE),
+#' z = runif(20, 1, 3))
+#' riverPlot(df)
+#'
+#'
 #' @export
 #'
 riverPlot <- function(df,
@@ -34,11 +43,10 @@ riverPlot <- function(df,
                       legendPos = 'none',
                       margins = margin(0, -10, -10, -10),
                       ...){
-    aesNames <- colnames(df)
-    p <- ggplot(data=df, aes(axis1=.data[[aesNames[1]]],
-                             axis2=.data[[aesNames[2]]],
-                             y=.data[[aesNames[3]]])) +
-        geom_alluvium(aes(fill=.data[[aesNames[fillColIndex]]]),
+    p <- ggplot(data=df, aes(axis1=df[, 1],
+                             axis2=df[, 2],
+                             y=df[, 3])) +
+        geom_alluvium(aes(fill=df[, fillColIndex]),
                       curve_type=curveType,
                       alpha=alpha) +
         geom_stratum(fill=strataFill) +
@@ -51,3 +59,5 @@ riverPlot <- function(df,
     p <- centerTitle(p, title, ...)
     return(p)
 }
+
+

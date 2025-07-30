@@ -164,18 +164,18 @@ radialPlot <- function(degreesDF,
         theme(plot.margin=margin(0, 0, 0, 0),
               legend.title=element_text(size=10),
               legend.text=element_text(size=10)) +
-        geom_text_repel(aes(x, y, label=.data[[colnames(itemCoordsDF)[1]]]),
+        geom_text_repel(aes(x, y, label=itemCoordsDF[, 1]),
                         data=itemCoordsDF, size=labelSize)
     if (!is.null(groupLegendTitle))
         p <- p + new_scale_color() +
         new_scale_fill() +
-        geom_point(aes(x, y, color=.data[[colnames(itemCoordsDF)[5]]]),
+        geom_point(aes(x, y, color=itemCoordsDF[, 5]),
                    data=itemCoordsDF, size=pointSize) +
         scale_color_discrete(type=palette) +
         labs(color=groupLegendTitle) else p <- p + geom_point(aes(x, y),
                                                              data=itemCoordsDF,
                                                              color=palette[1],
-                                                             size=0.8)
+                                                             size=pointSize)
     p <- centerTitle(p, title, ...)
     return(p)
 }

@@ -1,3 +1,8 @@
+#' @importFrom rlang .data
+#'
+NULL
+
+
 #' Find the coordinates where vertical or horizontal line intersects the hull
 #'
 #' This function finds the coordinates where vertical or horizontal line
@@ -197,7 +202,7 @@ splitHull <- function(p,
                       hullSegments,
                       xInt = NULL,
                       yInt = NULL,
-                      borderColor = 'navy',
+                      borderColor = NULL,
                       legendLabs = paste0('Group ', seq(4)),
                       alpha = 0.5){
 
@@ -264,7 +269,7 @@ splitHull <- function(p,
 #' 12, 13, 15, 16),
 #' n = c(1, 1, 2, 3, 3, 2,
 #' 1, 2, 1))
-#' hullPlot(pointsDF, 8.5)
+#' hullPlot(pointsDF, 'Hull plot', 7, 1.5)
 #'
 #' @export
 #'
@@ -272,7 +277,7 @@ hullPlot <- function(pointsDF,
                      title = 'Hull plot',
                      xInt = NULL,
                      yInt = NULL,
-                     borderColor = 'navy',
+                     borderColor = NULL,
                      palette = hpColors(),
                      showHull = FALSE,
                      xLab = 'x',
@@ -303,8 +308,8 @@ hullPlot <- function(pointsDF,
                    legendLabs, alpha)
     p <- p + scale_fill_manual(values=palette, labels=legendLabs)
 
-    p <- p + geom_point(data=pointsDF, aes(.data[[colnames(pointsDF)[1]]],
-                                      .data[[colnames(pointsDF)[2]]]),
+    p <- p + geom_point(data=pointsDF, aes(pointsDF[, 1],
+                                           pointsDF[, 2]),
                    size=1, shape=pointShape)
 
     if(showHull)

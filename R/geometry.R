@@ -78,19 +78,19 @@ convexHull <- function(pointsDF){
 #'
 #' @param pointsDF A data frame with the x and y coordinates of the points.
 #' Each point must appear only once.
-#' @param formPolygon Whether to close the figure by adding an extra segment.
+#' @param joinEnds Whether to join the last point with the first one.
 #'
 #' @return A data frame of segments.
 #'
-#' @export
+#' @noRd
 #'
 pointsToSegments <- function(pointsDF,
-                             formPolygon = TRUE){
+                             joinEnds = TRUE){
     df <- data.frame(x = pointsDF[seq_len(nrow(pointsDF) - 1), 1],
                      y = pointsDF[seq_len(nrow(pointsDF) - 1), 2],
                      xEnd = pointsDF[seq(2, nrow(pointsDF)), 1],
                      yEnd = pointsDF[seq(2, nrow(pointsDF)), 2])
-    if(formPolygon)
+    if(joinEnds)
         df <- rbind(df, c(df$xEnd[nrow(df)],
                           df$yEnd[nrow(df)],
                           df$x[1],

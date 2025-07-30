@@ -15,6 +15,7 @@ densityPlot(
   labelSize = 3,
   segType = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.5,
+  legendPos = "none",
   nGridPoints = 300,
   expandPerc = 20,
   ...
@@ -48,6 +49,8 @@ set to \code{FALSE}.}
 
 \item{segWidth}{Nearest neighbor segment width. Ignored if \code{drawNN} is
 set to \code{FALSE}.}
+
+\item{legendPos}{Legend position.}
 
 \item{expandPerc}{Percentage by which the grid will expanded.}
 
