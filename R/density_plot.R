@@ -69,7 +69,7 @@ densityPlot <- function(df,
                         segType = c('solid', 'dashed', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
                         segWidth = 0.5,
-                        legendPos = 'none',
+                        legendPos = 'right',
                         nGridPoints = 300,
                         expandPerc = 20,
                         labelSize = 3,
@@ -109,7 +109,7 @@ densityPlot <- function(df,
         scale_fill_gradientn(colors = palette) + theme_classic() +
         expand_limits(x=expandRange(df[, 1], expandPerc),
                       y=expandRange(df[, 2], expandPerc)) +
-        labs(x='x', y='y')
+        labs(x='x', y='y', fill='Density') +
         theme(legend.position=legendPos)
 
     if(drawNN){

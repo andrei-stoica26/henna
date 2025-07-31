@@ -14,7 +14,7 @@ densityPlot(
   pointSize = 1,
   segType = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.5,
-  legendPos = "none",
+  legendPos = "right",
   nGridPoints = 300,
   expandPerc = 20,
   labelSize = 3,
