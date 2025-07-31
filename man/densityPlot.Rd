@@ -12,12 +12,16 @@ densityPlot(
   palette = NULL,
   segColor = "sandybrown",
   pointSize = 1,
-  labelSize = 3,
   segType = c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.5,
   legendPos = "none",
   nGridPoints = 300,
   expandPerc = 20,
+  labelSize = 3,
+  labelColor = "black",
+  labelRepulsion = 1,
+  labelPull = 1,
+  maxOverlaps = Inf,
   ...
 )
 }
@@ -41,8 +45,6 @@ set to \code{FALSE}.}
 
 \item{pointSize}{Point size.}
 
-\item{labelSize}{Label size.}
-
 \item{segType}{Nearest neighbor segment type. Must choose between 'solid',
 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
 \code{drawNN} is set to \code{FALSE}.}
@@ -53,6 +55,17 @@ set to \code{FALSE}.}
 \item{legendPos}{Legend position.}
 
 \item{expandPerc}{Percentage by which the grid will expanded.}
+
+\item{labelSize}{Size of labels of strata elements.}
+
+\item{labelColor}{Label colors.}
+
+\item{labelRepulsion}{Repulsion strength between labels.}
+
+\item{labelPull}{Attraction strength between a text label
+and its data point.}
+
+\item{maxOverlaps}{Maximum overlaps.}
 
 \item{...}{Other arguments passed to centerTitle.}
 

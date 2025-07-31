@@ -102,21 +102,30 @@ expandRange <- function(v, expandPerc = 10){
 #' @inheritParams centerTitle
 #' @param labelDF Label data frame.
 #' @param labelSize Label size.
-#' @param labelColor Label colors
+#' @param labelColor Label colors.
+#' @param labelRepulsion Repulsion strength between labels.
+#' @param labelPull Attraction strength between a text label
+#' and its data point.
 #' @param maxOverlaps Maximum overlaps.
 #'
 #' @return A ggplot object.
 #'
-#' @export
+#' @keywords internal
 #'
-labelPoints <- function(p, labelDF, labelSize = 2, labelColor = 'black',
-                        maxOverlaps = 10){
+labelPoints <- function(p, labelDF,
+                        labelSize = 2,
+                        labelColor = 'black',
+                        labelRepulsion = 1,
+                        labelPull = 1,
+                        maxOverlaps = Inf){
     p <- p + geom_text_repel(data=labelDF,
-                             aes(x=.data[[colnames(labelDF)[1]]],
-                                 y=.data[[colnames(labelDF)[2]]],
+                             aes(x=labelDF[, 1],
+                                 y=labelD[, 2],
                                  label=rownames(labelDF)),
-                             size = labelSize,
-                             color = labelColor,
-                             max.overlaps = maxOverlaps)
+                             size=labelSize,
+                             color=labelColor,
+                             force=labelRepulsion,
+                             force_pull=labelPull,
+                             max.overlaps=maxOverlaps)
     return(p)
 }

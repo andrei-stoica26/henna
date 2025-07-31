@@ -37,7 +37,6 @@ createPairSegments <- function(df){
 #' @param segColor Nearest neighbor segment color. Ignored if \code{drawNN} is
 #' set to \code{FALSE}.
 #' @param pointSize Point size.
-#' @param labelSize Label size.
 #' @param segType Nearest neighbor segment type. Must choose between 'solid',
 #' 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
 #' \code{drawNN} is set to \code{FALSE}.
@@ -46,6 +45,7 @@ createPairSegments <- function(df){
 #' @param legendPos Legend position.
 #' @param Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will expanded.
+#' @inheritParams labelPoints
 #'
 #' @return A ggplot object.
 #'
@@ -66,13 +66,17 @@ densityPlot <- function(df,
                         palette = NULL,
                         segColor = 'sandybrown',
                         pointSize = 1,
-                        labelSize = 3,
                         segType = c('solid', 'dashed', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
                         segWidth = 0.5,
                         legendPos = 'none',
                         nGridPoints = 300,
                         expandPerc = 20,
+                        labelSize = 3,
+                        labelColor = 'black',
+                        labelRepulsion = 1,
+                        labelPull = 1,
+                        maxOverlaps = Inf,
                         ...){
     colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'custom'))
     segType <- match.arg(segType, c('solid', 'dashed', 'dotted',
@@ -127,7 +131,12 @@ densityPlot <- function(df,
     }
 
     p <- p + geom_point(size=pointSize) +
-        geom_text_repel(aes(label=pointLabs), size=labelSize)
+        geom_text_repel(aes(label=pointLabs),
+                        size=labelSize,
+                        color=labelColor,
+                        force=labelRepulsion,
+                        force_pull=labelPull,
+                        max.overlaps=maxOverlaps)
 
     p <- centerTitle(p, title, ...)
     return(p)

@@ -1,8 +1,3 @@
-#' @importFrom rlang .data
-#'
-NULL
-
-
 #' Find the coordinates where vertical or horizontal line intersects the hull
 #'
 #' This function finds the coordinates where vertical or horizontal line

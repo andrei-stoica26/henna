@@ -4,7 +4,15 @@
 \alias{labelPoints}
 \title{Label points in a ggplot object}
 \usage{
-labelPoints(p, labelDF, labelSize = 2, labelColor = "black", maxOverlaps = 10)
+labelPoints(
+  p,
+  labelDF,
+  labelSize = 2,
+  labelColor = "black",
+  labelRepulsion = 1,
+  labelPull = 1,
+  maxOverlaps = Inf
+)
 }
 \arguments{
 \item{p}{A ggplot object.}
@@ -13,7 +21,12 @@ labelPoints(p, labelDF, labelSize = 2, labelColor = "black", maxOverlaps = 10)
 
 \item{labelSize}{Label size.}
 
-\item{labelColor}{Label colors}
+\item{labelColor}{Label colors.}
+
+\item{labelRepulsion}{Repulsion strength between labels.}
+
+\item{labelPull}{Attraction strength between a text label
+and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps.}
 }
@@ -23,3 +36,4 @@ A ggplot object.
 \description{
 This function labels points in a ggplot object
 }
+\keyword{internal}

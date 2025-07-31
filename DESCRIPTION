@@ -22,7 +22,6 @@ Imports:
     grDevices,
     methods,
     reshape2,
-    rlang,
     stats,
     tidygraph,
     viridis
