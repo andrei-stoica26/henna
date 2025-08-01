@@ -9,9 +9,9 @@
 #'
 #' @examples
 #' df <- data.frame(
-#' gene1 = paste('G', c(1, 2, 6, 7, 8, 9,
+#' gene1 = paste0('G', c(1, 2, 6, 7, 8, 9,
 #' 11, 25, 32, 17, 18)),
-#' gene2 = paste('G', c(2, 8, 8, 8, 1, 25,
+#' gene2 = paste0('G', c(2, 8, 8, 8, 1, 25,
 #' 32, 24, 24, 26, 26))
 #' )
 #' connectedComponents(df)

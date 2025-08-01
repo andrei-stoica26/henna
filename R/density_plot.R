@@ -66,10 +66,10 @@ densityPlot <- function(df,
                         palette = NULL,
                         segColor = 'sandybrown',
                         pointSize = 1,
-                        segType = c('solid', 'dashed', 'dotted',
+                        segType = c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
-                        segWidth = 0.5,
-                        legendPos = 'right',
+                        segWidth = 0.4,
+                        legendPos = c('right', 'none'),
                         nGridPoints = 300,
                         expandPerc = 20,
                         labelSize = 3,
@@ -78,9 +78,12 @@ densityPlot <- function(df,
                         labelPull = 1,
                         maxOverlaps = Inf,
                         ...){
+
     colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'custom'))
-    segType <- match.arg(segType, c('solid', 'dashed', 'dotted',
-                                    'dotdash', 'longdash', 'twodash'),)
+    segType <- match.arg(segType, c('dashed','solid', 'dotted',
+                                    'dotdash', 'longdash', 'twodash'))
+    legendPos <- match.arg(legendPos, c('right', 'none'))
+
     if (colorScheme == 'sea')
         palette <- dpColors('sea')
 
