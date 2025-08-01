@@ -13,7 +13,10 @@ test_that("hullPlot works", {
                            y = c(1, 1, 2, 3, 3, 2,1, 2, 1))
     expect_equal(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5)), 'gg')
     expect_error(hullPlot(pointsDF, 'Hull plot', 1, 2))
+    expect_error(hullPlot(pointsDF, 'Hull plot', 4, 2))
     expect_equal(is(hullPlot(pointsDF, 'Hull plot', 4.1, 2)), 'gg')
+    expect_error(hullPlot(pointsDF, 'Hull plot', 15.5, 1.5))
+    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 15.4, 1.5)), 'gg')
 })
 
 test_that("networkPlot returns a ggraph object", {

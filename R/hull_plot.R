@@ -304,15 +304,29 @@ hullPlot <- function(pointsDF,
         pointsDF <- pointsDF[, c(1, 2)]
 
     hullIndices <- chull(pointsX, pointsY)
-
-    if (!is.null(xInt) & !is.null(yInt))
-        if (!identical(sort(hullIndices),
-                       sort(chull(rbind(pointsDF, c(xInt, yInt))))))
-            stop('The (xInt, yInt) point is not inside the polygon',
-                 ' determined by the input points.')
-
     hull <- convexHull(pointsDF, hullIndices)
     hullSegments <- pointsToSegments(hull)
+
+    if (!is.null(xInt) & !is.null(yInt)){
+        if(!max(min(abs(xInt - pointsX)), min(abs(yInt - pointsY))))
+            stop('The (xInt, yInt) point is on the boundary of the polygon',
+                 ' determined by the input points. It must be inside.')
+
+        tempPointsDF <- rbind(pointsDF, c(xInt, yInt))
+        tempHullIndices <- chull(tempPointsDF)
+        if (!identical(sort(hullIndices),
+                       sort(tempHullIndices)))
+            stop('The (xInt, yInt) point is outside the polygon',
+                 ' determined by the input points. It must be inside.')
+
+        slope <- (hullSegments$yEnd - hullSegments$y) /
+            (hullSegments$xEnd - hullSegments$x)
+        minDiff <- min(abs((yInt - hullSegments$y) /
+                    (xInt - hullSegments$x) - slope))
+        if(!minDiff)
+            stop('The (xInt, yInt) point is on the boundary of the polygon',
+                 ' determined by the input points. It must be inside.')
+    }
 
     p <- ggplot() + theme_classic() +
         labs(x=xLab, y=yLab) +
