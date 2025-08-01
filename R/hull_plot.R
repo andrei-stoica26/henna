@@ -215,7 +215,6 @@ splitHull <- function(p,
                                       xend=hCoords[2], yend=yInt),
                                   color='navy', linewidth=0.3,
                                   linetype='dashed')
-
     }
 
     if(is.null(xInt) & is.null(yInt))
@@ -260,9 +259,9 @@ splitHull <- function(p,
 #' @return A ggplot object.
 #'
 #' @examples
-#' pointsDF <- data.frame(rank = c(1, 2, 4, 7, 10,
+#' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
 #' 12, 13, 15, 16),
-#' n = c(1, 1, 2, 3, 3, 2,
+#' y = c(1, 1, 2, 3, 3, 2,
 #' 1, 2, 1))
 #' hullPlot(pointsDF, 'Hull plot', 7, 1.5)
 #'
@@ -290,7 +289,29 @@ hullPlot <- function(pointsDF,
     if (nrow(pointsDF) < 2)
         stop('The hull plot requires at least two points.')
 
-    hull <- convexHull(pointsDF)
+    pointsX <- pointsDF[, 1]
+    pointsY <- pointsDF[, 2]
+
+    if (!is.null(xInt))
+        if (xInt <= min(pointsX) | xInt >= max(pointsX))
+            stop('xInt is outside the (min(X), max(X)) interval.')
+
+    if (!is.null(yInt))
+        if (yInt <= min(pointsY) | yInt >= max(pointsY))
+            stop('yInt is outside the (min(Y), max(Y)) interval.')
+
+    if(nrow(pointsDF) > 2)
+        pointsDF <- pointsDF[, c(1, 2)]
+
+    hullIndices <- chull(pointsX, pointsY)
+
+    if (!is.null(xInt) & !is.null(yInt))
+        if (!identical(sort(hullIndices),
+                       sort(chull(rbind(pointsDF, c(xInt, yInt))))))
+            stop('The (xInt, yInt) point is not inside the polygon',
+                 ' determined by the input points.')
+
+    hull <- convexHull(pointsDF, hullIndices)
     hullSegments <- pointsToSegments(hull)
 
     p <- ggplot() + theme_classic() +

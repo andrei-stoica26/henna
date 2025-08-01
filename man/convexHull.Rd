@@ -4,10 +4,13 @@
 \alias{convexHull}
 \title{Construct the convex hull of a set of points}
 \usage{
-convexHull(pointsDF)
+convexHull(pointsDF, hullIndices = NULL)
 }
 \arguments{
 \item{pointsDF}{A data frame with the x and y coordinates of the points.}
+
+\item{hullIndices}{Precalculated hull indices. Default is \code{NULL}: hull
+indices are not provided, but they are calculated by \code{convexHull}.}
 }
 \value{
 The points on the convex hull of the original set of points.

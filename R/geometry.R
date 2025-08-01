@@ -55,6 +55,8 @@ connectedComponents <- function(df, colName = 'component'){
 #' @details The points must be provided as a data frame with two columns.
 #'
 #' @param pointsDF A data frame with the x and y coordinates of the points.
+#' @param hullIndices Precalculated hull indices. Default is \code{NULL}: hull
+#' indices are not provided, but they are calculated by \code{convexHull}.
 #'
 #' @return The points on the convex hull of the original set of points.
 #'
@@ -65,8 +67,10 @@ connectedComponents <- function(df, colName = 'component'){
 #'
 #' @export
 #'
-convexHull <- function(pointsDF){
-    hull <- pointsDF[chull(pointsDF[, 1], pointsDF[, 2]), c(1, 2)]
+convexHull <- function(pointsDF, hullIndices=NULL){
+    if(!is.null(hullIndices))
+        hull <- pointsDF[hullIndices, c(1, 2)] else
+            hull <- pointsDF[chull(pointsDF[, 1], pointsDF[, 2]), c(1, 2)]
     colnames(hull) <- c('x', 'y')
     return(hull)
 }

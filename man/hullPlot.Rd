@@ -75,9 +75,9 @@ a vertical and a horizontal line, dividing the hull into areas of different
 colors.
 }
 \examples{
-pointsDF <- data.frame(rank = c(1, 2, 4, 7, 10,
+pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
 12, 13, 15, 16),
-n = c(1, 1, 2, 3, 3, 2,
+y = c(1, 1, 2, 3, 3, 2,
 1, 2, 1))
 hullPlot(pointsDF, 'Hull plot', 7, 1.5)
 

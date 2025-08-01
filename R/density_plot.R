@@ -43,7 +43,7 @@ createPairSegments <- function(df){
 #' @param segWidth Nearest neighbor segment width. Ignored if \code{drawNN} is
 #' set to \code{FALSE}.
 #' @param legendPos Legend position.
-#' @param Number of grid points in each direction.
+#' @param nGridPoints Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will expanded.
 #' @inheritParams labelPoints
 #'

@@ -8,11 +8,12 @@ test_that("densityPlot returns a ggplot object", {
     expect_equal(is(p), 'gg')
 })
 
-test_that("hullPlot returns a ggplot object", {
+test_that("hullPlot works", {
     pointsDF <- data.frame(x = c(1, 2, 4, 7, 10, 12, 13, 15, 16),
                            y = c(1, 1, 2, 3, 3, 2,1, 2, 1))
-    p <- hullPlot(pointsDF, 'Hull plot', 7, 1.5)
-    expect_equal(is(p), 'gg')
+    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5)), 'gg')
+    expect_error(hullPlot(pointsDF, 'Hull plot', 1, 2))
+    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 4.1, 2)), 'gg')
 })
 
 test_that("networkPlot returns a ggraph object", {

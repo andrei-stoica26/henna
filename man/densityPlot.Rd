@@ -13,7 +13,7 @@ densityPlot(
   segColor = "sandybrown",
   pointSize = 1,
   segType = c("dashed", "solid", "dotted", "dotdash", "longdash", "twodash"),
-  segWidth = 0.5,
+  segWidth = 0.4,
   legendPos = c("right", "none"),
   nGridPoints = 300,
   expandPerc = 20,
@@ -54,6 +54,8 @@ set to \code{FALSE}.}
 
 \item{legendPos}{Legend position.}
 
+\item{nGridPoints}{Number of grid points in each direction.}
+
 \item{expandPerc}{Percentage by which the grid will expanded.}
 
 \item{labelSize}{Size of labels of strata elements.}
@@ -68,8 +70,6 @@ and its data point.}
 \item{maxOverlaps}{Maximum overlaps.}
 
 \item{...}{Other arguments passed to centerTitle.}
-
-\item{Number}{of grid points in each direction.}
 }
 \value{
 A ggplot object.

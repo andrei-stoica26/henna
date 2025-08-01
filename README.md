@@ -1,5 +1,9 @@
 # henna
-`henna` is an evolving collection of visualization utilities for scRNA-seq data analysis.
+`henna` provides six versatile visualization utilities: `densityPlot`, 
+`hullPlot`, `networkPlot`, `radialPlot`, `rankPlot` and `riverPlot`.
+
+The six plots are designed with scRNA-seq data analysis in mind, but can be 
+used for a variety of other applications as well.
 
 ## Installation
 
