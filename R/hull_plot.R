@@ -283,7 +283,7 @@ hullPlot <- function(pointsDF,
                      labelDF = NULL,
                      labelSize = 2,
                      labelColor = 'black',
-                     maxOverlaps = 10,
+                     maxOverlaps = Inf,
                      ...){
 
     if (nrow(pointsDF) < 2)

@@ -15,4 +15,3 @@ A rank summary dataframe.
 \description{
 This function creates a summary of multiple ranks provided for input items.
 }
-\keyword{internal}

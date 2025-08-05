@@ -10,7 +10,7 @@ NULL
 #'
 #' @return A rank summary dataframe.
 #'
-#' @keywords internal
+#' @export
 #'
 #'
 rankSummary <- function(df){
@@ -36,8 +36,13 @@ rankSummary <- function(df){
 #'
 #' This function creates a rank plot
 #'
-#' @inheritParams rankSummary
+#' @param df A data frame with ranks as columns and items as rows, or a
+#' summary data frame generated with \code{rankSummary}. If the latter,
+#' \code{summarize} must be set to \code{FALSE}.
 #' @inheritParams riverPlot
+#' @param summarize Whether to summarize the ranks with \code{rankSummary}.
+#' Must be set to \code{FALSE} if the input data frame has been generated with
+#' \code{rankSummary}.
 #' @param xLab Label of x axis.
 #'
 #' @return A ggplot object.
@@ -50,11 +55,12 @@ rankSummary <- function(df){
 #'
 #' @export
 #'
-rankPlot <- function(df, title = 'Rank plot',
+rankPlot <- function(df, title = 'Rank plot', summarize = TRUE,
                      viridisPal = 'turbo',
                      xLab = 'Item', ...){
-    smr <- rankSummary(df)
-    p <- ggplot(smr, aes(x=Item, y=Count, fill=Rank)) +
+    if(summarize)
+        df <- rankSummary(df)
+    p <- ggplot(df, aes(x=Item, y=Count, fill=Rank)) +
         geom_bar(stat='identity') + theme_classic() +
         scale_fill_viridis_d(option=viridisPal) + xlab(xLab)
     p <- centerTitle(p, title, ...)

@@ -4,12 +4,25 @@
 \alias{rankPlot}
 \title{Create a rank plot}
 \usage{
-rankPlot(df, title = "Rank plot", viridisPal = "turbo", xLab = "Item", ...)
+rankPlot(
+  df,
+  title = "Rank plot",
+  summarize = TRUE,
+  viridisPal = "turbo",
+  xLab = "Item",
+  ...
+)
 }
 \arguments{
-\item{df}{A data frame with ranks as columns, items as rows.}
+\item{df}{A data frame with ranks as columns and items as rows, or a
+summary data frame generated with \code{rankSummary}. If the latter,
+\code{summarize} must be set to \code{FALSE}.}
 
 \item{title}{Plot title.}
+
+\item{summarize}{Whether to summarize the ranks with \code{rankSummary}.
+Must be set to \code{FALSE} if the input data frame has been generated with
+\code{rankSummary}.}
 
 \item{viridisPal}{Viridis palette.}
 
