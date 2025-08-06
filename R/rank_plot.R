@@ -65,6 +65,7 @@ computeMeanRanks <- function(rankDF){
 #' \code{rankSummary}.
 #' @param xLab Label of x axis.
 #' @param pointSize Size of point marking average rank for each item.
+#' @param pointShape Shape of point marking average rank for each item.
 #'
 #' @return A ggplot object.
 #'
@@ -76,9 +77,14 @@ computeMeanRanks <- function(rankDF){
 #'
 #' @export
 #'
-rankPlot <- function(df, title = 'Rank plot', summarize = TRUE,
+rankPlot <- function(df,
+                     title = 'Rank plot',
+                     summarize = TRUE,
                      viridisPal = 'turbo',
-                     xLab = 'Item', pointSize = 2, ...){
+                     xLab = 'Item',
+                     pointSize = 1.5,
+                     pointShape = 4,
+                     ...){
     if(summarize)
         df <- rankSummary(df)
 
@@ -90,7 +96,9 @@ rankPlot <- function(df, title = 'Rank plot', summarize = TRUE,
         geom_bar(aes(x=Item, y=Count, fill=Rank), df, stat='identity') +
         theme_classic() +
         scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
-        geom_point(data=meanRanks, aes(x=Item, y=MeanRank), size=pointSize)
+        geom_point(data=meanRanks, aes(x=Item, y=MeanRank),
+                   size=pointSize,
+                   shape=pointShape)
     p <- centerTitle(p, title, ...)
     return(p)
 }
