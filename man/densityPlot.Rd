@@ -12,18 +12,19 @@ densityPlot(
   drawNN = TRUE,
   palette = NULL,
   segColor = "plum1",
-  pointSize = 1,
+  pointSize = 0.8,
   pointColor = "red",
   segType = c("dashed", "solid", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.4,
   legendPos = c("right", "none"),
   nGridPoints = 300,
   expandPerc = 20,
-  labelSize = 3,
-  labelColor = "black",
+  labelSize = 2,
+  labelColor = "lightyellow",
   labelRepulsion = 1,
   labelPull = 1,
   maxOverlaps = Inf,
+  margins = margin(0, -10, -10, -10),
   ...
 )
 }
@@ -62,7 +63,7 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 \item{segWidth}{Nearest neighbor segment width. Ignored if \code{drawNN} is
 set to \code{FALSE}.}
 
-\item{legendPos}{Legend position.}
+\item{legendPos}{Legend position. Choose between 'right' and 'none'.}
 
 \item{nGridPoints}{Number of grid points in each direction.}
 
@@ -79,6 +80,9 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps.}
+
+\item{margins}{Plot margins. Must be a vector of size 4 listing the desired
+top, right, bottom and left margin, in that order.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }

@@ -11,8 +11,10 @@ rankPlot(
   viridisPal = "turbo",
   xLab = "Item",
   showMeanRanks = FALSE,
-  labelSize = 3.1,
+  labelSize = 2.5,
   labelColor = "seashell",
+  xAngle = 45,
+  vJust = 0.6,
   ...
 )
 }
@@ -39,6 +41,10 @@ if \code{showMeanRanks} is \code{FALSE}.}
 
 \item{labelColor}{Color of label marking average rank for each item. Ignored
 if \code{showMeanRanks} is \code{FALSE}.}
+
+\item{xAngle}{Angle of x axis text.}
+
+\item{vJust}{Vertical justification in [0, 1].}
 
 \item{...}{Other arguments passed to centerTitle.}
 }

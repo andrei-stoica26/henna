@@ -54,8 +54,8 @@ riverPlot <- function(df,
                   size=labelSize) +
         scale_fill_viridis_d(option=viridisPal) +
         theme_void() +
-        theme(legend.position=legendPos) +
-        theme(plot.margin=margins)
+        theme(legend.position=legendPos,
+              plot.margin=margins)
     p <- centerTitle(p, title, ...)
     return(p)
 }

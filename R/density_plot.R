@@ -25,6 +25,7 @@ createPairSegments <- function(df){
 #'
 #' This function creates a density plot.
 #'
+#' @inheritParams riverPlot
 #' @param df A data frame with at least two columns, representing the \code{x}
 #' and \code{y} coordinates of the points. A score column can also be provided
 #' as the third column. Nearest neighbor information can be provided in the last
@@ -48,7 +49,7 @@ createPairSegments <- function(df){
 #' \code{drawNN} is set to \code{FALSE}.
 #' @param segWidth Nearest neighbor segment width. Ignored if \code{drawNN} is
 #' set to \code{FALSE}.
-#' @param legendPos Legend position.
+#' @param legendPos Legend position. Choose between 'right' and 'none'.
 #' @param nGridPoints Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will expanded.
 #' @inheritParams labelPoints
@@ -74,7 +75,7 @@ densityPlot <- function(df,
                         drawNN = TRUE,
                         palette = NULL,
                         segColor = 'plum1',
-                        pointSize = 1,
+                        pointSize = 0.8,
                         pointColor = 'red',
                         segType = c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
@@ -82,11 +83,12 @@ densityPlot <- function(df,
                         legendPos = c('right', 'none'),
                         nGridPoints = 300,
                         expandPerc = 20,
-                        labelSize = 3,
-                        labelColor = 'black',
+                        labelSize = 2,
+                        labelColor = 'lightyellow',
                         labelRepulsion = 1,
                         labelPull = 1,
                         maxOverlaps = Inf,
+                        margins = margin(0, -10, -10, -10),
                         ...){
 
     colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'custom'))
@@ -102,7 +104,6 @@ densityPlot <- function(df,
             labelColor <- 'black'
         }
     }
-
 
     if (colorScheme == 'lava'){
         palette <- dpColors('lava')
@@ -134,7 +135,8 @@ densityPlot <- function(df,
         expand_limits(x=expandRange(df[, 1], expandPerc),
                       y=expandRange(df[, 2], expandPerc)) +
         labs(x='x', y='y', fill='Density') +
-        theme(legend.position=legendPos)
+        theme(legend.position=legendPos,
+              plot.margin=margins)
 
     if(drawNN){
         lastCol <- df[, ncol(df)]

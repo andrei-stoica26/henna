@@ -71,6 +71,8 @@ computeMeanRanks <- function(rankDF){
 #' if \code{showMeanRanks} is \code{FALSE}.
 #' @param labelColor Color of label marking average rank for each item. Ignored
 #' if \code{showMeanRanks} is \code{FALSE}.
+#' @param xAngle Angle of x axis text.
+#' @param vJust Vertical justification in [0, 1].
 #'
 #' @return A ggplot object.
 #'
@@ -88,8 +90,10 @@ rankPlot <- function(df,
                      viridisPal = 'turbo',
                      xLab = 'Item',
                      showMeanRanks = FALSE,
-                     labelSize = 3.1,
+                     labelSize = 2.5,
                      labelColor = 'seashell',
+                     xAngle = 45,
+                     vJust = 0.6,
                      ...){
 
 
@@ -103,7 +107,8 @@ rankPlot <- function(df,
     p <- ggplot() +
         geom_bar(aes(x=Item, y=Count, fill=Rank), df, stat='identity') +
         theme_classic() +
-        scale_fill_viridis_d(option=viridisPal) + xlab(xLab)
+        scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
+        theme(axis.text.x=element_text(angle=xAngle, vjust=vJust))
 
     if(showMeanRanks)
         p <- p + geom_text(data=meanRanks,
