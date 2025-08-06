@@ -44,7 +44,7 @@ rankSummary <- function(df){
 #' @noRd
 #'
 computeMeanRanks <- function(rankDF){
-    nMetrics <- sum(rankDF[, 3]) / length(unique(rankDF[, 1]))
+    nMetrics <- sum(rankDF[rankDF[, 1] == unique(rankDF[, 1])[1], 3])
     meanRanks <- sort(vapply(as.character(unique(rankDF[, 2])), function(x){
         subRankDF <- rankDF[rankDF[, 2] == x, ]
         return(round(sum(as.numeric(subRankDF[, 1]) * subRankDF[, 3]) /
@@ -86,6 +86,8 @@ rankPlot <- function(df,
                      labelSize = 3.1,
                      labelColor = 'snow',
                      ...){
+
+
     if(summarize)
         df <- rankSummary(df)
 
