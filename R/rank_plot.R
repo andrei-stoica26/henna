@@ -22,8 +22,8 @@ NULL
 rankSummary <- function(df){
     minPos <- min(df)
     maxPos <- max(df)
-    positions <- seq(minPos, maxPos)
-    posDF <- do.call(rbind, lapply(seq(minPos, maxPos), function(pos)
+    positions <- sort(unique(as.numeric(df)))
+    posDF <- do.call(rbind, lapply(positions, function(pos)
         apply(df, 1, function(x) sum(x == pos))))
     rownames(posDF) <- positions
     smr <- reshape2::melt(posDF)
@@ -44,10 +44,11 @@ rankSummary <- function(df){
 #' @noRd
 #'
 computeMeanRanks <- function(rankDF){
+    nMetrics <- sum(rankDF[, 3]) / length(unique(rankDF[, 1]))
     meanRanks <- sort(vapply(as.character(unique(rankDF[, 2])), function(x){
         subRankDF <- rankDF[rankDF[, 2] == x, ]
-        return(sum(as.numeric(subRankDF[, 1]) * subRankDF[, 3]) /
-                   nrow(subRankDF))},
+        return(round(sum(as.numeric(subRankDF[, 1]) * subRankDF[, 3]) /
+                   nMetrics, 2))},
         numeric(1)))
     return(data.frame(Item = names(meanRanks), MeanRank = meanRanks))
 }
@@ -64,8 +65,8 @@ computeMeanRanks <- function(rankDF){
 #' Must be set to \code{FALSE} if the input data frame has been generated with
 #' \code{rankSummary}.
 #' @param xLab Label of x axis.
-#' @param pointSize Size of point marking average rank for each item.
-#' @param pointShape Shape of point marking average rank for each item.
+#' @param labelSize Size of label marking average rank for each item.
+#' @param labelColor Color of label marking average rank for each item.
 #'
 #' @return A ggplot object.
 #'
@@ -82,8 +83,8 @@ rankPlot <- function(df,
                      summarize = TRUE,
                      viridisPal = 'turbo',
                      xLab = 'Item',
-                     pointSize = 1.5,
-                     pointShape = 4,
+                     labelSize = 3.1,
+                     labelColor = 'snow',
                      ...){
     if(summarize)
         df <- rankSummary(df)
@@ -96,9 +97,8 @@ rankPlot <- function(df,
         geom_bar(aes(x=Item, y=Count, fill=Rank), df, stat='identity') +
         theme_classic() +
         scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
-        geom_point(data=meanRanks, aes(x=Item, y=MeanRank),
-                   size=pointSize,
-                   shape=pointShape)
+        geom_text(data=meanRanks, aes(x=Item, y=MeanRank, label=MeanRank),
+                   size=labelSize, color=labelColor)
     p <- centerTitle(p, title, ...)
     return(p)
 }

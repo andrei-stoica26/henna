@@ -10,8 +10,8 @@ rankPlot(
   summarize = TRUE,
   viridisPal = "turbo",
   xLab = "Item",
-  pointSize = 1.5,
-  pointShape = 4,
+  labelSize = 3.1,
+  labelColor = "snow",
   ...
 )
 }
@@ -30,9 +30,9 @@ Must be set to \code{FALSE} if the input data frame has been generated with
 
 \item{xLab}{Label of x axis.}
 
-\item{pointSize}{Size of point marking average rank for each item.}
+\item{labelSize}{Size of label marking average rank for each item.}
 
-\item{pointShape}{Shape of point marking average rank for each item.}
+\item{labelColor}{Color of label marking average rank for each item.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }
