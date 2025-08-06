@@ -8,10 +8,12 @@ densityPlot(
   df,
   title = "Density plot",
   colorScheme = c("sea", "lava", "custom"),
+  useSchemeDefaults = FALSE,
   drawNN = TRUE,
   palette = NULL,
-  segColor = "sandybrown",
+  segColor = "plum1",
   pointSize = 1,
+  pointColor = "red",
   segType = c("dashed", "solid", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.4,
   legendPos = c("right", "none"),
@@ -35,15 +37,23 @@ column as a character vector with elements selected from the rownames.}
 
 \item{colorScheme}{Color scheme.}
 
+\item{useSchemeDefaults}{Whether to use the default \code{segColor},
+\code{pointColor} and \code{labelColor} for scheme. Ignored
+if \code{colorScheme} is set to 'custom'.}
+
 \item{drawNN}{Whether to draw segments linking each point to its nearest
 neighbor.}
 
 \item{palette}{Color palette. Used only if color scheme is set to 'custom'.}
 
 \item{segColor}{Nearest neighbor segment color. Ignored if \code{drawNN} is
-set to \code{FALSE}.}
+set to \code{FALSE}, or if \code{useSchemeDefaults} is \code{TRUE} and
+\code{colorScheme} is different from 'custom'.}
 
 \item{pointSize}{Point size.}
+
+\item{pointColor}{Point color. Ignored if \code{useSchemeDefaults}
+is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 
 \item{segType}{Nearest neighbor segment type. Must choose between 'solid',
 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
@@ -60,7 +70,8 @@ set to \code{FALSE}.}
 
 \item{labelSize}{Size of labels of strata elements.}
 
-\item{labelColor}{Label colors.}
+\item{labelColor}{Label color. Ignored if \code{useSchemeDefaults}
+is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 
 \item{labelRepulsion}{Repulsion strength between labels.}
 

@@ -10,8 +10,9 @@ rankPlot(
   summarize = TRUE,
   viridisPal = "turbo",
   xLab = "Item",
+  showMeanRanks = FALSE,
   labelSize = 3.1,
-  labelColor = "snow",
+  labelColor = "seashell",
   ...
 )
 }
@@ -30,9 +31,14 @@ Must be set to \code{FALSE} if the input data frame has been generated with
 
 \item{xLab}{Label of x axis.}
 
-\item{labelSize}{Size of label marking average rank for each item.}
+\item{showMeanRanks}{Whether mean rank values should be displayed on
+the plot.}
 
-\item{labelColor}{Color of label marking average rank for each item.}
+\item{labelSize}{Size of label marking average rank for each item. Ignored
+if \code{showMeanRanks} is \code{FALSE}.}
+
+\item{labelColor}{Color of label marking average rank for each item. Ignored
+if \code{showMeanRanks} is \code{FALSE}.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }

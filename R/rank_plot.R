@@ -65,8 +65,12 @@ computeMeanRanks <- function(rankDF){
 #' Must be set to \code{FALSE} if the input data frame has been generated with
 #' \code{rankSummary}.
 #' @param xLab Label of x axis.
-#' @param labelSize Size of label marking average rank for each item.
-#' @param labelColor Color of label marking average rank for each item.
+#' @param showMeanRanks Whether mean rank values should be displayed on
+#' the plot.
+#' @param labelSize Size of label marking average rank for each item. Ignored
+#' if \code{showMeanRanks} is \code{FALSE}.
+#' @param labelColor Color of label marking average rank for each item. Ignored
+#' if \code{showMeanRanks} is \code{FALSE}.
 #'
 #' @return A ggplot object.
 #'
@@ -83,8 +87,9 @@ rankPlot <- function(df,
                      summarize = TRUE,
                      viridisPal = 'turbo',
                      xLab = 'Item',
+                     showMeanRanks = FALSE,
                      labelSize = 3.1,
-                     labelColor = 'snow',
+                     labelColor = 'seashell',
                      ...){
 
 
@@ -98,9 +103,14 @@ rankPlot <- function(df,
     p <- ggplot() +
         geom_bar(aes(x=Item, y=Count, fill=Rank), df, stat='identity') +
         theme_classic() +
-        scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
-        geom_text(data=meanRanks, aes(x=Item, y=MeanRank, label=MeanRank),
-                   size=labelSize, color=labelColor)
+        scale_fill_viridis_d(option=viridisPal) + xlab(xLab)
+
+    if(showMeanRanks)
+        p <- p + geom_text(data=meanRanks,
+                           aes(x=Item, y=MeanRank, label=MeanRank),
+                           size=labelSize,
+                           color=labelColor)
+
     p <- centerTitle(p, title, ...)
     return(p)
 }

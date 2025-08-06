@@ -31,12 +31,18 @@ createPairSegments <- function(df){
 #' column as a character vector with elements selected from the rownames.
 #' @inheritParams riverPlot
 #' @param colorScheme Color scheme.
+#' @param useSchemeDefaults Whether to use the default \code{segColor},
+#' \code{pointColor} and \code{labelColor} for scheme. Ignored
+#' if \code{colorScheme} is set to 'custom'.
 #' @param drawNN Whether to draw segments linking each point to its nearest
 #' neighbor.
 #' @param palette Color palette. Used only if color scheme is set to 'custom'.
 #' @param segColor Nearest neighbor segment color. Ignored if \code{drawNN} is
-#' set to \code{FALSE}.
+#' set to \code{FALSE}, or if \code{useSchemeDefaults} is \code{TRUE} and
+#' \code{colorScheme} is different from 'custom'.
 #' @param pointSize Point size.
+#' @param pointColor Point color. Ignored if \code{useSchemeDefaults}
+#' is \code{TRUE} and \code{colorScheme} is different from 'custom'.
 #' @param segType Nearest neighbor segment type. Must choose between 'solid',
 #' 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
 #' \code{drawNN} is set to \code{FALSE}.
@@ -46,6 +52,8 @@ createPairSegments <- function(df){
 #' @param nGridPoints Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will expanded.
 #' @inheritParams labelPoints
+#' @param labelColor Label color. Ignored if \code{useSchemeDefaults}
+#' is \code{TRUE} and \code{colorScheme} is different from 'custom'.
 #'
 #' @return A ggplot object.
 #'
@@ -62,10 +70,12 @@ createPairSegments <- function(df){
 densityPlot <- function(df,
                         title = 'Density plot',
                         colorScheme = c('sea', 'lava', 'custom'),
+                        useSchemeDefaults = FALSE,
                         drawNN = TRUE,
                         palette = NULL,
-                        segColor = 'sandybrown',
+                        segColor = 'plum1',
                         pointSize = 1,
+                        pointColor = 'red',
                         segType = c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
                         segWidth = 0.4,
@@ -84,12 +94,23 @@ densityPlot <- function(df,
                                     'dotdash', 'longdash', 'twodash'))
     legendPos <- match.arg(legendPos, c('right', 'none'))
 
-    if (colorScheme == 'sea')
+    if (colorScheme == 'sea'){
         palette <- dpColors('sea')
+        if (useSchemeDefaults){
+            segColor <- 'thistle'
+            pointColor <- 'red'
+            labelColor <- 'black'
+        }
+    }
+
 
     if (colorScheme == 'lava'){
         palette <- dpColors('lava')
-        segColor <- 'dodgerblue3'
+        if (useSchemeDefaults){
+            segColor <- 'dodgerblue3'
+            pointColor <- 'black'
+            labelColor <- 'black'
+        }
     }
 
     if (colorScheme == 'custom'){
@@ -109,7 +130,7 @@ densityPlot <- function(df,
                         geom="raster",
                         contour=FALSE,
                         n=nGridPoints) +
-        scale_fill_gradientn(colors = palette) + theme_classic() +
+        scale_fill_gradientn(colors=palette) + theme_classic() +
         expand_limits(x=expandRange(df[, 1], expandPerc),
                       y=expandRange(df[, 2], expandPerc)) +
         labs(x='x', y='y', fill='Density') +
@@ -134,7 +155,7 @@ densityPlot <- function(df,
                               linewidth=segWidth)
     }
 
-    p <- p + geom_point(size=pointSize) +
+    p <- p + geom_point(size=pointSize, color=pointColor) +
         geom_text_repel(aes(label=pointLabs),
                         size=labelSize,
                         color=labelColor,
