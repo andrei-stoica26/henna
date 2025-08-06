@@ -15,3 +15,10 @@ A rank summary dataframe.
 \description{
 This function creates a summary of multiple ranks provided for input items.
 }
+\examples{
+df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))
+rownames(df) <- paste0('M', seq(10))
+colnames(df) <- paste0('R', seq(30))
+rankSummary(df)
+
+}

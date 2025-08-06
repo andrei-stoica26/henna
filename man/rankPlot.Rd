@@ -10,6 +10,7 @@ rankPlot(
   summarize = TRUE,
   viridisPal = "turbo",
   xLab = "Item",
+  pointSize = 2,
   ...
 )
 }
@@ -28,6 +29,8 @@ Must be set to \code{FALSE} if the input data frame has been generated with
 
 \item{xLab}{Label of x axis.}
 
+\item{pointSize}{Size of point marking average rank for each item.}
+
 \item{...}{Other arguments passed to centerTitle.}
 }
 \value{
@@ -38,8 +41,8 @@ This function creates a rank plot
 }
 \examples{
 df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))
-rownames(df) <- paste('M', seq(10))
-colnames(df) <- paste('R', seq(30))
+rownames(df) <- paste0('M', seq(10))
+colnames(df) <- paste0('R', seq(30))
 rankPlot(df)
 
 }

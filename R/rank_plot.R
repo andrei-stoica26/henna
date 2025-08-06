@@ -10,6 +10,12 @@ NULL
 #'
 #' @return A rank summary dataframe.
 #'
+#' @examples
+#' df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))
+#' rownames(df) <- paste0('M', seq(10))
+#' colnames(df) <- paste0('R', seq(30))
+#' rankSummary(df)
+#'
 #' @export
 #'
 #'
@@ -23,13 +29,27 @@ rankSummary <- function(df){
     smr <- reshape2::melt(posDF)
     colnames(smr) <- c('Rank', 'Item', 'Count')
     smr <- smr[order(smr$Rank, -smr$Count), ]
-
     smr$Rank <- factor(smr$Rank)
-
-    ranks <- sort(apply(df, 1, mean))
-    smr$Item <- factor(smr$Item, levels=names(ranks))
-
     return(smr)
+}
+
+#' Compute the average rank of each iterm
+#'
+#' This function computes the average rank of each item.
+#'
+#' @param rankDF Rank data frame created with \code{rankSummary}.
+#'
+#' @return A single-column data frame of average ranks.
+#'
+#' @noRd
+#'
+computeMeanRanks <- function(rankDF){
+    meanRanks <- sort(vapply(as.character(unique(rankDF[, 2])), function(x){
+        subRankDF <- rankDF[rankDF[, 2] == x, ]
+        return(sum(as.numeric(subRankDF[, 1]) * subRankDF[, 3]) /
+                   nrow(subRankDF))},
+        numeric(1)))
+    return(data.frame(Item = names(meanRanks), MeanRank = meanRanks))
 }
 
 #' Create a rank plot
@@ -44,25 +64,33 @@ rankSummary <- function(df){
 #' Must be set to \code{FALSE} if the input data frame has been generated with
 #' \code{rankSummary}.
 #' @param xLab Label of x axis.
+#' @param pointSize Size of point marking average rank for each item.
 #'
 #' @return A ggplot object.
 #'
 #' @examples
 #' df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))
-#' rownames(df) <- paste('M', seq(10))
-#' colnames(df) <- paste('R', seq(30))
+#' rownames(df) <- paste0('M', seq(10))
+#' colnames(df) <- paste0('R', seq(30))
 #' rankPlot(df)
 #'
 #' @export
 #'
 rankPlot <- function(df, title = 'Rank plot', summarize = TRUE,
                      viridisPal = 'turbo',
-                     xLab = 'Item', ...){
+                     xLab = 'Item', pointSize = 2, ...){
     if(summarize)
         df <- rankSummary(df)
-    p <- ggplot(df, aes(x=Item, y=Count, fill=Rank)) +
-        geom_bar(stat='identity') + theme_classic() +
-        scale_fill_viridis_d(option=viridisPal) + xlab(xLab)
+
+    meanRanks <- computeMeanRanks(df)
+    itemOrder <- rownames(meanRanks)
+    df[, 2] <- factor(df[, 2], levels=itemOrder)
+
+    p <- ggplot() +
+        geom_bar(aes(x=Item, y=Count, fill=Rank), df, stat='identity') +
+        theme_classic() +
+        scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
+        geom_point(data=meanRanks, aes(x=Item, y=MeanRank), size=pointSize)
     p <- centerTitle(p, title, ...)
     return(p)
 }
