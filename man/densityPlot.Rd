@@ -19,12 +19,11 @@ densityPlot(
   legendPos = c("right", "none"),
   nGridPoints = 300,
   expandPerc = 20,
-  labelSize = 2,
-  labelColor = "lightyellow",
+  labelSize = 2.5,
+  labelColor = "black",
   labelRepulsion = 1,
   labelPull = 1,
   maxOverlaps = Inf,
-  margins = margin(0, -10, -10, -10),
   ...
 )
 }
@@ -80,9 +79,6 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps.}
-
-\item{margins}{Plot margins. Must be a vector of size 4 listing the desired
-top, right, bottom and left margin, in that order.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }

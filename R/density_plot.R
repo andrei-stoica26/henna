@@ -83,12 +83,11 @@ densityPlot <- function(df,
                         legendPos = c('right', 'none'),
                         nGridPoints = 300,
                         expandPerc = 20,
-                        labelSize = 2,
-                        labelColor = 'lightyellow',
+                        labelSize = 2.5,
+                        labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 1,
                         maxOverlaps = Inf,
-                        margins = margin(0, -10, -10, -10),
                         ...){
 
     colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'custom'))
@@ -135,8 +134,7 @@ densityPlot <- function(df,
         expand_limits(x=expandRange(df[, 1], expandPerc),
                       y=expandRange(df[, 2], expandPerc)) +
         labs(x='x', y='y', fill='Density') +
-        theme(legend.position=legendPos,
-              plot.margin=margins)
+        theme(legend.position=legendPos)
 
     if(drawNN){
         lastCol <- df[, ncol(df)]
