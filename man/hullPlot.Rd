@@ -43,9 +43,9 @@ and/or \code{yInt}are not \code{NULL}).}
 
 \item{showHull}{Whether to display the segments on the convex hull.}
 
-\item{xLab}{x axis label.}
+\item{xLab}{Label of x axis.}
 
-\item{yLab}{y axis label.}
+\item{yLab}{Label of y axis.}
 
 \item{legendLabs}{Legend labels.}
 

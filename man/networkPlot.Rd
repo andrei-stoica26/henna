@@ -11,7 +11,7 @@ networkPlot(
   edgeScale = 2,
   nodePointSize = 10,
   nodeTextSize = 2.3,
-  palette = ("Pastel 1"),
+  palette = "Pastel 1",
   ...
 )
 }

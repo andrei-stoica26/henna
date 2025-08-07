@@ -247,8 +247,8 @@ splitHull <- function(p,
 #' @inheritParams splitHull
 #' @param palette Color palette.
 #' @param showHull Whether to display the segments on the convex hull.
-#' @param xLab x axis label.
-#' @param yLab y axis label.
+#' @param xLab Label of x axis.
+#' @param yLab Label of y axis.
 #' @param pointShape Point shape.
 #' @inheritParams labelPoints
 #' @param labelSize Label size. Ignored if \code{labelDF} is \code{NULL}.

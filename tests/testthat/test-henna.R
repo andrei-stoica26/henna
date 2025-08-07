@@ -1,3 +1,13 @@
+test_that("classPlot returns a ggplot object", {
+    df <- data.frame(Class = sample(paste0('C', seq(13)), 25, replace=TRUE),
+                     Item = paste0('I', seq(25)),
+                     Value = runif(25, 0.5, 1))
+    p <- classPlot(df)
+    expect_equal(is(p), 'gg')
+})
+
+
+
 test_that("densityPlot returns a ggplot object", {
     x <- c(1, 1, 2, 7, 8, 0, 16, 1, 1.2, 32, 7, 5, 1.1, 1.2, 1.2)
     y <- c(1, 1.1, 0.5, 8, 18, 4, 6, 0.9, 1, 6, -24, -28, 1, 0.8, 0.9)

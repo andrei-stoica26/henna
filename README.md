@@ -17,6 +17,9 @@ BiocManager::install("andrei-stoica26/henna")
 ```
 ## Functions implemented so far
 
+`classPlot`: Create a bar plot for a set of items grouped by class and orders
+the items and classes.
+
 `densityPlot`: Create a density plot for a set of points, optionally displaying
 segements between each point and its nearest neighbor.
 

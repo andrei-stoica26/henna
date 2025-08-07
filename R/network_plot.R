@@ -81,7 +81,7 @@ vertexComponents <- function(df, colName = 'component'){
 networkPlot <- function(df, title = 'Network plot',
                         rankCol = 'rank',
                         edgeScale = 2, nodePointSize = 10, nodeTextSize = 2.3,
-                        palette = ('Pastel 1'), ...){
+                        palette = 'Pastel 1', ...){
     df <- networkPlotDF(df, rankCol, edgeScale)
     tblGraph <- as_tbl_graph(df, directed=FALSE)
     df <- connectedComponents(df)
@@ -95,7 +95,7 @@ networkPlot <- function(df, title = 'Network plot',
         geom_node_text(aes(label=name), size=nodeTextSize) +
         theme_void() +
         theme(legend.position='none') +
-        scale_color_manual(values = hcl.colors(nComp, palette))
+        scale_color_manual(values=hcl.colors(nComp, palette))
     p <- centerTitle(p, title, ...)
     return(p)
 }
