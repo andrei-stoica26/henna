@@ -21,6 +21,11 @@
 #'  Value = runif(25, 0.5, 1))
 #'  classPlot(df)
 #'
+#'  df <- data.frame(Class = sample(paste0('C', seq(13)), 25, replace=TRUE),
+#'  Item = sample(paste0('I', seq(21)), 25, replace=TRUE),
+#'  Value = runif(25, 0.5, 1))
+#'  classPlot(df)
+#'
 #' @export
 #'
 classPlot <- function(df,
@@ -36,15 +41,16 @@ classPlot <- function(df,
     nClasses <- length(unique(df[, 1]))
     df <- df[order(df[, 3], decreasing=decreasing), ]
     df[, 1] <- factor(df[, 1], levels=unique(df[, 1]))
-    df[, 2] <- factor(df[, 2], levels=rev(unique(df[, 2])))
-    p <- ggplot(data=df, aes(fill=df[, 1], x=df[, 3], y=df[, 2])) +
+    df[, 4] <- make.unique(df[, 2])
+    df[, 4] <- factor(df[, 4], levels=rev(df[, 4]))
+    p <- ggplot(data=df, aes(fill=df[, 1], x=df[, 3], y=df[, 4])) +
         geom_bar(position='stack', stat='identity') +
         theme_classic() +
         theme(axis.ticks.y=element_blank(),
               axis.text.y=element_blank()) +
         labs(x=xLab, y=yLab, fill=legendLab) +
         scale_fill_manual(values=hcl.colors(nClasses, palette)) +
-        geom_text(aes(x=df[, 3] / 2, y=df[, 2], label=df[, 2]),
+        geom_text(aes(x=df[, 3] / 2, y=df[, 4], label=df[, 2]),
                   size=labelSize,
                   color=labelColor)
     p <- centerTitle(p, title, ...)

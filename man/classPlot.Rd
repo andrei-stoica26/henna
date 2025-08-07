@@ -52,4 +52,9 @@ ordering them.
  Value = runif(25, 0.5, 1))
  classPlot(df)
 
+ df <- data.frame(Class = sample(paste0('C', seq(13)), 25, replace=TRUE),
+ Item = sample(paste0('I', seq(21)), 25, replace=TRUE),
+ Value = runif(25, 0.5, 1))
+ classPlot(df)
+
 }
