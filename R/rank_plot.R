@@ -91,7 +91,7 @@ rankPlot <- function(df,
                      xLab = 'Item',
                      showMeanRanks = FALSE,
                      labelSize = 2.5,
-                     labelColor = 'seashell',
+                     labelColor = 'black',
                      xAngle = 45,
                      vJust = 0.6,
                      ...){
