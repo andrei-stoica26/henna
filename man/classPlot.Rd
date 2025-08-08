@@ -11,7 +11,7 @@ classPlot(
   yLab = "Item",
   legendLab = "Class",
   palette = "Spectral",
-  labelSize = 3,
+  labelSize = 2.5,
   labelColor = "black",
   decreasing = TRUE,
   ...
