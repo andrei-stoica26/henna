@@ -22,8 +22,8 @@ hullPlot(
   labelSize = 2,
   labelColor = "black",
   labelRepulsion = 1,
-  labelPull = 1,
-  maxOverlaps = Inf,
+  labelPull = 0,
+  maxOverlaps = 10,
   ...
 )
 }
