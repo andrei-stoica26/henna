@@ -112,7 +112,8 @@ expandRange <- function(v, expandPerc = 10){
 #'
 #' @keywords internal
 #'
-labelPoints <- function(p, labelDF,
+labelPoints <- function(p,
+                        labelDF,
                         labelSize = 2,
                         labelColor = 'black',
                         labelRepulsion = 1,
@@ -120,7 +121,7 @@ labelPoints <- function(p, labelDF,
                         maxOverlaps = Inf){
     p <- p + geom_text_repel(data=labelDF,
                              aes(x=labelDF[, 1],
-                                 y=labelD[, 2],
+                                 y=labelDF[, 2],
                                  label=rownames(labelDF)),
                              size=labelSize,
                              color=labelColor,

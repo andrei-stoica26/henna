@@ -21,6 +21,8 @@ hullPlot(
   labelDF = NULL,
   labelSize = 2,
   labelColor = "black",
+  labelRepulsion = 1,
+  labelPull = 1,
   maxOverlaps = Inf,
   ...
 )
@@ -60,6 +62,11 @@ and/or \code{yInt}are not \code{NULL}).}
 \item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
 
 \item{labelColor}{Label color. Ignored if \code{labelDF} is \code{NULL}.}
+
+\item{labelRepulsion}{Repulsion strength between labels.}
+
+\item{labelPull}{Attraction strength between a text label
+and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
 is \code{NULL}.}

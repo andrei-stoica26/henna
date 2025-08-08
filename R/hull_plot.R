@@ -283,6 +283,8 @@ hullPlot <- function(pointsDF,
                      labelDF = NULL,
                      labelSize = 2,
                      labelColor = 'black',
+                     labelRepulsion = 1,
+                     labelPull = 1,
                      maxOverlaps = Inf,
                      ...){
 
@@ -348,7 +350,8 @@ hullPlot <- function(pointsDF,
                               linewidth=0.8)
 
     if(!is.null(labelDF))
-        p <- labelPoints(p, labelDF, labelSize, labelColor, maxOverlaps)
+        p <- labelPoints(p, labelDF, labelSize, labelColor, labelRepulsion,
+                         labelPull, maxOverlaps)
 
     p <- centerTitle(p, title, ...)
     return(p)

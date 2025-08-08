@@ -32,6 +32,11 @@ test_that("hullPlot works", {
     expect_equal(is(hullPlot(pointsDF, 'Hull plot', 4.1, 2)), 'gg')
     expect_error(hullPlot(pointsDF, 'Hull plot', 15.5, 1.5))
     expect_equal(is(hullPlot(pointsDF, 'Hull plot', 15.4, 1.5)), 'gg')
+
+    rownames(pointsDF) <- paste0('P', seq(nrow(pointsDF)))
+    labelDF <- pointsDF[c('P1', 'P4', 'P9'), ]
+    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5, labelDF=labelDF)),
+                 'gg')
 })
 
 test_that("networkPlot returns a ggraph object", {
