@@ -40,7 +40,7 @@ classPlot <- function(df,
     nClasses <- length(unique(df[, 1]))
     df <- df[order(df[, 3], decreasing=decreasing), ]
     df[, 1] <- factor(df[, 1], levels=unique(df[, 1]))
-    df[, 4] <- make.unique(df[, 2])
+    df[, 4] <- make.unique(as.character(df[, 2]))
     df[, 4] <- factor(df[, 4], levels=rev(df[, 4]))
     p <- ggplot(data=df, aes(fill=df[, 1], x=df[, 3], y=df[, 4])) +
         geom_bar(position='stack', stat='identity') +
