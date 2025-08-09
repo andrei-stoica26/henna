@@ -11,8 +11,6 @@ test_that("classPlot returns a ggplot object", {
     classPlot(df)
 })
 
-
-
 test_that("densityPlot returns a ggplot object", {
     x <- c(1, 1, 2, 7, 8, 0, 16, 1, 1.2, 32, 7, 5, 1.1, 1.2, 1.2)
     y <- c(1, 1.1, 0.5, 8, 18, 4, 6, 0.9, 1, 6, -24, -28, 1, 0.8, 0.9)
@@ -70,6 +68,14 @@ test_that("riverPlot returns a gg object", {
                                 replace=TRUE),
                      z = runif(20, 1, 3))
     p <- riverPlot(df)
+    expect_equal(is(p), 'gg')
+})
+
+test_that("tilePlot returns a gg object", {
+    mat <- matrix(round(runif(100, 0, 1), 2), nrow=10)
+    rownames(mat) <- paste0('R', seq(10))
+    colnames(mat) <- paste0('C', seq(10))
+    p <- tilePlot(mat)
     expect_equal(is(p), 'gg')
 })
 

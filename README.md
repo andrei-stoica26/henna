@@ -37,6 +37,6 @@ located more centrally representing higher values.
 plot.
 
 `riverPlot`: Generate an alluvial plot for a data frame with two categorical 
-columns and a weights column. 
-Uses [ggalluvial](https://cran.r-project.org/web/packages/ggalluvial/index.html).
+columns and a weights column.
 
+`tilePlot`: Plots a numeric matrix.

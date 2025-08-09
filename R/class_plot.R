@@ -12,7 +12,6 @@
 #' @param labelColor labelColor
 #' @param decreasing Whether to display the bars in decreasing order of length.
 #'
-#'
 #' @return A class plot.
 #'
 #' @examples

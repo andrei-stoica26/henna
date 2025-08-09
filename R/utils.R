@@ -1,5 +1,5 @@
 #'@importFrom abdiv euclidean
-#'@importFrom ggplot2 aes after_stat coord_fixed element_blank element_text expand_limits geom_bar geom_point geom_polygon geom_segment geom_text ggplot ggproto ggtitle labs margin scale_color_discrete scale_color_manual scale_fill_gradientn scale_fill_manual scale_fill_viridis_d stat_density_2d theme theme_classic theme_void xlab
+#'@importFrom ggplot2 aes after_stat coord_fixed element_blank element_text expand_limits geom_bar geom_point geom_polygon geom_segment geom_text geom_tile ggplot ggproto ggtitle labs margin scale_color_discrete scale_color_manual scale_fill_gradientn scale_fill_manual scale_fill_viridis_d stat_density_2d theme theme_classic theme_void xlab
 #'@importFrom stats density runif setNames
 #'
 NULL
