@@ -8,7 +8,16 @@ test_that("classPlot returns a ggplot object", {
     df <- data.frame(Class = sample(paste0('C', seq(13)), 25, replace=TRUE),
                      Item = sample(paste0('I', seq(21)), 25, replace=TRUE),
                      Value = runif(25, 0.5, 1))
-    classPlot(df)
+    p <- classPlot(df)
+    expect_equal(is(p), 'gg')
+})
+
+test_that("correlationPlot returns a ggplot object", {
+    mat <- matrix(runif(100, -1, 1), nrow=10)
+    colnames(mat) <- paste0('I', seq(10))
+    mat <- round(cor(mat), 2)
+    p <- correlationPlot(mat)
+    expect_equal(is(p), 'gg')
 })
 
 test_that("densityPlot returns a ggplot object", {
