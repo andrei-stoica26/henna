@@ -10,6 +10,8 @@ NULL
 #' @inheritParams classPlot
 #' @param isCor Whether the matrix is a correlation matrix, in which case the
 #' limits of the color scale will be set to [-1, 1].
+#' @param tileBoundaryColor Tile boundary color.
+#' @param tileBoundaryWidth Tile boundary width.
 #' @param wesPalette wesanderson palette to be used for the color scale.
 #'
 #' @return A tile plot.
@@ -30,6 +32,8 @@ tilePlot <- function(mat,
                      isCor = FALSE,
                      labelSize = 3,
                      labelColor = 'black',
+                     tileBoundaryColor = 'white',
+                     tileBoundaryWidth = 0.2,
                      wesPalette = 'Zissou1'){
     if (is(mat)[1] != 'matrix')
         mat <- as.matrix(mat)
@@ -40,7 +44,8 @@ tilePlot <- function(mat,
             limits <- c(min(df[, 3]), max(df[, 3]))
 
     p <- ggplot(df, aes(x=df[, 1], y=df[, 2], fill=df[, 3])) +
-        geom_tile(color='white', lwd=0.2) +
+        geom_tile(color=tileBoundaryColor, lwd=tileBoundaryWidth) +
+        theme_classic() +
         geom_text(aes(label=df[, 3]), color=labelColor, size=labelSize) +
         scale_fill_gradientn(colors=wes_palette('Zissou1', 50,
                                              type='continuous'),

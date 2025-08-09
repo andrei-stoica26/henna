@@ -13,6 +13,8 @@ tilePlot(
   isCor = FALSE,
   labelSize = 3,
   labelColor = "black",
+  tileBoundaryColor = "white",
+  tileBoundaryWidth = 0.2,
   wesPalette = "Zissou1"
 )
 }
@@ -33,6 +35,10 @@ limits of the color scale will be set to [-1, 1].}
 \item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
 
 \item{labelColor}{labelColor}
+
+\item{tileBoundaryColor}{Tile boundary color.}
+
+\item{tileBoundaryWidth}{Tile boundary width.}
 
 \item{wesPalette}{wesanderson palette to be used for the color scale.}
 }
