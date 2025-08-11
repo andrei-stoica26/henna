@@ -44,11 +44,11 @@ rankSummary <- function(df){
 #' @noRd
 #'
 computeMeanRanks <- function(rankDF){
-    nMetrics <- sum(rankDF[rankDF[, 1] == unique(rankDF[, 1])[1], 3])
+    nMetrics <- sum(rankDF[, 3]) / length(unique(rankDF[, 2]))
     meanRanks <- sort(vapply(as.character(unique(rankDF[, 2])), function(x){
         subRankDF <- rankDF[rankDF[, 2] == x, ]
-        return(round(sum(as.numeric(subRankDF[, 1]) * subRankDF[, 3]) /
-                   nMetrics, 2))},
+        return(round(sum(as.numeric(as.character(subRankDF[, 1])) *
+                             subRankDF[, 3]) / nMetrics, 2))},
         numeric(1)))
     return(data.frame(Item = names(meanRanks), MeanRank = meanRanks))
 }
