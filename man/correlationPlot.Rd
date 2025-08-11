@@ -4,12 +4,19 @@
 \alias{correlationPlot}
 \title{Plot a correlation matrix}
 \usage{
-correlationPlot(mat, title = "Correlation plot", ...)
+correlationPlot(
+  mat,
+  title = "Correlation plot",
+  legendLab = "Correlation",
+  ...
+)
 }
 \arguments{
 \item{mat}{A numeric matrix or data frame.}
 
 \item{title}{Plot title.}
+
+\item{legendLab}{Legend label.}
 
 \item{...}{Additional parameters passed to tilePlot}
 }

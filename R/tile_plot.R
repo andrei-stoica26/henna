@@ -34,7 +34,10 @@ tilePlot <- function(mat,
                      labelColor = 'black',
                      tileBoundaryColor = 'white',
                      tileBoundaryWidth = 0.2,
-                     wesPalette = 'Zissou1'){
+                     wesPalette = 'Zissou1',
+                     xAngle = 45,
+                     vJust = 0.6,
+                     ...){
     if (is(mat)[1] != 'matrix')
         mat <- as.matrix(mat)
 
@@ -45,19 +48,22 @@ tilePlot <- function(mat,
         df <- df[order(df[, 2], decreasing=TRUE), ]
         df <- df[order(df[, 1]), ]
         df[, 2] <- factor(df[, 2], levels=unique(df[, 2]))
+        xLab <- NULL
+        yLab <- NULL
     }else
         limits <- c(min(df[, 3]), max(df[, 3]))
 
     p <- ggplot(df, aes(x=df[, 1], y=df[, 2], fill=df[, 3])) +
         geom_tile(color=tileBoundaryColor, lwd=tileBoundaryWidth) +
         theme_classic() +
+        theme(axis.text.x=element_text(angle=xAngle, vjust=vJust)) +
         geom_text(aes(label=df[, 3]), color=labelColor, size=labelSize) +
         scale_fill_gradientn(colors=wes_palette(wesPalette, 50,
                                              type='continuous'),
                              limits=limits) +
         labs(x=xLab, y=yLab, fill=legendLab)
 
-    p <- centerTitle(p, title)
+    p <- centerTitle(p, title, ...)
     return(p)
 }
 
@@ -80,5 +86,6 @@ tilePlot <- function(mat,
 #'
 #' @export
 #'
-correlationPlot <- function(mat, title='Correlation plot', ...)
+correlationPlot <- function(mat, title='Correlation plot',
+                            legendLab = 'Correlation', ...)
     return(tilePlot(mat, title, isCor=TRUE, ...))

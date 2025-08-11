@@ -15,7 +15,10 @@ tilePlot(
   labelColor = "black",
   tileBoundaryColor = "white",
   tileBoundaryWidth = 0.2,
-  wesPalette = "Zissou1"
+  wesPalette = "Zissou1",
+  xAngle = 45,
+  vJust = 0.6,
+  ...
 )
 }
 \arguments{
@@ -41,6 +44,8 @@ limits of the color scale will be set to [-1, 1].}
 \item{tileBoundaryWidth}{Tile boundary width.}
 
 \item{wesPalette}{wesanderson palette to be used for the color scale.}
+
+\item{...}{Other arguments passed to centerTitle.}
 }
 \value{
 A tile plot.
