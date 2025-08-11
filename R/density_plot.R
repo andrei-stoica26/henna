@@ -55,6 +55,7 @@ createPairSegments <- function(df){
 #' @inheritParams labelPoints
 #' @param labelColor Label color. Ignored if \code{useSchemeDefaults}
 #' is \code{TRUE} and \code{colorScheme} is different from 'custom'.
+#' @param verbose Whether output should be verbose.
 #'
 #' @return A ggplot object.
 #'
@@ -88,6 +89,7 @@ densityPlot <- function(df,
                         labelRepulsion = 1,
                         labelPull = 1,
                         maxOverlaps = Inf,
+                        verbose = FALSE,
                         ...){
 
     colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'custom'))
@@ -139,8 +141,9 @@ densityPlot <- function(df,
     if(drawNN){
         lastCol <- df[, ncol(df)]
         if(is(lastCol)[1] != 'character'){
-            message('Nearest neighbor information not provided.',
-                    ' Will be computed.')
+            if(verbose)
+                message('Nearest neighbor information not provided.',
+                        ' Will be computed.')
         }else{
             extraNames <- setdiff(lastCol, rownames(df))
             if (length(extraNames))

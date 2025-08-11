@@ -24,6 +24,7 @@ densityPlot(
   labelRepulsion = 1,
   labelPull = 1,
   maxOverlaps = Inf,
+  verbose = FALSE,
   ...
 )
 }
@@ -79,6 +80,8 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps.}
+
+\item{verbose}{Whether output should be verbose.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }
