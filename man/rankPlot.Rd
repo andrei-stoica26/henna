@@ -10,7 +10,7 @@ rankPlot(
   summarize = TRUE,
   viridisPal = "turbo",
   xLab = "Item",
-  showMeanRanks = FALSE,
+  sigDigits = NULL,
   labelSize = 2.5,
   labelColor = "black",
   xAngle = 45,
@@ -33,8 +33,8 @@ Must be set to \code{FALSE} if the input data frame has been generated with
 
 \item{xLab}{Label of x axis.}
 
-\item{showMeanRanks}{Whether mean rank values should be displayed on
-the plot.}
+\item{sigDigits}{Number of significant digits used when displaying mean
+ranks. If \code{NULL}, the mean ranks will not be displayed.}
 
 \item{labelSize}{Size of label marking average rank for each item. Ignored
 if \code{showMeanRanks} is \code{FALSE}.}

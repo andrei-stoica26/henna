@@ -38,17 +38,20 @@ rankSummary <- function(df){
 #' This function computes the average rank of each item.
 #'
 #' @param rankDF Rank data frame created with \code{rankSummary}.
+#' @param sigDigits Number of significant digits to use for the mean ranks.
 #'
 #' @return A single-column data frame of average ranks.
 #'
 #' @noRd
 #'
-computeMeanRanks <- function(rankDF){
+computeMeanRanks <- function(rankDF, sigDigits=2){
+    if (is.null(sigDigits))
+        sigDigits <- 2
     nMetrics <- sum(rankDF[, 3]) / length(unique(rankDF[, 2]))
     meanRanks <- sort(vapply(as.character(unique(rankDF[, 2])), function(x){
         subRankDF <- rankDF[rankDF[, 2] == x, ]
         return(round(sum(as.numeric(as.character(subRankDF[, 1])) *
-                             subRankDF[, 3]) / nMetrics, 2))},
+                             subRankDF[, 3]) / nMetrics, sigDigits))},
         numeric(1)))
     return(data.frame(Item = names(meanRanks), MeanRank = meanRanks))
 }
@@ -65,8 +68,8 @@ computeMeanRanks <- function(rankDF){
 #' Must be set to \code{FALSE} if the input data frame has been generated with
 #' \code{rankSummary}.
 #' @param xLab Label of x axis.
-#' @param showMeanRanks Whether mean rank values should be displayed on
-#' the plot.
+#' @param sigDigits Number of significant digits used when displaying mean
+#' ranks. If \code{NULL}, the mean ranks will not be displayed.
 #' @param labelSize Size of label marking average rank for each item. Ignored
 #' if \code{showMeanRanks} is \code{FALSE}.
 #' @param labelColor Color of label marking average rank for each item. Ignored
@@ -89,18 +92,17 @@ rankPlot <- function(df,
                      summarize = TRUE,
                      viridisPal = 'turbo',
                      xLab = 'Item',
-                     showMeanRanks = FALSE,
+                     sigDigits = NULL,
                      labelSize = 2.5,
                      labelColor = 'black',
                      xAngle = 45,
                      vJust = 0.6,
                      ...){
 
-
     if(summarize)
         df <- rankSummary(df)
 
-    meanRanks <- computeMeanRanks(df)
+    meanRanks <- computeMeanRanks(df, sigDigits)
     itemOrder <- rownames(meanRanks)
     df[, 2] <- factor(df[, 2], levels=itemOrder)
 
@@ -110,7 +112,7 @@ rankPlot <- function(df,
         scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
         theme(axis.text.x=element_text(angle=xAngle, vjust=vJust))
 
-    if(showMeanRanks)
+    if(!is.null(sigDigits))
         p <- p + geom_text(data=meanRanks,
                            aes(x=Item, y=MeanRank, label=MeanRank),
                            size=labelSize,
