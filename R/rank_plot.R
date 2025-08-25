@@ -64,6 +64,7 @@ computeMeanRanks <- function(rankDF, sigDigits=2){
 #' summary data frame generated with \code{rankSummary}. If the latter,
 #' \code{summarize} must be set to \code{FALSE}.
 #' @inheritParams riverPlot
+#' @inheritParams classPlot
 #' @param summarize Whether to summarize the ranks with \code{rankSummary}.
 #' Must be set to \code{FALSE} if the input data frame has been generated with
 #' \code{rankSummary}.
@@ -92,6 +93,8 @@ rankPlot <- function(df,
                      summarize = TRUE,
                      viridisPal = 'turbo',
                      xLab = 'Item',
+                     yLab = 'Count',
+                     legendLab = 'Rank',
                      sigDigits = NULL,
                      labelSize = 2.5,
                      labelColor = 'black',
@@ -107,14 +110,16 @@ rankPlot <- function(df,
     df[, 2] <- factor(df[, 2], levels=itemOrder)
 
     p <- ggplot() +
-        geom_bar(aes(x=Item, y=Count, fill=Rank), df, stat='identity') +
+        geom_bar(aes(x=df[, 2], y=df[, 3], fill=df[, 1]), df, stat='identity') +
         theme_classic() +
-        scale_fill_viridis_d(option=viridisPal) + xlab(xLab) +
+        scale_fill_viridis_d(option=viridisPal) + labs(x=xLab,
+                                                       y=yLab,
+                                                       fill=legendLab) +
         theme(axis.text.x=element_text(angle=xAngle, vjust=vJust))
 
     if(!is.null(sigDigits))
         p <- p + geom_text(data=meanRanks,
-                           aes(x=Item, y=MeanRank, label=MeanRank),
+                           aes(x=df[, 2], y=MeanRank, label=MeanRank),
                            size=labelSize,
                            color=labelColor)
 

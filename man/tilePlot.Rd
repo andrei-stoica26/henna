@@ -45,6 +45,10 @@ limits of the color scale will be set to [-1, 1].}
 
 \item{wesPalette}{wesanderson palette to be used for the color scale.}
 
+\item{xAngle}{Angle of x axis text.}
+
+\item{vJust}{Vertical justification in [0, 1].}
+
 \item{...}{Other arguments passed to centerTitle.}
 }
 \value{

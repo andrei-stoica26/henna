@@ -12,6 +12,7 @@ NULL
 #' limits of the color scale will be set to [-1, 1].
 #' @param tileBoundaryColor Tile boundary color.
 #' @param tileBoundaryWidth Tile boundary width.
+#' @inheritParams rankPlot
 #' @param wesPalette wesanderson palette to be used for the color scale.
 #'
 #' @return A tile plot.
