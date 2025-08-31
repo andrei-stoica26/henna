@@ -119,7 +119,7 @@ rankPlot <- function(df,
 
     if(!is.null(sigDigits))
         p <- p + geom_text(data=meanRanks,
-                           aes(x=df[, 2], y=MeanRank, label=MeanRank),
+                           aes(x=Item, y=MeanRank, label=MeanRank),
                            size=labelSize,
                            color=labelColor)
 
