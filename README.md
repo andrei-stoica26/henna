@@ -1,9 +1,7 @@
 # henna
-`henna` provides six versatile visualization utilities: `densityPlot`, 
-`hullPlot`, `networkPlot`, `radialPlot`, `rankPlot` and `riverPlot`.
-
-The six plots are designed with scRNA-seq data analysis in mind, but can be 
-used for a variety of other applications as well.
+`henna` provides nine versatile visualization utilities. They are designed with 
+scRNA-seq data analysis in mind, but can be used for a variety of other 
+applications as well.
 
 ## Installation
 
@@ -15,7 +13,7 @@ if (!require("BiocManager", quietly = TRUE))
     
 BiocManager::install("andrei-stoica26/henna")
 ```
-## Functions implemented so far
+## Visualization tools
 
 - `classPlot`: Create a bar plot for a set of items grouped by class and orders
 the items and classes.
@@ -24,6 +22,8 @@ the items and classes.
 
 - `densityPlot`: Create a density plot for a set of points, optionally displaying
 segements between each point and its nearest neighbor.
+
+![](man/figures/density_plot.png)
 
 - `hullPlot`: Plot the convex hull of a set of points. Optionally, divide the
 points into 2 or 4 classes of different colors by drawing a vertical and/or

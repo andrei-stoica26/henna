@@ -59,5 +59,3 @@ riverPlot <- function(df,
     p <- centerTitle(p, title, ...)
     return(p)
 }
-
-

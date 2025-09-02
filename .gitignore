@@ -3,7 +3,7 @@
 .Rproj.user
 R/.examples.R
 R/.extras.R
-R/.recipes.R
+R/.fig_gen.R
 R/.test_code.R
 henna.Rproj
 inst/doc
