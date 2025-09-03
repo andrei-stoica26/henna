@@ -6,8 +6,9 @@ Authors@R: person('Andrei-Florian', 'Stoica',
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
      comment=c(ORCID='0000-0002-5253-0826'))
-Description: henna is an suite comprising visualization tools designed with
-    scRNA-seq data analysis applications in mind, but versatile
+Description: henna is an suite comprising visualization tools designed for
+    scRNA-seq data analysis applications, but easily adaptable for other ends
+    as well.
 License: MIT + file LICENSE
 Imports:
     abdiv,

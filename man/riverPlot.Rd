@@ -56,5 +56,4 @@ replace=TRUE),
 z = runif(20, 1, 3))
 riverPlot(df)
 
-
 }

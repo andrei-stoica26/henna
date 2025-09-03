@@ -13,6 +13,9 @@ radialPlot(
   palette = rpColors(length(unique(degreesDF[, 3]))),
   labelSize = 3,
   pointSize = 0.8,
+  labelRepulsion = 1,
+  labelPull = 0,
+  maxOverlaps = 10,
   ...
 )
 }
@@ -34,6 +37,14 @@ the points representing the genes.}
 \item{labelSize}{Label size.}
 
 \item{pointSize}{Point size.}
+
+\item{labelRepulsion}{Repulsion strength between labels.}
+
+\item{labelPull}{Attraction strength between a text label
+and its data point.}
+
+\item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
+is \code{NULL}.}
 
 \item{...}{Other arguments passed to centerTitle.}
 }

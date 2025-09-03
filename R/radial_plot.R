@@ -121,6 +121,7 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #'
 #' @inheritParams distFreq
 #' @inheritParams riverPlot
+#' @inheritParams hullPlot
 #' @param degreeLegendTitle Degree legend title.
 #' @param groupLegendTitle Group legend title.
 #' @inheritParams circleCoords
@@ -146,6 +147,9 @@ radialPlot <- function(degreesDF,
                        palette = rpColors(length(unique(degreesDF[, 3]))),
                        labelSize = 3,
                        pointSize = 0.8,
+                       labelRepulsion = 1,
+                       labelPull = 0,
+                       maxOverlaps = 10,
                        ...){
 
     itemCoordsDF <- itemCoords(degreesDF)
@@ -165,7 +169,10 @@ radialPlot <- function(degreesDF,
               legend.title=element_text(size=10),
               legend.text=element_text(size=10)) +
         geom_text_repel(aes(x, y, label=itemCoordsDF[, 1]),
-                        data=itemCoordsDF, size=labelSize)
+                        data=itemCoordsDF, size=labelSize,
+                        force=labelRepulsion,
+                        force_pull=labelPull,
+                        max.overlaps=maxOverlaps)
     if (!is.null(groupLegendTitle))
         p <- p + new_scale_color() +
         new_scale_fill() +

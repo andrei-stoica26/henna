@@ -89,4 +89,4 @@ tilePlot <- function(mat,
 #'
 correlationPlot <- function(mat, title='Correlation plot',
                             legendLab = 'Correlation', ...)
-    return(tilePlot(mat, title, isCor=TRUE, ...))
+    return(tilePlot(mat, title, legendLab = legendLab, isCor=TRUE, ...))
