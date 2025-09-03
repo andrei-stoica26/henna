@@ -11,7 +11,7 @@ hullPlot(
   yInt = NULL,
   borderColor = NULL,
   palette = hpColors(),
-  showHull = FALSE,
+  hullWidth = 0,
   xLab = "x",
   yLab = "y",
   legendLabs = paste0("Group ", seq(4)),
@@ -43,7 +43,8 @@ and/or \code{yInt}are not \code{NULL}).}
 
 \item{palette}{Color palette.}
 
-\item{showHull}{Whether to display the segments on the convex hull.}
+\item{hullWidth}{Width of the convex hull. If 0 (as default), the convex hull
+will not be displayed.}
 
 \item{xLab}{Label of x axis.}
 

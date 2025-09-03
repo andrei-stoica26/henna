@@ -246,7 +246,8 @@ splitHull <- function(p,
 #' @inheritParams riverPlot
 #' @inheritParams splitHull
 #' @param palette Color palette.
-#' @param showHull Whether to display the segments on the convex hull.
+#' @param hullWidth Width of the convex hull. If 0 (as default), the convex hull
+#' will not be displayed.
 #' @param xLab Label of x axis.
 #' @param yLab Label of y axis.
 #' @param pointShape Point shape.
@@ -273,7 +274,7 @@ hullPlot <- function(pointsDF,
                      yInt = NULL,
                      borderColor = NULL,
                      palette = hpColors(),
-                     showHull = FALSE,
+                     hullWidth = 0,
                      xLab = 'x',
                      yLab = 'y',
                      legendLabs = paste0('Group ', seq(4)),
@@ -335,6 +336,10 @@ hullPlot <- function(pointsDF,
         theme(legend.title=element_blank(),
               legend.position=legendPos)
 
+    if(hullWidth)
+        p <- p + geom_segment(data=hullSegments,
+                              aes(x, y, xend=xEnd, yend=yEnd),
+                              linewidth=hullWidth)
 
     p <- splitHull(p, pointsDF, hullSegments, xInt, yInt, borderColor,
                    legendLabs, alpha)
@@ -343,11 +348,6 @@ hullPlot <- function(pointsDF,
     p <- p + geom_point(data=pointsDF, aes(pointsDF[, 1],
                                            pointsDF[, 2]),
                    size=1, shape=pointShape)
-
-    if(showHull)
-        p <- p + geom_segment(data=hullSegments,
-                              aes(x, y, xend=xEnd, yend=yEnd),
-                              linewidth=0.8)
 
     if(!is.null(labelDF))
         p <- labelPoints(p, labelDF, labelSize, labelColor, labelRepulsion,
