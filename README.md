@@ -40,8 +40,8 @@ different connected components.
 
 ![](man/figures/network_plot.png)
 
-- `radialPlot`: Plot integer-valued points over concentric circles, with points 
-located more centrally representing higher values.
+- `radialPlot`: Plot positive integer-valued points over concentric circles, 
+with points located more centrally representing higher values.
 
 ![](man/figures/radial_plot.png)
 

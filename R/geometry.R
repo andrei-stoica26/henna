@@ -86,7 +86,16 @@ convexHull <- function(pointsDF, hullIndices=NULL){
 #'
 #' @return A data frame of segments.
 #'
-#' @noRd
+#' @examples
+#' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
+#' 12, 13, 15, 16),
+#' y = c(1, 1, 2, 3, 3, 2, 1, 2, 1))
+#'
+#' hullIndices <- grDevices::chull(pointsDF[, 1], pointsDF[, 2])
+#' hull <- convexHull(pointsDF, hullIndices)
+#' pointsToSegments(hull)
+#'
+#' @export
 #'
 pointsToSegments <- function(pointsDF,
                              joinEnds = TRUE){
@@ -101,3 +110,61 @@ pointsToSegments <- function(pointsDF,
                           df$y[1]))
     return(df)
 }
+
+#' Check if a point is on a segment
+#'
+#' This function checks if a point P is on a segment AB.
+#'
+#' @param xPoint x coordinate of point P.
+#' @param yPoint y coordinate of point P.
+#' @param xStart x coordinate of point A.
+#' @param yStart y coordinate of point A.
+#' @param xEnd x coordinate of point B.
+#' @param yEnd y coordinate of point B.
+#'
+#' @return Logical; whether the point in on the segment.
+#'
+#' @examples
+#' isPointOnSeg(2, 3, 1, 2, 3, 4)
+#' isPointOnSeg(2, 3, 1, 2, 3, 8)
+#' isPointOnSeg(4, 5, 1, 2, 3, 4)
+#'
+#' @export
+#'
+isPointOnSeg <- function(xPoint, yPoint, xStart, yStart, xEnd, yEnd){
+    if (xPoint < min(xStart, xEnd) | xPoint > max(xStart, xEnd) |
+        yPoint < min(yStart, yEnd) | yPoint < min(yStart, yEnd))
+        return(FALSE)
+    slope <- (yEnd - yStart) / (xEnd - xStart)
+    yIntercept <- yStart - slope * xStart
+    return (is(all.equal(slope * xPoint + yIntercept, yPoint))[1] == 'logical')
+}
+
+#' Check if a point is on a polygon boundary
+#'
+#' This function checks if a point P is on a polygon boundary
+#'
+#' @inheritParams isPointOnSeg
+#' @param boundary A data frame with four columns (x, y, xEnd, yEnd)
+#' representing segments comprising the boundary.
+#'
+#' @examples
+#' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
+#' 12, 13, 15, 16),
+#' y = c(1, 1, 2, 3, 3, 2,
+#' 1, 2, 1))
+#'
+#' hullIndices <- grDevices::chull(pointsDF[, 1], pointsDF[, 2])
+#' hull <- convexHull(pointsDF, hullIndices)
+#' hullSegments <- pointsToSegments(hull)
+#'
+#' isPointOnBoundary(2, 3, hullSegments)
+#'
+#' @export
+#'
+isPointOnBoundary <- function(xPoint, yPoint, boundary)
+    return(as.logical(max(apply(boundary, 1, function(x){
+        v <- unlist(x)
+        names(v) <- c()
+        return(isPointOnSeg(xPoint, yPoint, v[1], v[2], v[3], v[4]))
+    }))))

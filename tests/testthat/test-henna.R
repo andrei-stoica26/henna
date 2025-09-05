@@ -108,3 +108,35 @@ test_that("convexHull works", {
                                y = c(2, 1, 2, 9, 14, 14))
     expect_identical(hull, expectedHull)
 })
+
+test_that("pointsToSegments works", {
+    pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
+                                 12, 13, 15, 16),
+                           y = c(1, 1, 2, 3, 3, 2, 1, 2, 1))
+
+    hullIndices <- grDevices::chull(pointsDF[, 1], pointsDF[, 2])
+    hull <- convexHull(pointsDF, hullIndices)
+    hullSegments <- pointsToSegments(hull)
+    expectedHullSegments <- data.frame(x = c(16, 1, 7, 10, 15),
+                                       y = c(1, 1, 3, 3, 2),
+                                       xEnd = c(1, 7, 10, 15, 16),
+                                       yEnd = c(1, 3, 3, 2, 1))
+    expect_identical(hullSegments, expectedHullSegments)
+})
+
+test_that("isPointOnSeg works", {
+    expect_true(isPointOnSeg(2, 3, 1, 2, 3, 4))
+    expect_false(isPointOnSeg(2, 3, 1, 2, 3, 8))
+    expect_false(isPointOnSeg(4, 5, 1, 2, 3, 4))
+})
+
+test_that("isPointOnBoundary works", {
+    pointsDF <- data.frame(x = c(1, 2, 4, 7, 10, 12, 13, 15, 16),
+                           y = c(1, 1, 2, 3, 3, 2, 1, 2, 1))
+
+    hullIndices <- grDevices::chull(pointsDF[, 1], pointsDF[, 2])
+    hull <- convexHull(pointsDF, hullIndices)
+    hullSegments <- pointsToSegments(hull)
+    expect_false(isPointOnBoundary(2, 3, hullSegments))
+    expect_true(isPointOnBoundary(12, 2.6, hullSegments))
+})

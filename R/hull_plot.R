@@ -311,7 +311,7 @@ hullPlot <- function(pointsDF,
     hullSegments <- pointsToSegments(hull)
 
     if (!is.null(xInt) & !is.null(yInt)){
-        if(!max(min(abs(xInt - pointsX)), min(abs(yInt - pointsY))))
+        if(isPointOnBoundary(xInt, yInt, hullSegments))
             stop('The (xInt, yInt) point is on the boundary of the polygon',
                  ' determined by the input points. It must be inside.')
 
