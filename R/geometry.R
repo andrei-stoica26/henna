@@ -1,6 +1,6 @@
 #' Find the connected components of a graph data frame
 #'
-#' This function finds the connected components of a graph data frame
+#' This function finds the connected components of a graph data frame.
 #'
 #' @param df A data frame with two categorical columns.
 #' @param colName Name of the connected components column to be added.
@@ -142,11 +142,11 @@ isPointOnSeg <- function(xPoint, yPoint, xStart, yStart, xEnd, yEnd){
 
 #' Check if a point is on a polygon boundary
 #'
-#' This function checks if a point P is on a polygon boundary
+#' This function checks if a point P is on a polygon boundary.
 #'
 #' @inheritParams isPointOnSeg
-#' @param boundary A data frame with four columns (x, y, xEnd, yEnd)
-#' representing segments comprising the boundary.
+#' @param boundary A data frame with four columns representing segments
+#' comprising the boundary.
 #'
 #' @examples
 #' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,

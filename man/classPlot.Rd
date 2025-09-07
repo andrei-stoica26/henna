@@ -33,11 +33,11 @@ value as the first three columns. The latter must be numeric.}
 
 \item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
 
-\item{labelColor}{labelColor}
+\item{labelColor}{Label color.}
 
 \item{decreasing}{Whether to display the bars in decreasing order of length.}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A class plot.

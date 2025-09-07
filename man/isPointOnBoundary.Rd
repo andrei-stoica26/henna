@@ -11,11 +11,11 @@ isPointOnBoundary(xPoint, yPoint, boundary)
 
 \item{yPoint}{y coordinate of point P.}
 
-\item{boundary}{A data frame with four columns (x, y, xEnd, yEnd)
-representing segments comprising the boundary.}
+\item{boundary}{A data frame with four columns representing segments
+comprising the boundary.}
 }
 \description{
-This function checks if a point P is on a polygon boundary
+This function checks if a point P is on a polygon boundary.
 }
 \examples{
 pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,

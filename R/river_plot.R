@@ -17,7 +17,7 @@ NULL
 #' @param legendPos Legend position.
 #' @param margins Plot margins. Must be a vector of size 4 listing the desired
 #' top, right, bottom and left margin, in that order.
-#' @param ... Other arguments passed to centerTitle.
+#' @param ... Other arguments passed to \code{centerTitle}.
 #'
 #' @return A ggplot object.
 #'

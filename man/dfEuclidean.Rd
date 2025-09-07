@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{dfEuclidean}
 \alias{dfEuclidean}
-\title{Find Euclidean distance between from two points in a data frame}
+\title{Find the Euclidean distance between two points in a data frame}
 \usage{
 dfEuclidean(df, i, j, pointCoords = c(1, 2), replaceZero = 0)
 }
@@ -23,7 +23,7 @@ will occur.}
 A numeric value.
 }
 \description{
-This function finds Euclidean distance between from two points in a data
-frame
+This function finds the Euclidean distance between two points in a data
+frame.
 }
 \keyword{internal}

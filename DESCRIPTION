@@ -1,14 +1,14 @@
 Package: henna
 Type: Package
-Title: A visualization suite for scRNA-seq analysis
-Version: 0.1.0
+Title: A visualization suite for scRNA-seq analysis and other applications
+Version: 0.1.5
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
      comment=c(ORCID='0000-0002-5253-0826'))
-Description: henna is an suite comprising visualization tools designed for
-    scRNA-seq data analysis applications, but easily adaptable for other ends
-    as well.
+Description: henna is a suite comprising visualization tools primarily designed 
+    for scRNA-seq data analysis applications, but adaptable for other 
+    purposes as well.
 License: MIT + file LICENSE
 Imports:
     abdiv,

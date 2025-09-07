@@ -2,7 +2,7 @@
 % Please edit documentation in R/palettes.R
 \name{dpColors}
 \alias{dpColors}
-\title{Create a palette designed for \code{densityPlot}}
+\title{Create a palette designed for densityPlot}
 \usage{
 dpColors(palette = c("sea", "lava"))
 }

@@ -40,7 +40,7 @@ riverPlot(
 \item{margins}{Plot margins. Must be a vector of size 4 listing the desired
 top, right, bottom and left margin, in that order.}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A ggplot object.

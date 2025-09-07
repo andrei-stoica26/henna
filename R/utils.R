@@ -6,11 +6,11 @@ NULL
 
 #' Add a centered title to a plot
 #'
-#' This function adds a centered title to a ggplot object
+#' This function adds a centered title to a ggplot object.
 #'
 #' @param p A ggplot object.
 #' @param title Plot title.
-#' @param ... Other arguments passed to element_text.
+#' @param ... Other arguments passed to \code{element_text}.
 #'
 #' @return A ggplot object.
 #'
@@ -19,7 +19,7 @@ NULL
 centerTitle <- function(p, title, ...)
     return(p + ggtitle(title) + theme(plot.title=element_text(hjust=0.5, ...)))
 
-#' Add a nearest neighbor column to a data frame of points.
+#' Add a nearest neighbor column to a data frame of points
 #'
 #' This function adds a nearest neighbor column to a data frame of points.
 #'
@@ -53,10 +53,10 @@ addNNCol <- function(df, pointCoords = c(1, 2)){
 dfPoint <- function(df, i, pointCoords = c(1, 2))
     return(unlist(df[i, pointCoords]))
 
-#' Find Euclidean distance between from two points in a data frame
+#' Find the Euclidean distance between two points in a data frame
 #'
-#' This function finds Euclidean distance between from two points in a data
-#' frame
+#' This function finds the Euclidean distance between two points in a data
+#' frame.
 #'
 #' @inheritParams dfPoint
 #' @param j Row name or index
@@ -97,12 +97,12 @@ expandRange <- function(v, expandPerc = 10){
 
 #' Label points in a ggplot object
 #'
-#' This function labels points in a ggplot object
+#' This function labels points in a ggplot object.
 #'
 #' @inheritParams centerTitle
 #' @param labelDF Label data frame.
 #' @param labelSize Label size.
-#' @param labelColor Label colors.
+#' @param labelColor Label color.
 #' @param labelRepulsion Repulsion strength between labels.
 #' @param labelPull Attraction strength between a text label
 #' and its data point.

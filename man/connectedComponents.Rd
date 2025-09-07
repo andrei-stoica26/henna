@@ -16,7 +16,7 @@ A data frame with a column indicated the number of the
 connected component.
 }
 \description{
-This function finds the connected components of a graph data frame
+This function finds the connected components of a graph data frame.
 }
 \examples{
 df <- data.frame(

@@ -3,7 +3,7 @@
 \name{distFreq}
 \alias{distFreq}
 \title{Map degrees to distances from the center and find the frequency of these
-distances.}
+distances}
 \usage{
 distFreq(degreesDF)
 }

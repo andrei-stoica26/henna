@@ -52,13 +52,13 @@ if \code{showMeanRanks} is \code{FALSE}.}
 
 \item{vJust}{Vertical justification in [0, 1].}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A ggplot object.
 }
 \description{
-This function creates a rank plot
+This function creates a rank plot.
 }
 \examples{
 df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))

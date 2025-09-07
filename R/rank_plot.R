@@ -18,7 +18,6 @@ NULL
 #'
 #' @export
 #'
-#'
 rankSummary <- function(df){
     minPos <- min(df)
     maxPos <- max(df)
@@ -33,7 +32,7 @@ rankSummary <- function(df){
     return(smr)
 }
 
-#' Compute the average rank of each iterm
+#' Compute the average rank of each item
 #'
 #' This function computes the average rank of each item.
 #'
@@ -58,7 +57,7 @@ computeMeanRanks <- function(rankDF, sigDigits=2){
 
 #' Create a rank plot
 #'
-#' This function creates a rank plot
+#' This function creates a rank plot.
 #'
 #' @param df A data frame with ranks as columns and items as rows, or a
 #' summary data frame generated with \code{rankSummary}. If the latter,

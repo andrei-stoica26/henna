@@ -67,7 +67,7 @@ set to \code{FALSE}.}
 
 \item{nGridPoints}{Number of grid points in each direction.}
 
-\item{expandPerc}{Percentage by which the grid will expanded.}
+\item{expandPerc}{Percentage by which the grid will be expanded.}
 
 \item{labelSize}{Size of labels of strata elements.}
 
@@ -83,7 +83,7 @@ and its data point.}
 
 \item{verbose}{Whether output should be verbose.}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A ggplot object.

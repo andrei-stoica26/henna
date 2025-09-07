@@ -8,7 +8,7 @@
 NULL
 
 #' Map degrees to distances from the center and find the frequency of these
-#' distances.
+#' distances
 #'
 #' This function interprets degrees as distances from a center (high
 #' degrees = low distances) and calculates the frequencies of these distances.
@@ -64,9 +64,9 @@ pointsOnCircle <- function(r, nPoints){
 #' circles
 #'
 #' This function computes the coordinates of items  on the figure made from
-#' concentric circles
+#' concentric circles.
 #'
-#' @details A wrapper around \code{distFreq} and \code{pointsOnCircle}
+#' @details A wrapper around \code{distFreq} and \code{pointsOnCircle}.
 #'
 #' @inheritParams distFreq
 #'

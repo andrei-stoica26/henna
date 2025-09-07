@@ -2,7 +2,7 @@
 % Please edit documentation in R/palettes.R
 \name{hpColors}
 \alias{hpColors}
-\title{Create the default \code{hullPlot} palette}
+\title{Create the default hullPlot palette}
 \usage{
 hpColors()
 }

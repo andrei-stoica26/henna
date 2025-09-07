@@ -75,7 +75,7 @@ tilePlot <- function(mat,
 #' @details A thin wrapper around \code{tilePlot}.
 #'
 #' @inheritParams tilePlot
-#' @param ... Additional parameters passed to tilePlot
+#' @param ... Additional parameters passed to tilePlot.
 #'
 #' @return A tile plot.
 #'

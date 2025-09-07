@@ -31,14 +31,14 @@ edge weights.}
 
 \item{palette}{grDevices palette}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A network plot.
 }
 \description{
-This function plots the graph of the data frame, marking nodes corresponding
-to connected components with different colors.
+This function plots the graph of the data frame, using different colors for
+nodes belonging to different connected components.
 }
 \examples{
 df <- data.frame(gene1 = paste0('G', c(1, 2, 5, 6, 7, 17)),

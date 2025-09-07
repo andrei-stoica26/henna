@@ -58,8 +58,8 @@ vertexComponents <- function(df, colName = 'component'){
 
 #' Plot graph with different colors for connected components
 #'
-#' This function plots the graph of the data frame, marking nodes corresponding
-#' to connected components with different colors.
+#' This function plots the graph of the data frame, using different colors for
+#' nodes belonging to different connected components.
 #'
 #' @inheritParams networkPlotDF
 #' @inheritParams riverPlot

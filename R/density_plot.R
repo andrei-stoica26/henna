@@ -51,7 +51,7 @@ createPairSegments <- function(df){
 #' set to \code{FALSE}.
 #' @param legendPos Legend position. Choose between 'right' and 'none'.
 #' @param nGridPoints Number of grid points in each direction.
-#' @param expandPerc Percentage by which the grid will expanded.
+#' @param expandPerc Percentage by which the grid will be expanded.
 #' @inheritParams labelPoints
 #' @param labelColor Label color. Ignored if \code{useSchemeDefaults}
 #' is \code{TRUE} and \code{colorScheme} is different from 'custom'.

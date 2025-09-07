@@ -1,4 +1,4 @@
-#' Create a palette designed for \code{densityPlot}
+#' Create a palette designed for densityPlot
 #'
 #' This function returns a palette designed for \code{densityPlot}.
 #'
@@ -19,7 +19,7 @@ dpColors <- function(palette = c('sea', 'lava')){
                  'goldenrod1','red2','red3'))
 }
 
-#' Create the default \code{hullPlot} palette
+#' Create the default hullPlot palette
 #'
 #' This function returns the default palette used by \code{hullPlot}.
 #'
@@ -31,12 +31,12 @@ hpColors <- function()
     return(c('gold','purple', 'blue', 'red'))
 
 
-#' Create a palette designed to represent dots over a \code{viridis} background
+#' Create a palette designed to represent dots over a viridis background
 #'
 #' This function returns a 10-color palette used as the default
 #' of \code{radialPlot}.
 #'
-#' @param nColors Number of colors
+#' @param nColors Number of colors.
 #'
 #' @return A character vector of colors.
 #'

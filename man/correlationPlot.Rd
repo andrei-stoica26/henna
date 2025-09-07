@@ -18,7 +18,7 @@ correlationPlot(
 
 \item{legendLab}{Legend label.}
 
-\item{...}{Additional parameters passed to tilePlot}
+\item{...}{Additional parameters passed to tilePlot.}
 }
 \value{
 A tile plot.

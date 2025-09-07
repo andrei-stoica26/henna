@@ -2,12 +2,12 @@
 % Please edit documentation in R/palettes.R
 \name{rpColors}
 \alias{rpColors}
-\title{Create a palette designed to represent dots over a \code{viridis} background}
+\title{Create a palette designed to represent dots over a viridis background}
 \usage{
 rpColors(nColors = 10)
 }
 \arguments{
-\item{nColors}{Number of colors}
+\item{nColors}{Number of colors.}
 }
 \value{
 A character vector of colors.

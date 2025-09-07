@@ -46,7 +46,7 @@ and its data point.}
 \item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
 is \code{NULL}.}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A ggplot object.

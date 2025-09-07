@@ -11,11 +11,11 @@ centerTitle(p, title, ...)
 
 \item{title}{Plot title.}
 
-\item{...}{Other arguments passed to element_text.}
+\item{...}{Other arguments passed to \code{element_text}.}
 }
 \value{
 A ggplot object.
 }
 \description{
-This function adds a centered title to a ggplot object
+This function adds a centered title to a ggplot object.
 }

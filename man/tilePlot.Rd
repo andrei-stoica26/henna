@@ -37,7 +37,7 @@ limits of the color scale will be set to [-1, 1].}
 
 \item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
 
-\item{labelColor}{labelColor}
+\item{labelColor}{Label color.}
 
 \item{tileBoundaryColor}{Tile boundary color.}
 
@@ -49,7 +49,7 @@ limits of the color scale will be set to [-1, 1].}
 
 \item{vJust}{Vertical justification in [0, 1].}
 
-\item{...}{Other arguments passed to centerTitle.}
+\item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
 A tile plot.

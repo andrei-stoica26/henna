@@ -21,7 +21,7 @@ labelPoints(
 
 \item{labelSize}{Label size.}
 
-\item{labelColor}{Label colors.}
+\item{labelColor}{Label color.}
 
 \item{labelRepulsion}{Repulsion strength between labels.}
 
@@ -34,6 +34,6 @@ and its data point.}
 A ggplot object.
 }
 \description{
-This function labels points in a ggplot object
+This function labels points in a ggplot object.
 }
 \keyword{internal}

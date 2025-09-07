@@ -9,7 +9,7 @@
 #' @param df A data frame with at least three columns, with class, item and
 #' value as the first three columns. The latter must be numeric.
 #' @param legendLab Legend label.
-#' @param labelColor labelColor
+#' @param labelColor Label color.
 #' @param decreasing Whether to display the bars in decreasing order of length.
 #'
 #' @return A class plot.
