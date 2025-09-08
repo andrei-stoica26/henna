@@ -1,6 +1,6 @@
 Package: henna
 Type: Package
-Title: A visualization Suite for Single-Cell RNA-Sequencing Analysis and 
+Title: A Visualization Suite for Single-Cell RNA-Sequencing Analysis and 
     Other Applications
 Version: 0.1.5
 Authors@R: person('Andrei-Florian', 'Stoica', 
@@ -8,7 +8,7 @@ Authors@R: person('Andrei-Florian', 'Stoica',
      role=c('aut','cre'),
      comment=c(ORCID='0000-0002-5253-0826'))
 Description: A visualization suite primarily designed for single-cell 
-    RNA-sequencing data analysis applications, but adaptable for 
+    RNA-sequencing data analysis applications but adaptable for 
     other purposes as well.
 License: MIT + file LICENSE
 Imports:
