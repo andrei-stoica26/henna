@@ -127,7 +127,7 @@ densityPlot <- function(df,
             pointLabs <- mapply(function(x, y) paste0(x, '\n', y),
                                 pointLabs, round(df[, 3], 2))
 
-    p <- ggplot(df, aes(x=df[, 1], y=df[, 2])) +
+    p <- ggplot(df, aes(x=.data[[names(df)[1]]], y=.data[[names(df)[2]]])) +
         stat_density_2d(aes(fill=after_stat(density)),
                         geom="raster",
                         contour=FALSE,
@@ -152,7 +152,11 @@ densityPlot <- function(df,
                         ' computed to replace the last column.')
         }
         segmentsDF <- createPairSegments(df)
-        p <- p + geom_segment(data=segmentsDF, aes(x, y, xend=xend, yend=yend),
+        p <- p + geom_segment(data=segmentsDF,
+                              aes(x=.data[['x']],
+                                  y=.data[['y']],
+                                  xend=.data[['xend']],
+                                  yend=.data[['yend']]),
                               color=segColor,
                               linetype=segType,
                               linewidth=segWidth)

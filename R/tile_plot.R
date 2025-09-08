@@ -54,11 +54,13 @@ tilePlot <- function(mat,
     }else
         limits <- c(min(df[, 3]), max(df[, 3]))
 
-    p <- ggplot(df, aes(x=df[, 1], y=df[, 2], fill=df[, 3])) +
+    p <- ggplot(df, aes(x=.data[[names(df)[1]]],
+                        y=.data[[names(df)[2]]],
+                        fill=.data[[names(df)[3]]])) +
         geom_tile(color=tileBoundaryColor, lwd=tileBoundaryWidth) +
         theme_classic() +
         theme(axis.text.x=element_text(angle=xAngle, vjust=vJust)) +
-        geom_text(aes(label=df[, 3]), color=labelColor, size=labelSize) +
+        geom_text(aes(label=.data[[names(df)[3]]]), color=labelColor, size=labelSize) +
         scale_fill_gradientn(colors=wes_palette(wesPalette, 50,
                                              type='continuous'),
                              limits=limits) +

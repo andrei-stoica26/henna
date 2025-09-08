@@ -42,10 +42,10 @@ riverPlot <- function(df,
                       legendPos = 'none',
                       margins = margin(0, -10, -10, -10),
                       ...){
-    p <- ggplot(data=df, aes(axis1=df[, 1],
-                             axis2=df[, 2],
-                             y=df[, 3])) +
-        geom_alluvium(aes(fill=df[, fillColIndex]),
+    p <- ggplot(data=df, aes(axis1=.data[[names(df)[1]]],
+                             axis2=.data[[names(df)[2]]],
+                             y=.data[[names(df)[3]]])) +
+        geom_alluvium(aes(fill=.data[[names(df)[fillColIndex]]]),
                       curve_type=curveType,
                       alpha=alpha) +
         geom_stratum(fill=strataFill) +

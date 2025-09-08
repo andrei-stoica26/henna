@@ -89,10 +89,10 @@ networkPlot <- function(df, title = 'Network plot',
     nComp <- length(unique(vertexComp))
     tblGraph <- mutate(activate(tblGraph, "vertices"),"component" = vertexComp)
     p <- ggraph(tblGraph, layout="nicely") +
-        geom_edge_link(aes(width=weight)) +
+        geom_edge_link(aes(width=.data[["weight"]])) +
         scale_edge_width(range=c(0.1, 0.3)) +
-        geom_node_point(aes(color=component), size=nodePointSize) +
-        geom_node_text(aes(label=name), size=nodeTextSize) +
+        geom_node_point(aes(color=.data[["component"]]), size=nodePointSize) +
+        geom_node_text(aes(label=.data[["name"]]), size=nodeTextSize) +
         theme_void() +
         theme(legend.position='none') +
         scale_color_manual(values=hcl.colors(nComp, palette))

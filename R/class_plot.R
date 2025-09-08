@@ -1,3 +1,7 @@
+#' @importFrom rlang .data
+#'
+NULL
+
 #' Plot item bars grouped by class
 #'
 #' This function plots bars for each item while grouping them by class and
@@ -42,14 +46,19 @@ classPlot <- function(df,
     df[, 1] <- factor(df[, 1], levels=unique(df[, 1]))
     df[, 4] <- make.unique(as.character(df[, 2]))
     df[, 4] <- factor(df[, 4], levels=rev(df[, 4]))
-    p <- ggplot(data=df, aes(fill=df[, 1], x=df[, 3], y=df[, 4])) +
+    p <- ggplot(data=df,
+                aes(fill=.data[[names(df)[1]]],
+                    x=.data[[names(df)[3]]],
+                    y=.data[[names(df)[4]]])) +
         geom_bar(position='stack', stat='identity') +
         theme_classic() +
         theme(axis.ticks.y=element_blank(),
               axis.text.y=element_blank()) +
         labs(x=xLab, y=yLab, fill=legendLab) +
         scale_fill_manual(values=hcl.colors(nClasses, palette)) +
-        geom_text(aes(x=df[, 3] / 2, y=df[, 4], label=df[, 2]),
+        geom_text(aes(x=.data[[names(df)[3]]] / 2,
+                      y=.data[[names(df)[4]]],
+                      label=.data[[names(df)[2]]]),
                   size=labelSize,
                   color=labelColor)
     p <- centerTitle(p, title, ...)

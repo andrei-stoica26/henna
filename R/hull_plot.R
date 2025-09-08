@@ -83,9 +83,13 @@ splitInTwo <- function(p,
     hullSegments1 <- pointsToSegments(convexHull(df1))
     hullSegments2 <- pointsToSegments(convexHull(df2))
 
-    p <- p + geom_polygon(data=hullSegments1, aes(x, y, fill=legendLabs[1]),
+    p <- p + geom_polygon(data=hullSegments1, aes(x=.data[['x']],
+                                                  y=.data[['y']],
+                                                  fill=legendLabs[1]),
                           alpha=alpha)
-    p <- p + geom_polygon(data=hullSegments2, aes(x, y, fill=legendLabs[2]),
+    p <- p + geom_polygon(data=hullSegments2, aes(x=.data[['x']],
+                                                  y=.data[['y']],
+                                                  fill=legendLabs[2]),
                           alpha=alpha)
     return(p)
 }
@@ -161,13 +165,21 @@ splitInFour <- function(p,
     hullSegments3 <- pointsToSegments(convexHull(df3))
     hullSegments4 <- pointsToSegments(convexHull(df4))
 
-    p <- p + geom_polygon(data=hullSegments1, aes(x, y, fill=legendLabs[1]),
+    p <- p + geom_polygon(data=hullSegments1, aes(x=.data[['x']],
+                                                  y=.data[['y']],
+                                                  fill=legendLabs[1]),
                           alpha=alpha)
-    p <- p + geom_polygon(data=hullSegments2, aes(x, y, fill=legendLabs[2]),
+    p <- p + geom_polygon(data=hullSegments2, aes(x=.data[['x']],
+                                                  y=.data[['y']],
+                                                  fill=legendLabs[2]),
                           alpha=alpha)
-    p <- p + geom_polygon(data=hullSegments3, aes(x, y, fill=legendLabs[3]),
+    p <- p + geom_polygon(data=hullSegments3, aes(x=.data[['x']],
+                                                  y=.data[['y']],
+                                                  fill=legendLabs[3]),
                           alpha=alpha)
-    p <- p + geom_polygon(data=hullSegments4, aes(x, y, fill=legendLabs[4]),
+    p <- p + geom_polygon(data=hullSegments4, aes(x=.data[['x']],
+                                                  y=.data[['y']],
+                                                  fill=legendLabs[4]),
                           alpha=alpha)
     return(p)
 }
@@ -218,7 +230,10 @@ splitHull <- function(p,
     }
 
     if(is.null(xInt) & is.null(yInt))
-        return(p + geom_polygon(data=hullSegments, aes(x, y, fill=legendLabs[1]),
+        return(p + geom_polygon(data=hullSegments,
+                                aes(x=.data[['x']],
+                                    y=.data[['y']],
+                                    fill=legendLabs[1]),
                                 alpha=alpha))
     if(is.null(xInt))
         return(splitInTwo(p, pointsDF, yInt, pointsDF[, 2],
@@ -338,15 +353,18 @@ hullPlot <- function(pointsDF,
 
     if(hullWidth)
         p <- p + geom_segment(data=hullSegments,
-                              aes(x, y, xend=xEnd, yend=yEnd),
+                              aes(x=.data[['x']],
+                                  y=.data[['y']],
+                                  xend=.data[['xEnd']],
+                                  yend=.data[['yEnd']]),
                               linewidth=hullWidth)
 
     p <- splitHull(p, pointsDF, hullSegments, xInt, yInt, borderColor,
                    legendLabs, alpha)
     p <- p + scale_fill_manual(values=palette, labels=legendLabs)
 
-    p <- p + geom_point(data=pointsDF, aes(pointsDF[, 1],
-                                           pointsDF[, 2]),
+    p <- p + geom_point(data=pointsDF, aes(x=.data[[names(pointsDF)[1]]],
+                                           y=.data[[names(pointsDF)[2]]]),
                    size=1, shape=pointShape)
 
     if(!is.null(labelDF))

@@ -109,7 +109,9 @@ rankPlot <- function(df,
     df[, 2] <- factor(df[, 2], levels=itemOrder)
 
     p <- ggplot() +
-        geom_bar(aes(x=df[, 2], y=df[, 3], fill=df[, 1]), df, stat='identity') +
+        geom_bar(aes(x=.data[[names(df)[2]]],
+                     y=.data[[names(df)[3]]],
+                     fill=.data[[names(df)[1]]]), df, stat='identity') +
         theme_classic() +
         scale_fill_viridis_d(option=viridisPal) + labs(x=xLab,
                                                        y=yLab,
@@ -118,7 +120,9 @@ rankPlot <- function(df,
 
     if(!is.null(sigDigits))
         p <- p + geom_text(data=meanRanks,
-                           aes(x=Item, y=MeanRank, label=MeanRank),
+                           aes(x=.data[[names(meanRanks)[1]]],
+                               y=.data[[names(meanRanks)[2]]],
+                               label=.data[[names(meanRanks)[2]]]),
                            size=labelSize,
                            color=labelColor)
 

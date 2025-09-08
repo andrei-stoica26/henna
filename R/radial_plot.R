@@ -156,7 +156,11 @@ radialPlot <- function(degreesDF,
     circleCoordsDF <- circleCoords(itemCoordsDF, extraCircles)
     legendStep <- as.integer(itemCoordsDF$Degree[1] / 6) + 1
     p <- ggplot() +
-        geom_circle(aes(x0=x, y0=y, r=r, fill=Degree, color=Degree),
+        geom_circle(aes(x0=.data[['x']],
+                        y0=.data[['y']],
+                        r=.data[['r']],
+                        fill=.data[['Degree']],
+                        color=.data[['Degree']]),
                     data=circleCoordsDF) +
         scale_fill_viridis(option='viridis', begin=0.4,
                            breaks=seq(itemCoordsDF$Degree[1], 1, -legendStep)) +
@@ -168,7 +172,9 @@ radialPlot <- function(degreesDF,
         theme(plot.margin=margin(0, 0, 0, 0),
               legend.title=element_text(size=10),
               legend.text=element_text(size=10)) +
-        geom_text_repel(aes(x, y, label=itemCoordsDF[, 1]),
+        geom_text_repel(aes(x=.data[['x']],
+                            y=.data[['y']],
+                            label=.data[[names(itemCoordsDF)[1]]]),
                         data=itemCoordsDF, size=labelSize,
                         force=labelRepulsion,
                         force_pull=labelPull,
@@ -176,13 +182,18 @@ radialPlot <- function(degreesDF,
     if (!is.null(groupLegendTitle))
         p <- p + new_scale_color() +
         new_scale_fill() +
-        geom_point(aes(x, y, color=itemCoordsDF[, 5]),
-                   data=itemCoordsDF, size=pointSize) +
+        geom_point(aes(x=.data[['x']],
+                       y=.data[['y']],
+                       color=.data[[names(itemCoordsDF)[5]]]),
+                   data=itemCoordsDF,
+                   size=pointSize) +
         scale_color_discrete(type=palette) +
-        labs(color=groupLegendTitle) else p <- p + geom_point(aes(x, y),
-                                                             data=itemCoordsDF,
-                                                             color=palette[1],
-                                                             size=pointSize)
+        labs(color=groupLegendTitle) else
+            p <- p + geom_point(aes(x=.data[['x']],
+                                    y=.data[['y']]),
+                                data=itemCoordsDF,
+                                color=palette[1],
+                                size=pointSize)
     p <- centerTitle(p, title, ...)
     return(p)
 }

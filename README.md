@@ -45,8 +45,8 @@ with points located more centrally representing higher values.
 
 ![](man/figures/radial_plot.png)
 
-- `rankPlot`: Aggregate multiple ranks available for a group of items in a single
-plot.
+- `rankPlot`: Aggregate multiple ranks available for a group of items in a 
+single plot. Average ranks can be displayed on the plot.
 
 ![](man/figures/rank_plot.png)
 
