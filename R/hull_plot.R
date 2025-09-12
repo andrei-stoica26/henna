@@ -199,7 +199,7 @@ splitInFour <- function(p,
 #' hull will still be split along these lines (if \code{xInt}
 #' and/or \code{yInt}are not \code{NULL}).
 #'
-#' @return A ggplot object showing the hull split in four parts along the input
+#' @return An object of class \code{gg} showing the hull split along the input
 #' axes.
 #'
 #' @keywords internal
@@ -272,7 +272,7 @@ splitHull <- function(p,
 #' @param maxOverlaps Maximum overlaps. Ignored if \code{labelDF}
 #' is \code{NULL}.
 #'
-#' @return A ggplot object.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,

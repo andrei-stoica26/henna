@@ -49,7 +49,7 @@ is \code{NULL}.}
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
-A ggplot object.
+An object of class \code{gg}.
 }
 \description{
 This function draws a radial plot for a degrees data frame.

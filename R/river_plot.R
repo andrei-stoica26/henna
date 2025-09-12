@@ -19,7 +19,7 @@ NULL
 #' top, right, bottom and left margin, in that order.
 #' @param ... Other arguments passed to \code{centerTitle}.
 #'
-#' @return A ggplot object.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' df <- data.frame(x = sample(c('a','b', 'c', 'd', 'e', 'f'), 20,

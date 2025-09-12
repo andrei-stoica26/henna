@@ -36,7 +36,7 @@ and/or \code{yInt}are not \code{NULL}).}
 \item{alpha}{Opaqueness level.}
 }
 \value{
-A ggplot object showing the hull split in four parts along the input
+An object of class \code{gg} showing the hull split along the input
 axes.
 }
 \description{

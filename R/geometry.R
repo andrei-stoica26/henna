@@ -58,7 +58,8 @@ connectedComponents <- function(df, colName = 'component'){
 #' @param hullIndices Precalculated hull indices. Default is \code{NULL}: hull
 #' indices are not provided, but they are calculated by \code{convexHull}.
 #'
-#' @return The points on the convex hull of the original set of points.
+#' @return A data frame with two columns representing the points on the convex
+#' hull.
 #'
 #' @examples
 #' pointsDF <- data.frame(a = c(1, 2, 2, 3, 3, 4, 5, 6, 8, 6, 7, 8, 6, 8, 10, 3, 1),

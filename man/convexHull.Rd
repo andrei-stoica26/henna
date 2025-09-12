@@ -13,7 +13,8 @@ convexHull(pointsDF, hullIndices = NULL)
 indices are not provided, but they are calculated by \code{convexHull}.}
 }
 \value{
-The points on the convex hull of the original set of points.
+A data frame with two columns representing the points on the convex
+hull.
 }
 \description{
 This function constructs the convex hull of a set points.

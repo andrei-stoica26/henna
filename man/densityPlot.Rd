@@ -86,7 +86,7 @@ and its data point.}
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
-A ggplot object.
+An object of class \code{gg}.
 }
 \description{
 This function creates a density plot.

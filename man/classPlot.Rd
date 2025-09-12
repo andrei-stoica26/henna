@@ -40,7 +40,7 @@ value as the first three columns. The latter must be numeric.}
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
-A class plot.
+An object of class \code{gg}.
 }
 \description{
 This function plots bars for each item while grouping them by class and

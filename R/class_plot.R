@@ -16,7 +16,7 @@ NULL
 #' @param labelColor Label color.
 #' @param decreasing Whether to display the bars in decreasing order of length.
 #'
-#' @return A class plot.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #'  df <- data.frame(Class = sample(paste0('C', seq(13)), 25, replace=TRUE),

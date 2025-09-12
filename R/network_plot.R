@@ -67,8 +67,7 @@ vertexComponents <- function(df, colName = 'component'){
 #' @param nodeTextSize Text size of graph nodes.
 #' @param palette grDevices palette
 #'
-#'
-#' @return A network plot.
+#' @return An object of class \code{ggraph}.
 #'
 #' @examples
 #' df <- data.frame(gene1 = paste0('G', c(1, 2, 5, 6, 7, 17)),

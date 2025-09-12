@@ -34,7 +34,7 @@ edge weights.}
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
-A network plot.
+An object of class \code{ggraph}.
 }
 \description{
 This function plots the graph of the data frame, using different colors for

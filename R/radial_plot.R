@@ -129,7 +129,7 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' @param labelSize Label size.
 #' @param pointSize Point size.
 #'
-#' @return A ggplot object.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' degreesDF <- data.frame(Protein = paste0('P', seq(20)),

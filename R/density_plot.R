@@ -57,7 +57,7 @@ createPairSegments <- function(df){
 #' is \code{TRUE} and \code{colorScheme} is different from 'custom'.
 #' @param verbose Whether output should be verbose.
 #'
-#' @return A ggplot object.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' x <- c(1, 2, 3, 4, 6, 7, 8, 10, 12, 11, 3, 6, 4, 1, 13, 13, 14, 18, 16)

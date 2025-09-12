@@ -8,7 +8,7 @@ NULL
 #'
 #' @param df A data frame with ranks as columns, items as rows.
 #'
-#' @return A rank summary dataframe.
+#' @return A rank summary data frame.
 #'
 #' @examples
 #' df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))
@@ -77,7 +77,7 @@ computeMeanRanks <- function(rankDF, sigDigits=2){
 #' @param xAngle Angle of x axis text.
 #' @param vJust Vertical justification in [0, 1].
 #'
-#' @return A ggplot object.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))

@@ -10,7 +10,7 @@ rankSummary(df)
 \item{df}{A data frame with ranks as columns, items as rows.}
 }
 \value{
-A rank summary dataframe.
+A rank summary data frame.
 }
 \description{
 This function creates a summary of multiple ranks provided for input items.

@@ -43,7 +43,7 @@ top, right, bottom and left margin, in that order.}
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
-A ggplot object.
+An object of class \code{gg}.
 }
 \description{
 This function creates an alluvial plot.
