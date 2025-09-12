@@ -2,10 +2,11 @@
 #'
 #' This function finds the connected components of a graph data frame.
 #'
-#' @param df A data frame with two categorical columns.
+#' @param df A data frame with two categorical columns representing the edges
+#' of a graph.
 #' @param colName Name of the connected components column to be added.
-#' @return A data frame with a column indicated the number of the
-#' connected component.
+#' @return A data frame with a column indicating the connected component of
+#' each edge.
 #'
 #' @examples
 #' df <- data.frame(
@@ -53,10 +54,12 @@ connectedComponents <- function(df, colName = 'component'){
 #' This function returns the connected components of vertices from a graph
 #' data frame in which edges have been assigned connected components.
 #'
-#' @param df A data frame with a connected components column.
+#' @param df A data frame with two categorical columns representing graph edges
+#' and a connected components column.
 #' @param colName Name of the connected components column.
 #'
-#' @return A factor vector.
+#' @return A factor vector representing the connected component of each
+#' vertex.
 #'
 #' @examples
 #' df <- data.frame(gene1 = c('A', 'B', 'C', 'A'),
@@ -81,7 +84,7 @@ vertexComponents <- function(df, colName = 'component'){
 
 #' Construct the convex hull of a set of points
 #'
-#' This function constructs the convex hull of a set points.
+#' This function constructs the convex hull of a set of points.
 #'
 #' @details The points must be provided as a data frame with two columns.
 #'
@@ -117,7 +120,8 @@ convexHull <- function(pointsDF, hullIndices=NULL){
 #' Each point must appear only once.
 #' @param joinEnds Whether to join the last point with the first one.
 #'
-#' @return A data frame of segments.
+#' @return A data frame of segments represented using four columns
+#' (\code{x}, \code{y}, \code{xEnd}, \code{yEnd}).
 #'
 #' @examples
 #' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
@@ -155,7 +159,7 @@ pointsToSegments <- function(pointsDF,
 #' @param xEnd x coordinate of point B.
 #' @param yEnd y coordinate of point B.
 #'
-#' @return Logical; whether the point in on the segment.
+#' @return Logical; whether the point is on the segment.
 #'
 #' @examples
 #' isPointOnSeg(2, 3, 1, 2, 3, 4)

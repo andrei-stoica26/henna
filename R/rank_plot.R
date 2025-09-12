@@ -9,7 +9,8 @@ NULL
 #'
 #' @param df A data frame with ranks as columns, items as rows.
 #'
-#' @return A rank summary data frame.
+#' @return A rank summary data frame with three columns: 'Rank', 'Item' and
+#' 'Count'.
 #'
 #' @examples
 #' df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))

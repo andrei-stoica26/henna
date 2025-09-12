@@ -43,8 +43,8 @@ and/or \code{yInt}are not \code{NULL}).}
 
 \item{palette}{Color palette.}
 
-\item{hullWidth}{Width of the convex hull. If 0 (as default), the convex hull
-will not be displayed.}
+\item{hullWidth}{Width of the convex hull. If 0 (as default), the convex
+hull will not be displayed.}
 
 \item{xLab}{Label of x axis.}
 
@@ -78,9 +78,9 @@ is \code{NULL}.}
 An object of class \code{gg}.
 }
 \description{
-This function plots the convex hull of a set of points and optionally draws
-a vertical and a horizontal line, dividing the hull into areas of different
-colors.
+This function plots the convex hull of a set of points. It can also draw
+a vertical or a horizontal line (or both), dividing the hull into areas of
+different colors.
 }
 \examples{
 pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,

@@ -15,8 +15,8 @@ NULL
 #' Used later to draw concentric circles with the frequencies representing the
 #' number of points on a circle of the same radius.
 #'
-#' @param degreesDF Degree data frame with names on the first column and
-#' degrees on the second column.
+#' @param degreesDF A data frame with names on the first column and
+#' positive integers on the second column.
 #'
 #' @return A data frame of distance frequencies.
 #'
@@ -63,7 +63,7 @@ pointsOnCircle <- function(r, nPoints){
 #' Compute the coordinates of items plotted on the figure made from concentric
 #' circles
 #'
-#' This function computes the coordinates of items  on the figure made from
+#' This function computes the coordinates of items on the figure made from
 #' concentric circles.
 #'
 #' @details A wrapper around \code{distFreq} and \code{pointsOnCircle}.
@@ -87,11 +87,11 @@ itemCoords <- function(degreesDF){
 
 #' Store the radii of the circles and the corresponding number of edges
 #'
-#' This function store the radii of the circles and the corresponding number
-#' of edges
+#' This function stores the radii of the circles and the corresponding number
+#' of edges.
 #'
 #' @param itemCoordsDF Dataframe wih item coordinates
-#' @param extraCircles Number of circles drawn beyond those needed to include
+#' @param extraCircles Number of circles drawn beyond those required to include
 #' the points representing the genes.
 #'
 #' @return A data frame containing the radius and the number of edges for each
@@ -117,13 +117,17 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 
 #' Draw radial plot for a degrees data frame
 #'
-#' This function draws a radial plot for a degrees data frame.
+#' This function draws a radial plot for a degrees data frame, plotting
+#' positive integer-valued points over concentric circles, with points located
+#' more centrally representing higher values.
 #'
 #' @inheritParams distFreq
 #' @inheritParams riverPlot
 #' @inheritParams hullPlot
-#' @param degreeLegendTitle Degree legend title.
-#' @param groupLegendTitle Group legend title.
+#' @param degreeLegendTitle Legend title corresponding to the positive integer
+#' column.
+#' @param groupLegendTitle Legend title corresponding to the categorical
+#' column.
 #' @inheritParams circleCoords
 #' @param palette Color palette.
 #' @param labelSize Label size.

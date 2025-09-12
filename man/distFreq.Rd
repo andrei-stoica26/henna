@@ -8,8 +8,8 @@ distances}
 distFreq(degreesDF)
 }
 \arguments{
-\item{degreesDF}{Degree data frame with names on the first column and
-degrees on the second column.}
+\item{degreesDF}{A data frame with names on the first column and
+positive integers on the second column.}
 }
 \value{
 A data frame of distance frequencies.

@@ -10,7 +10,7 @@ NULL
 #'
 #' @param p A ggplot object.
 #' @param title Plot title.
-#' @param ... Other arguments passed to \code{element_text}.
+#' @param ... Other arguments passed to \code{ggplot2::element_text}.
 #'
 #' @return A ggplot object.
 #'

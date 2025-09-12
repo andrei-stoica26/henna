@@ -59,7 +59,7 @@ limits of the color scale will be set to [-1, 1].}
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }
 \value{
-A tile plot.
+An object of class \code{gg}.
 }
 \description{
 This function plots a numeric matrix or data frame.

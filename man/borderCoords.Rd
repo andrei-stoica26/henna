@@ -2,7 +2,7 @@
 % Please edit documentation in R/hull_plot.R
 \name{borderCoords}
 \alias{borderCoords}
-\title{Find the coordinates where vertical or horizontal line intersects the hull}
+\title{Find the coordinates where a vertical or horizontal line intersects the hull}
 \usage{
 borderCoords(df, axis, axisIntersect)
 }
@@ -21,7 +21,7 @@ intersection points between the vertical or horizontal line and the convex
 hull on the axis different from the input axis.
 }
 \description{
-This function finds the coordinates where vertical or horizontal line
+This function finds the coordinates where a vertical or horizontal line
 intersects the hull.
 }
 \keyword{internal}

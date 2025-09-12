@@ -11,7 +11,7 @@ centerTitle(p, title, ...)
 
 \item{title}{Plot title.}
 
-\item{...}{Other arguments passed to \code{element_text}.}
+\item{...}{Other arguments passed to \code{ggplot2::element_text}.}
 }
 \value{
 A ggplot object.

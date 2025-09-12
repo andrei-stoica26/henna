@@ -7,13 +7,14 @@
 connectedComponents(df, colName = "component")
 }
 \arguments{
-\item{df}{A data frame with two categorical columns.}
+\item{df}{A data frame with two categorical columns representing the edges
+of a graph.}
 
 \item{colName}{Name of the connected components column to be added.}
 }
 \value{
-A data frame with a column indicated the number of the
-connected component.
+A data frame with a column indicating the connected component of
+each edge.
 }
 \description{
 This function finds the connected components of a graph data frame.

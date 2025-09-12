@@ -17,13 +17,14 @@ A data frame with two columns representing the points on the convex
 hull.
 }
 \description{
-This function constructs the convex hull of a set points.
+This function constructs the convex hull of a set of points.
 }
 \details{
 The points must be provided as a data frame with two columns.
 }
 \examples{
-pointsDF <- data.frame(a = c(1, 2, 2, 3, 3, 4, 5, 6, 8, 6, 7, 8, 6, 8, 10, 3, 1),
+pointsDF <- data.frame(a = c(1, 2, 2, 3, 3, 4, 5, 6, 8, 6,
+7, 8, 6, 8, 10, 3, 1),
 b = c(2, 3, 4, 8, 5, 6, 5, 4, 8, 11, 13, 14, 2, 1, 2, 14, 9))
 hull <- convexHull(pointsDF)
 

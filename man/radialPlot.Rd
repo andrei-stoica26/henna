@@ -20,16 +20,18 @@ radialPlot(
 )
 }
 \arguments{
-\item{degreesDF}{Degree data frame with names on the first column and
-degrees on the second column.}
+\item{degreesDF}{A data frame with names on the first column and
+positive integers on the second column.}
 
 \item{title}{Plot title.}
 
-\item{degreeLegendTitle}{Degree legend title.}
+\item{degreeLegendTitle}{Legend title corresponding to the positive integer
+column.}
 
-\item{groupLegendTitle}{Group legend title.}
+\item{groupLegendTitle}{Legend title corresponding to the categorical
+column.}
 
-\item{extraCircles}{Number of circles drawn beyond those needed to include
+\item{extraCircles}{Number of circles drawn beyond those required to include
 the points representing the genes.}
 
 \item{palette}{Color palette.}
@@ -52,7 +54,9 @@ is \code{NULL}.}
 An object of class \code{gg}.
 }
 \description{
-This function draws a radial plot for a degrees data frame.
+This function draws a radial plot for a degrees data frame, plotting
+positive integer-valued points over concentric circles, with points located
+more centrally representing higher values.
 }
 \examples{
 degreesDF <- data.frame(Protein = paste0('P', seq(20)),

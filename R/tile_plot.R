@@ -14,7 +14,7 @@
 #' @inheritParams networkPlot
 #' @param reverseColors Whether to reverse the order of colors in the palette.
 #'
-#' @return A tile plot.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' mat <- matrix(round(runif(100, 0, 1), 2), nrow=10)
@@ -85,7 +85,7 @@ tilePlot <- function(mat,
 #' @inheritParams tilePlot
 #' @param ... Additional parameters passed to tilePlot.
 #'
-#' @return A tile plot.
+#' @return An object of class \code{gg}.
 #'
 #' @examples
 #' mat <- matrix(runif(100, -1, 1), nrow=10)

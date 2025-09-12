@@ -9,7 +9,7 @@ circleCoords(itemCoordsDF, extraCircles = 0)
 \arguments{
 \item{itemCoordsDF}{Dataframe wih item coordinates}
 
-\item{extraCircles}{Number of circles drawn beyond those needed to include
+\item{extraCircles}{Number of circles drawn beyond those required to include
 the points representing the genes.}
 }
 \value{
@@ -17,7 +17,7 @@ A data frame containing the radius and the number of edges for each
 circle.
 }
 \description{
-This function store the radii of the circles and the corresponding number
-of edges
+This function stores the radii of the circles and the corresponding number
+of edges.
 }
 \keyword{internal}

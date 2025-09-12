@@ -253,9 +253,9 @@ splitHull <- function(p,
 
 #' Plot the convex hull of a set of points
 #'
-#' This function plots the convex hull of a set of points and optionally draws
-#' a vertical and a horizontal line, dividing the hull into areas of different
-#' colors.
+#' This function plots the convex hull of a set of points. It can also draw
+#' a vertical or a horizontal line (or both), dividing the hull into areas of
+#' different colors.
 #'
 #' @inheritParams convexHull
 #' @inheritParams riverPlot

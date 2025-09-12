@@ -13,7 +13,8 @@ Each point must appear only once.}
 \item{joinEnds}{Whether to join the last point with the first one.}
 }
 \value{
-A data frame of segments.
+A data frame of segments represented using four columns
+(\code{x}, \code{y}, \code{xEnd}, \code{yEnd}).
 }
 \description{
 This function constructs a data frame of segments from a data frame of

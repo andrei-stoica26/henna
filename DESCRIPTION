@@ -7,14 +7,11 @@ Authors@R: person('Andrei-Florian', 'Stoica',
      role=c('aut','cre'),
      comment=c(ORCID='0000-0002-5253-0826'))
 Description: A visualization suite primarily designed for single-cell
-    RNA-sequencing data analysis applications but adaptable for
-    other purposes as well. It optimizes some traditional plotting options
-    (e.g., correlation, density and alluvial plots) for ease of usage and 
-    flexibility, and introduces some novel plots. The latter 
-    include hullPlot, which represents a set of points together
-    with their convex hull and input dividing lines, and radialPlot, which 
-    represents discrete numeric data using a set of concentric 
-    circles, with the center defined as the highest-value point.
+    RNA-sequencing data analysis applications, but adaptable for
+    other purposes as well. It introduces novel plots to represent bidimensional
+    and frequency data and optimizes some commonly used plotting options
+    (e.g., correlation, network, density and alluvial plots) for ease of usage 
+    and flexibility.
 License: MIT + file LICENSE
 Imports:
     abdiv,

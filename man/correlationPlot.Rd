@@ -21,7 +21,7 @@ correlationPlot(
 \item{...}{Additional parameters passed to tilePlot.}
 }
 \value{
-A tile plot.
+An object of class \code{gg}.
 }
 \description{
 This function plots a correlation matrix.

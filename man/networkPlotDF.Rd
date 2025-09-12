@@ -15,8 +15,7 @@ networkPlotDF(df, rankCol = "rank", edgeScale = 2)
 edge weights.}
 }
 \value{
-A data frame ready to serve as input to
-networkPlot.
+A data frame ready to serve as input to \code{networkPlot}.
 }
 \description{
 This function prepares a data frame for network plot.

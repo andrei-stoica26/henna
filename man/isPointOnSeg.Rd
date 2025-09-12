@@ -20,7 +20,7 @@ isPointOnSeg(xPoint, yPoint, xStart, yStart, xEnd, yEnd)
 \item{yEnd}{y coordinate of point B.}
 }
 \value{
-Logical; whether the point in on the segment.
+Logical; whether the point is on the segment.
 }
 \description{
 This function checks if a point P is on a segment AB.
