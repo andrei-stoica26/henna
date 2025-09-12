@@ -1,4 +1,5 @@
-#'@importFrom reshape2 melt
+#' @importFrom liver minmax
+#' @importFrom reshape2 melt
 #'
 NULL
 
@@ -74,6 +75,9 @@ computeMeanRanks <- function(rankDF, sigDigits=2){
 #' if \code{showMeanRanks} is \code{FALSE}.
 #' @param labelColor Color of label marking average rank for each item. Ignored
 #' if \code{showMeanRanks} is \code{FALSE}.
+#' @param labelFace Font face of label marking average rank for each item. Must
+#' be one among 'plain', 'bold', 'italic' and 'bold-italic'. Ignored
+#' if \code{showMeanRanks} is \code{FALSE}.
 #' @param xAngle Angle of x axis text.
 #' @param vJust Vertical justification in [0, 1].
 #'
@@ -92,11 +96,12 @@ rankPlot <- function(df,
                      summarize = TRUE,
                      viridisPal = 'turbo',
                      xLab = 'Item',
-                     yLab = 'Count',
+                     yLab = 'Rank count',
                      legendLab = 'Rank',
                      sigDigits = NULL,
                      labelSize = 2.5,
                      labelColor = 'black',
+                     labelFace = c('plain', 'bold', 'italic', 'bold-italic'),
                      xAngle = 45,
                      vJust = 0.6,
                      ...){
@@ -118,13 +123,19 @@ rankPlot <- function(df,
                                                        fill=legendLab) +
         theme(axis.text.x=element_text(angle=xAngle, vjust=vJust))
 
-    if(!is.null(sigDigits))
+    if(!is.null(sigDigits)){
+        labelFace <- match.arg(labelFace,
+                               c('plain', 'bold', 'italic', 'bold-italic'))
+        nRanks <- sum(df[, 3]) / length(unique(df[, 1]))
+        labelHeights <- 0.9 * nRanks * (liver::minmax(meanRanks[, 2]) + 0.05)
         p <- p + geom_text(data=meanRanks,
                            aes(x=.data[[names(meanRanks)[1]]],
-                               y=.data[[names(meanRanks)[2]]],
+                               y=labelHeights,
                                label=.data[[names(meanRanks)[2]]]),
                            size=labelSize,
-                           color=labelColor)
+                           color=labelColor,
+                           fontface=labelFace)
+    }
 
     p <- centerTitle(p, title, ...)
     return(p)

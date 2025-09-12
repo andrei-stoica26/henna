@@ -10,11 +10,12 @@ rankPlot(
   summarize = TRUE,
   viridisPal = "turbo",
   xLab = "Item",
-  yLab = "Count",
+  yLab = "Rank count",
   legendLab = "Rank",
   sigDigits = NULL,
   labelSize = 2.5,
   labelColor = "black",
+  labelFace = c("plain", "bold", "italic", "bold-italic"),
   xAngle = 45,
   vJust = 0.6,
   ...
@@ -46,6 +47,10 @@ ranks. If \code{NULL}, the mean ranks will not be displayed.}
 if \code{showMeanRanks} is \code{FALSE}.}
 
 \item{labelColor}{Color of label marking average rank for each item. Ignored
+if \code{showMeanRanks} is \code{FALSE}.}
+
+\item{labelFace}{Font face of label marking average rank for each item. Must
+be one among 'plain', 'bold', 'italic' and 'bold-italic'. Ignored
 if \code{showMeanRanks} is \code{FALSE}.}
 
 \item{xAngle}{Angle of x axis text.}

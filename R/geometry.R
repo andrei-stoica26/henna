@@ -149,6 +149,8 @@ isPointOnSeg <- function(xPoint, yPoint, xStart, yStart, xEnd, yEnd){
 #' @param boundary A data frame with four columns representing segments
 #' comprising the boundary.
 #'
+#' @return Logical; whether the point is on the boundary.
+#'
 #' @examples
 #' pointsDF <- data.frame(x = c(1, 2, 4, 7, 10,
 #' 12, 13, 15, 16),

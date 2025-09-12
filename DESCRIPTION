@@ -28,6 +28,7 @@ Imports:
     ggplot2,
     ggrepel,
     grDevices,
+    liver,
     methods,
     reshape2,
     rlang,

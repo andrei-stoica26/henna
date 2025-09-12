@@ -78,8 +78,11 @@ connected components:
 
 ![](man/figures/radial_plot.png)
 
-- `rankPlot`: Aggregate multiple ranks available for a group of items in a 
-single plot. Average ranks can be displayed on the plot.
+### radialPlot
+This function aggregates multiple ranks available for a group of items in a 
+single plot. Average ranks can be displayed on the plot. Here, we visualize the
+ranks of 12 genes as markers of the alpha, beta, delta and gamma clusters in 
+the HBP dataset:
 
 ![](man/figures/rank_plot.png)
 

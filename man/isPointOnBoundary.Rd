@@ -14,6 +14,9 @@ isPointOnBoundary(xPoint, yPoint, boundary)
 \item{boundary}{A data frame with four columns representing segments
 comprising the boundary.}
 }
+\value{
+Logical; whether the point is on the boundary.
+}
 \description{
 This function checks if a point P is on a polygon boundary.
 }
