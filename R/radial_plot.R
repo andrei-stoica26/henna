@@ -95,7 +95,7 @@ itemCoords <- function(degreesDF){
 #' the points representing the genes.
 #'
 #' @return A data frame containing the radius and the number of edges for each
-#' circle
+#' circle.
 #'
 #' @keywords internal
 #'
@@ -154,7 +154,7 @@ radialPlot <- function(degreesDF,
 
     itemCoordsDF <- itemCoords(degreesDF)
     circleCoordsDF <- circleCoords(itemCoordsDF, extraCircles)
-    legendStep <- as.integer(itemCoordsDF$Degree[1] / 6) + 1
+    legendStep <- as.integer(itemCoordsDF[1, 4] / 6) + 1
     p <- ggplot() +
         geom_circle(aes(x0=.data[['x']],
                         y0=.data[['y']],
@@ -163,9 +163,9 @@ radialPlot <- function(degreesDF,
                         color=.data[['Degree']]),
                     data=circleCoordsDF) +
         scale_fill_viridis(option='viridis', begin=0.4,
-                           breaks=seq(itemCoordsDF$Degree[1], 1, -legendStep)) +
+                           breaks=seq(itemCoordsDF[1, 4], 1, -legendStep)) +
         scale_color_viridis(option='viridis', begin=0.4,
-                            breaks=seq(itemCoordsDF$Degree[1], 1, -legendStep),
+                            breaks=seq(itemCoordsDF[1, 4], 1, -legendStep),
                             guide='none') +
         labs(fill=degreeLegendTitle) +
         theme_classic() + easy_remove_axes() + coord_fixed() +

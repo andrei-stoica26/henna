@@ -14,7 +14,7 @@ the points representing the genes.}
 }
 \value{
 A data frame containing the radius and the number of edges for each
-circle
+circle.
 }
 \description{
 This function store the radii of the circles and the corresponding number

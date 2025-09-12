@@ -58,7 +58,7 @@ highlighting the top ones in purple:
 
 ### networkPlot
 
-This function plot a graph using different colors for nodes that are part of 
+This function plots a graph using different colors for nodes that are part of 
 different connected components.
 
 An application is visualizing genes with a strong overlapping expression in 
@@ -67,8 +67,14 @@ of the gene.
 
 ![](man/figures/network_plot.png)
 
-- `radialPlot`: Plot positive integer-valued points over concentric circles, 
-with points located more centrally representing higher values.
+### radialPlot
+
+This function plots positive integer-valued points over concentric circles, 
+with points located more centrally representing higher values. 
+
+An application is visualizing genes involved in a network. Just like 
+`networkPlot`, `radialPlot` can distinguish genes belonging to different
+connected components:
 
 ![](man/figures/radial_plot.png)
 
