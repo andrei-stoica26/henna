@@ -56,8 +56,14 @@ highlighting the top ones in purple:
 
 ![](man/figures/hull_plot.png)
 
-- `networkPlot`: Plot a graph using different colors for nodes that are part of 
+### networkPlot
+
+This function plot a graph using different colors for nodes that are part of 
 different connected components.
+
+An application is visualizing genes with a strong overlapping expression in 
+terms of cells showing the highest (90th percentile and above) expression
+of the gene.
 
 ![](man/figures/network_plot.png)
 
