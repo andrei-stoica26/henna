@@ -72,7 +72,7 @@ of the gene.
 This function plots positive integer-valued points over concentric circles, 
 with points located more centrally representing higher values. 
 
-An application is visualizing genes involved in a network. Just like 
+It can be used to showcase genes involved in a network. Just like 
 `networkPlot`, `radialPlot` can distinguish genes belonging to different
 connected components:
 
@@ -86,11 +86,17 @@ the HBP dataset:
 
 ![](man/figures/rank_plot.png)
 
-- `riverPlot`: Generate an alluvial plot for a data frame with two categorical 
-columns and a weights column.
+### radialPlot
+This function generates an alluvial plot for a data frame with two categorical 
+columns and a weights column. As an example, it can represent the significance
+overlaps between cell type markers and donor markers in the HBP dataset. 
+Stronger overlaps correspond to thicker connecting curves:
 
 ![](man/figures/river_plot.png)
 
-- `tilePlot`: Plot a numeric matrix.
+### tilePlot
+
+This function plots a numeric matrix. Here, we used shared cluster markers as
+an example:
 
 ![](man/figures/tile_plot.png)

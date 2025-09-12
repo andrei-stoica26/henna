@@ -8,14 +8,13 @@ Authors@R: person('Andrei-Florian', 'Stoica',
      comment=c(ORCID='0000-0002-5253-0826'))
 Description: A visualization suite primarily designed for single-cell
     RNA-sequencing data analysis applications but adaptable for
-    other purposes as well. It contains some traditional plotting options
-    (river plot, tile plot, correlation plot) optimized for ease of usage and
-    flexibility, as well as some novel visualization tools. The latter include
-    densityPlot, which combines a MDS representation of numeric data
-    with a density plot, hullPlot, which represents a set of points together
-    with their convex hull and input horizontal or verical dividing lines, and 
-    radialPlot, which represents frequency data using a set of concentric 
-    circles, with the center defined as the highest-frequency point.
+    other purposes as well. It optimizes some traditional plotting options
+    (e.g., correlation, density and alluvial plots) for ease of usage and 
+    flexibility, and introduces some novel plots. The latter 
+    include hullPlot, which represents a set of points together
+    with their convex hull and input dividing lines, and radialPlot, which 
+    represents discrete numeric data using a set of concentric 
+    circles, with the center defined as the highest-value point.
 License: MIT + file LICENSE
 Imports:
     abdiv,
