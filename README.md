@@ -19,7 +19,7 @@ All tools are demonstrated here using the human Baron pancreas (HBP) dataset,
 available as part of the [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
 package.
 
-### Class plot
+### classPlot
 
 This function creates a bar plot for a set of items grouped by class, ordering
 the items and classes based on counts. An application is representing data 
@@ -28,7 +28,10 @@ render selected donor and label information from the HBP dataset:
 
 ![](man/figures/class_plot.png)
 
-- `correlationPlot`: Plot a correlation matrix.
+### correlationPlot
+
+This function plots a correlation matrix. Here, we use gene expression data
+from the HBP dataset:
 
 ![](man/figures/correlation_plot.png)
 

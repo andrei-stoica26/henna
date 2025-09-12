@@ -29,7 +29,7 @@ edge weights.}
 
 \item{nodeTextSize}{Text size of graph nodes.}
 
-\item{palette}{grDevices palette}
+\item{palette}{grDevices palette.}
 
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }

@@ -1,19 +1,18 @@
-#' @importFrom wesanderson wes_palette
-#'
-NULL
-
 #' Plot a numeric matrix or data frame
 #'
 #' This function plots a numeric matrix or data frame.
 #'
 #' @param mat A numeric matrix or data frame.
 #' @inheritParams classPlot
+#' @param sigDigits Number of significant digits to be displayed for each
+#' matrix element.
 #' @param isCor Whether the matrix is a correlation matrix, in which case the
 #' limits of the color scale will be set to [-1, 1].
 #' @param tileBoundaryColor Tile boundary color.
 #' @param tileBoundaryWidth Tile boundary width.
 #' @inheritParams rankPlot
-#' @param wesPalette wesanderson palette to be used for the color scale.
+#' @inheritParams networkPlot
+#' @param reverseColors Whether to reverse the order of colors in the palette.
 #'
 #' @return A tile plot.
 #'
@@ -30,19 +29,26 @@ tilePlot <- function(mat,
                      xLab = 'x',
                      yLab = 'y',
                      legendLab = 'Value',
+                     sigDigits = 2,
                      isCor = FALSE,
                      labelSize = 3,
                      labelColor = 'black',
                      tileBoundaryColor = 'white',
                      tileBoundaryWidth = 0.2,
-                     wesPalette = 'Zissou1',
+                     palette = 'Spectral',
+                     reverseColors = TRUE,
                      xAngle = 45,
                      vJust = 0.6,
                      ...){
     if (is(mat)[1] != 'matrix')
         mat <- as.matrix(mat)
 
+    mat <- round(mat, sigDigits)
     df <- reshape2::melt(mat)
+
+    palColors <- hcl.colors(50, palette)
+    if (reverseColors)
+         palColors <- rev(palColors)
 
     if(isCor){
         limits <- c(-1, 1)
@@ -60,10 +66,10 @@ tilePlot <- function(mat,
         geom_tile(color=tileBoundaryColor, lwd=tileBoundaryWidth) +
         theme_classic() +
         theme(axis.text.x=element_text(angle=xAngle, vjust=vJust)) +
-        geom_text(aes(label=.data[[names(df)[3]]]), color=labelColor, size=labelSize) +
-        scale_fill_gradientn(colors=wes_palette(wesPalette, 50,
-                                             type='continuous'),
-                             limits=limits) +
+        geom_text(aes(label=.data[[names(df)[3]]]),
+                  color=labelColor,
+                  size=labelSize) +
+        scale_fill_gradientn(colors=palColors, limits=limits) +
         labs(x=xLab, y=yLab, fill=legendLab)
 
     p <- centerTitle(p, title, ...)

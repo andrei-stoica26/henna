@@ -33,8 +33,7 @@ Imports:
     rlang,
     stats,
     tidygraph,
-    viridis,
-    wesanderson
+    viridis
 Encoding: UTF-8
 RoxygenNote: 7.3.2
 Suggests: 

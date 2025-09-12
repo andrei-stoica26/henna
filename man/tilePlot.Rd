@@ -10,12 +10,14 @@ tilePlot(
   xLab = "x",
   yLab = "y",
   legendLab = "Value",
+  sigDigits = 2,
   isCor = FALSE,
   labelSize = 3,
   labelColor = "black",
   tileBoundaryColor = "white",
   tileBoundaryWidth = 0.2,
-  wesPalette = "Zissou1",
+  palette = "Spectral",
+  reverseColors = TRUE,
   xAngle = 45,
   vJust = 0.6,
   ...
@@ -32,6 +34,9 @@ tilePlot(
 
 \item{legendLab}{Legend label.}
 
+\item{sigDigits}{Number of significant digits to be displayed for each
+matrix element.}
+
 \item{isCor}{Whether the matrix is a correlation matrix, in which case the
 limits of the color scale will be set to [-1, 1].}
 
@@ -43,7 +48,9 @@ limits of the color scale will be set to [-1, 1].}
 
 \item{tileBoundaryWidth}{Tile boundary width.}
 
-\item{wesPalette}{wesanderson palette to be used for the color scale.}
+\item{palette}{grDevices palette.}
+
+\item{reverseColors}{Whether to reverse the order of colors in the palette.}
 
 \item{xAngle}{Angle of x axis text.}
 

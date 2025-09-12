@@ -65,7 +65,7 @@ vertexComponents <- function(df, colName = 'component'){
 #' @inheritParams riverPlot
 #' @param nodePointSize Point size of graph nodes.
 #' @param nodeTextSize Text size of graph nodes.
-#' @param palette grDevices palette
+#' @param palette grDevices palette.
 #'
 #' @return An object of class \code{ggraph}.
 #'
