@@ -1,6 +1,6 @@
-#' Find the coordinates where vertical or horizontal line intersects the hull
+#' Find the coordinates where a vertical or horizontal line intersects the hull
 #'
-#' This function finds the coordinates where vertical or horizontal line
+#' This function finds the coordinates where a vertical or horizontal line
 #' intersects the hull.
 #'
 #'
@@ -261,8 +261,8 @@ splitHull <- function(p,
 #' @inheritParams riverPlot
 #' @inheritParams splitHull
 #' @param palette Color palette.
-#' @param hullWidth Width of the convex hull. If 0 (as default), the convex hull
-#' will not be displayed.
+#' @param hullWidth Width of the convex hull. If 0 (as default), the convex
+#' hull will not be displayed.
 #' @param xLab Label of x axis.
 #' @param yLab Label of y axis.
 #' @param pointShape Point shape.

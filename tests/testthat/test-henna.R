@@ -99,6 +99,15 @@ test_that("connectedComponents works", {
     expect_identical(comps, c(rep(1, 5), rep(2, 4), 3, 3))
 })
 
+test_that("vertexComponents works", {
+    df <- data.frame(gene1 = c('A', 'B', 'C', 'A'),
+                     gene2 = c('B', 'D', 'F', 'G'),
+                     component = c(1, 1, 2, 1))
+    expect_identical(vertexComponents(df),
+                     as.factor(setNames(c(1, 1, 2, 1, 2, 1),
+                                        c('A', 'B', 'C', 'D', 'F', 'G'))))
+})
+
 test_that("convexHull works", {
     pointsDF <- data.frame(a = c(1, 2, 2, 3, 3, 4, 5, 6, 8, 6, 7, 8, 6, 8, 10, 3, 1),
                            b = c(2, 3, 4, 8, 5, 6, 5, 4, 8, 11, 13, 14, 2, 1, 2, 14, 9))

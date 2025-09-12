@@ -48,6 +48,37 @@ connectedComponents <- function(df, colName = 'component'){
     return(df)
 }
 
+#' Return the connected components of vertices
+#'
+#' This function returns the connected components of vertices from a graph
+#' data frame in which edges have been assigned connected components.
+#'
+#' @param df A data frame with a connected components column.
+#' @param colName Name of the connected components column.
+#'
+#' @return A factor vector.
+#'
+#' @examples
+#' df <- data.frame(gene1 = c('A', 'B', 'C', 'A'),
+#' gene2 = c('B', 'D', 'F', 'G'),
+#' component = c(1, 1, 2, 1))
+#' vertexComponents(df)
+#'
+#' @export
+#'
+vertexComponents <- function(df, colName = 'component'){
+    vertices <- unique(c(df[, 1], df[, 2]))
+    boxes <- lapply(unique(df[, colName]), function(x) {
+        compDF <- df[df[, colName] == x, ]
+        return(unique(c(compDF[, 1], compDF[, 2])))
+    })
+    nBoxes <- length(boxes)
+    allocations <- unlist(lapply(seq(nBoxes), function(i)
+        setNames(rep(i, length(boxes[[i]])),boxes[[i]])))
+    vertexComp <- as.factor(allocations[vertices])
+    return(vertexComp)
+}
+
 #' Construct the convex hull of a set of points
 #'
 #' This function constructs the convex hull of a set points.
@@ -62,7 +93,8 @@ connectedComponents <- function(df, colName = 'component'){
 #' hull.
 #'
 #' @examples
-#' pointsDF <- data.frame(a = c(1, 2, 2, 3, 3, 4, 5, 6, 8, 6, 7, 8, 6, 8, 10, 3, 1),
+#' pointsDF <- data.frame(a = c(1, 2, 2, 3, 3, 4, 5, 6, 8, 6,
+#' 7, 8, 6, 8, 10, 3, 1),
 #' b = c(2, 3, 4, 8, 5, 6, 5, 4, 8, 11, 13, 14, 2, 1, 2, 14, 9))
 #' hull <- convexHull(pointsDF)
 #'

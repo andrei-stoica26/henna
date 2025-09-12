@@ -14,8 +14,7 @@ NULL
 #' @param edgeScale Scaling factor used in generating
 #' edge weights.
 #'
-#' @return A data frame ready to serve as input to
-#' networkPlot.
+#' @return A data frame ready to serve as input to \code{networkPlot}.
 #'
 #' @keywords internal
 #'
@@ -28,32 +27,6 @@ networkPlotDF <- function(df,
         max(preWeight)
     df <- df[, c('gene1', 'gene2', 'weight')]
     return(df)
-}
-
-#' Return the connected components of vertices
-#'
-#' This function returns the connected components of vertices from a graph
-#' data frame in which edges have been assigned connected components.
-#'
-#' @param df A data frame with a connected components column.
-#' @param colName Name of the connected components column.
-#'
-#' @return A data frame ready to serve as input to
-#' networkPlot.
-#'
-#' @noRd
-#'
-vertexComponents <- function(df, colName = 'component'){
-    vertices <- unique(c(df[, 1], df[, 2]))
-    boxes <- lapply(unique(df[, colName]), function(x) {
-        compDF <- df[df[, colName] == x, ]
-        return(unique(c(compDF[, 1], compDF[, 2])))
-    })
-    nBoxes <- length(boxes)
-    allocations <- unlist(lapply(seq(nBoxes), function(i)
-        setNames(rep(i, length(boxes[[i]])),boxes[[i]])))
-    vertexComp <- as.factor(allocations[vertices])
-    return(vertexComp)
 }
 
 #' Plot graph with different colors for connected components
