@@ -37,6 +37,9 @@ createPairSegments <- function(df){
 #' if \code{colorScheme} is set to 'custom'.
 #' @param drawNN Whether to draw segments linking each point to its nearest
 #' neighbor.
+#' @param drawScores Whether to render scores on the plot. If set to
+#' \code{TRUE}, the third column of the input data frame will be numeric and
+#' scores will be taken from there.
 #' @param palette Color palette. Used only if color scheme is set to 'custom'.
 #' @param segColor Nearest neighbor segment color. Ignored if \code{drawNN} is
 #' set to \code{FALSE}, or if \code{useSchemeDefaults} is \code{TRUE} and
@@ -74,6 +77,7 @@ densityPlot <- function(df,
                         colorScheme = c('sea', 'lava', 'custom'),
                         useSchemeDefaults = FALSE,
                         drawNN = TRUE,
+                        drawScores = FALSE,
                         palette = NULL,
                         segColor = 'plum1',
                         pointSize = 0.8,
@@ -123,9 +127,14 @@ densityPlot <- function(df,
 
     pointLabs <- rownames(df)
     if(ncol(df) > 2)
-        if(is(df[, 3])[1] == 'numeric')
-            pointLabs <- mapply(function(x, y) paste0(x, '\n', y),
-                                pointLabs, round(df[, 3], 2))
+        if(drawScores)
+            if(is(df[, 3])[1] == 'numeric')
+                pointLabs <- mapply(function(x, y) paste0(x, '\n', y),
+                                    pointLabs, round(df[, 3], 2)) else
+                                        warning('drawScores is set to TRUE but ',
+                                                'no scores are available in ',
+                                                'the third column. Scores will ',
+                                                'not be plotted.')
 
     p <- ggplot(df, aes(x=.data[[names(df)[1]]], y=.data[[names(df)[2]]])) +
         stat_density_2d(aes(fill=after_stat(density)),

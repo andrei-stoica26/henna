@@ -35,8 +35,12 @@ from the HBP dataset:
 
 ![](man/figures/correlation_plot.png)
 
-- `densityPlot`: Create a density plot for a set of points, optionally displaying
-segements between each point and its nearest neighbor.
+### densityPlot
+
+This function creates a density plot for a set of points, optionally displaying
+segements between each point and its nearest neighbor. We use expression
+data from the HBP dataset, subjected to a distance matrix calculation and
+subsequent MDS reduction in order to generate the coordinates of the points:
 
 ![](man/figures/density_plot.png)
 

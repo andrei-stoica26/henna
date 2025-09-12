@@ -10,6 +10,7 @@ densityPlot(
   colorScheme = c("sea", "lava", "custom"),
   useSchemeDefaults = FALSE,
   drawNN = TRUE,
+  drawScores = FALSE,
   palette = NULL,
   segColor = "plum1",
   pointSize = 0.8,
@@ -44,6 +45,10 @@ if \code{colorScheme} is set to 'custom'.}
 
 \item{drawNN}{Whether to draw segments linking each point to its nearest
 neighbor.}
+
+\item{drawScores}{Whether to render scores on the plot. If set to
+\code{TRUE}, the third column of the input data frame will be numeric and
+scores will be taken from there.}
 
 \item{palette}{Color palette. Used only if color scheme is set to 'custom'.}
 
