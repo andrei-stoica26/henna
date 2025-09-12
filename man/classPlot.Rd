@@ -14,6 +14,7 @@ classPlot(
   labelSize = 2.5,
   labelColor = "black",
   decreasing = TRUE,
+  valueCutoff = 0,
   ...
 )
 }
@@ -36,6 +37,10 @@ value as the first three columns. The latter must be numeric.}
 \item{labelColor}{Label color.}
 
 \item{decreasing}{Whether to display the bars in decreasing order of length.}
+
+\item{valueCutoff}{Cutoff used for filtering the input data frame based on
+the value column. Only values greater than this cutoff will be displayed on
+the plot.}
 
 \item{...}{Other arguments passed to \code{centerTitle}.}
 }

@@ -15,6 +15,9 @@ NULL
 #' @param legendLab Legend label.
 #' @param labelColor Label color.
 #' @param decreasing Whether to display the bars in decreasing order of length.
+#' @param valueCutoff Cutoff used for filtering the input data frame based on
+#' the value column. Only values greater than this cutoff will be displayed on
+#' the plot.
 #'
 #' @return An object of class \code{gg}.
 #'
@@ -40,7 +43,9 @@ classPlot <- function(df,
                       labelSize = 2.5,
                       labelColor ='black',
                       decreasing = TRUE,
+                      valueCutoff = 0,
                       ...){
+    df <- df[df[, 3] > valueCutoff, ]
     nClasses <- length(unique(df[, 1]))
     df <- df[order(df[, 3], decreasing=decreasing), ]
     df[, 1] <- factor(df[, 1], levels=unique(df[, 1]))
