@@ -44,9 +44,15 @@ subsequent MDS reduction in order to generate the coordinates of the points:
 
 ![](man/figures/density_plot.png)
 
-- `hullPlot`: Plot the convex hull of a set of points. Optionally, divide the
-points into 2 or 4 classes of different colors by drawing a vertical and/or
-a horizontal line that intersects the hull.
+### hullPlot
+
+This function plots a set of points together with the convex hull. Optionally,
+it divides the points into 2 or 4 classes of different colors by drawing a 
+vertical and/or a horizontal line that intersects the hull.
+
+An application is visualizing shared cluster markers. Here, we display the
+shared markers of the alpha and delta clusters from the HBP dataset, 
+highlighting the top ones in purple:
 
 ![](man/figures/hull_plot.png)
 
