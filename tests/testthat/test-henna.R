@@ -3,13 +3,13 @@ test_that("classPlot returns a ggplot object", {
                      Item = paste0('I', seq(25)),
                      Value = runif(25, 0.5, 1))
     p <- classPlot(df)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 
     df <- data.frame(Class = sample(paste0('C', seq(13)), 25, replace=TRUE),
                      Item = sample(paste0('I', seq(21)), 25, replace=TRUE),
                      Value = runif(25, 0.5, 1))
     p <- classPlot(df)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("correlationPlot returns a ggplot object", {
@@ -17,7 +17,7 @@ test_that("correlationPlot returns a ggplot object", {
     colnames(mat) <- paste0('I', seq(10))
     mat <- round(cor(mat), 2)
     p <- correlationPlot(mat)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("densityPlot returns a ggplot object", {
@@ -27,23 +27,32 @@ test_that("densityPlot returns a ggplot object", {
     df <- data.frame(x, y, z)
     rownames(df) <- paste0('p', rownames(df))
     p <- densityPlot(df)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("hullPlot works", {
     pointsDF <- data.frame(x = c(1, 2, 4, 7, 10, 12, 13, 15, 16),
                            y = c(1, 1, 2, 3, 3, 2,1, 2, 1))
-    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5)), 'gg')
+
+    expect_equal(length(intersect(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5)),
+                                  c('gg', 'ggplot2::ggplot'))), 1)
+
     expect_error(hullPlot(pointsDF, 'Hull plot', 1, 2))
     expect_error(hullPlot(pointsDF, 'Hull plot', 4, 2))
-    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 4.1, 2)), 'gg')
+
+    expect_equal(length(intersect(is(hullPlot(pointsDF, 'Hull plot', 4.1, 2)),
+                                  c('gg', 'ggplot2::ggplot'))), 1)
+
     expect_error(hullPlot(pointsDF, 'Hull plot', 15.5, 1.5))
-    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 15.4, 1.5)), 'gg')
+
+    expect_equal(length(intersect(is(hullPlot(pointsDF, 'Hull plot',
+                                              15.4, 1.5)),
+                                  c('gg', 'ggplot2::ggplot'))), 1)
 
     rownames(pointsDF) <- paste0('P', seq(nrow(pointsDF)))
     labelDF <- pointsDF[c('P1', 'P4', 'P9'), ]
-    expect_equal(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5, labelDF=labelDF)),
-                 'gg')
+    expect_equal(length(intersect(is(hullPlot(pointsDF, 'Hull plot', 7, 1.5, labelDF=labelDF)),
+                                  c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("networkPlot returns a ggraph object", {
@@ -59,7 +68,7 @@ test_that("radialPlot returns a gg object", {
                             Degree = sample(10, 20, replace=TRUE),
                             Group = sample(3, 20, replace=TRUE))
     p <- radialPlot(degreesDF)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("rankPlot returns a gg object", {
@@ -67,7 +76,7 @@ test_that("rankPlot returns a gg object", {
     rownames(df) <- paste('M', seq(10))
     colnames(df) <- paste('R', seq(30))
     p <- rankPlot(df)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("riverPlot returns a gg object", {
@@ -77,7 +86,7 @@ test_that("riverPlot returns a gg object", {
                                 replace=TRUE),
                      z = runif(20, 1, 3))
     p <- riverPlot(df)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("tilePlot returns a gg object", {
@@ -85,7 +94,7 @@ test_that("tilePlot returns a gg object", {
     rownames(mat) <- paste0('R', seq(10))
     colnames(mat) <- paste0('C', seq(10))
     p <- tilePlot(mat)
-    expect_equal(is(p), 'gg')
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("connectedComponents works", {
