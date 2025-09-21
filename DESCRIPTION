@@ -1,7 +1,7 @@
 Package: henna
 Type: Package
 Title: A Versatile Visualization Suite
-Version: 0.2.5
+Version: 0.2.6
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
@@ -32,7 +32,7 @@ Imports:
     tidygraph,
     viridis
 Encoding: UTF-8
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
