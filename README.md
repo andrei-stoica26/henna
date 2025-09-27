@@ -5,10 +5,18 @@ applications as well.
 
 ## Installation
 
-To install `henna`, run the following R code:
+To install the version of `henna` currently available on CRAN (`0.2.5`), run the 
+following R code:
 
 ```
 install.packages("henna")
+```
+
+Alternatively, you can install the most recent development version (`0.2.7`) 
+using this code:
+
+```
+devtools::install_github("andrei-stoica26/henna")
 ```
 
 ## Visualization tools

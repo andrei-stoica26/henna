@@ -61,6 +61,8 @@ test_that("networkPlot returns a ggraph object", {
                      rank = c(1, 1, 3, 3, 3, 3))
     p <- networkPlot(df)
     expect_equal(is(p), 'ggraph')
+    p <- networkPlot(df, nodeColor='orange', edgeColor='green4')
+    expect_equal(is(p), 'ggraph')
 })
 
 test_that("radialPlot returns a gg object", {
