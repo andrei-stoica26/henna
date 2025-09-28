@@ -71,10 +71,10 @@ test_that("networkPlot returns a ggraph object", {
 })
 
 test_that("radialPlot returns a gg object", {
-    degreesDF <- data.frame(Protein = paste0('P', seq(20)),
-                            Degree = sample(10, 20, replace=TRUE),
+    valuesDF <- data.frame(Protein = paste0('P', seq(20)),
+                            Value = sample(10, 20, replace=TRUE),
                             Group = sample(3, 20, replace=TRUE))
-    p <- radialPlot(degreesDF, seed=200, breakDensity=8)
+    p <- radialPlot(valuesDF, seed=200, breakDensity=8)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 

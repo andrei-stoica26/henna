@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.3.2`) 
+Alternatively, you can install the most recent development version (`0.3.3`) 
 using this code:
 
 ```
@@ -84,7 +84,7 @@ connected components:
 
 ![](man/figures/radial_plot.png)
 
-### radialPlot
+### rankPlot
 This function aggregates multiple ranks available for a group of items in a 
 single plot. Average ranks can be displayed on the plot. Here, we visualize the
 ranks of 12 genes as markers of the alpha, beta, delta and gamma clusters in 
@@ -92,7 +92,7 @@ the HBP dataset:
 
 ![](man/figures/rank_plot.png)
 
-### radialPlot
+### riverPlot
 This function generates an alluvial plot for a data frame with two categorical 
 columns and a weights column. As an example, it can represent the significance
 overlaps between cell type markers and donor markers in the HBP dataset. 

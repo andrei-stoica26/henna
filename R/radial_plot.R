@@ -8,24 +8,24 @@
 #'
 NULL
 
-#' Map degrees to distances from the center and find the frequency of these
+#' Map values to distances from the center and find the frequency of these
 #' distances
 #'
-#' This function interprets degrees as distances from a center (high
-#' degrees = low distances) and calculates the frequencies of these distances.
-#' Used later to draw concentric circles with the frequencies representing the
-#' number of points on a circle of the same radius.
+#' This function interprets values as distances from a center (high
+#' values = low distances) and calculates the frequencies of these distances.
 #'
-#' @param degreesDF A data frame with names on the first column and
+#' @details Used later to draw concentric circles with the frequencies
+#' representing the number of points on a circle of the same radius.
+#'
+#' @param valuesDF A data frame with names on the first column and
 #' positive integers on the second column.
 #'
 #' @return A data frame of distance frequencies.
 #'
 #' @keywords internal
 #'
-distFreq <- function(degreesDF){
-    message('Finding degree frequencies...')
-    df <- dplyr::count(degreesDF, degreesDF[, 2])
+distFreq <- function(valuesDF){
+    df <- dplyr::count(valuesDF, valuesDF[, 2])
     if (nrow(df) == 1)
         center <- df[1, 1] else{
             df <- df[order(df[, 1], decreasing=TRUE), ]
@@ -77,57 +77,58 @@ pointsOnCircle <- function(r, nPoints, seed = 50){
 #'
 #' @noRd
 #'
-itemCoords <- function(degreesDF, seed = 50){
-    degreesDF <- degreesDF[order(degreesDF[, 2], decreasing=TRUE), ]
-    distFreqDF <- distFreq(degreesDF)
-    message('Finding coordinates...')
+itemCoords <- function(valuesDF, seed = 50){
+    valuesDF <- valuesDF[order(valuesDF[, 2], decreasing=TRUE), ]
+    distFreqDF <- distFreq(valuesDF)
     circlePoints <- do.call(rbind, lapply(seq_len(nrow(distFreqDF)), function(i)
         pointsOnCircle(distFreqDF$Dist[i], distFreqDF$Freq[i], seed + i)))
-    df <- cbind(degreesDF[, 1, drop=FALSE], circlePoints, degreesDF[, c(2, 3)])
+    df <- cbind(valuesDF[, 1, drop=FALSE],
+                circlePoints,
+                valuesDF[, c(2, 3)])
     df[, 5] <- as.factor(df[, 5])
     return(df)
 }
 
-#' Store the radii of the circles and the corresponding number of edges
+#' Store the radii of the circles and the corresponding values
 #'
-#' This function stores the radii of the circles and the corresponding number
-#' of edges.
+#' This function stores the radii of the circles and the corresponding value
+#' for each circle.
 #'
-#' @param itemCoordsDF Dataframe wih item coordinates
+#' @param itemCoordsDF Data frame wih item coordinates.
 #' @param extraCircles Number of circles drawn beyond those required to include
-#' the points representing the genes.
+#' the points.
 #'
-#' @return A data frame containing the radius and the number of edges for each
-#' circle.
+#' @return A data frame containing the radius and the corresponding value for
+#' each circle.
 #'
 #' @keywords internal
 #'
 circleCoords <- function(itemCoordsDF, extraCircles = 0){
-    degrees <- itemCoordsDF[, 4]
-    minDegree <- degrees[length(degrees)] - extraCircles
-    maxDegree <- degrees[1]
-    nCircles <- maxDegree - minDegree + 1
+    values <- itemCoordsDF[, 4]
+    minValue <- values[length(values)] - extraCircles
+    maxValue <- values[1]
+    nCircles <- maxValue - minValue + 1
     hasSharedMax <- 0
-    if(length(degrees) > 1)
-        hasSharedMax <- degrees[1] == degrees[2]
+    if(length(values) > 1)
+        hasSharedMax <- values[1] == values[2]
     df <- data.frame(
         x = rep(0, nCircles),
         y = rep(0, nCircles),
         r = seq(nCircles + hasSharedMax - 0.5, hasSharedMax + 0.5, -1),
-        Degree = seq(minDegree, maxDegree))
+        Value = seq(minValue, maxValue))
     return(df)
 }
 
-#' Draw radial plot for a degrees data frame
+#' Draw radial plot for a data frame with positive integer-valued points
 #'
-#' This function draws a radial plot for a degrees data frame, plotting
-#' positive integer-valued points over concentric circles, with points located
+#' This function draws a radial plot for a data frame, plotting positive
+#' integer-valued points over concentric circles, with points located
 #' more centrally representing higher values.
 #'
 #' @inheritParams distFreq
 #' @inheritParams riverPlot
 #' @inheritParams hullPlot
-#' @param degreeLegendTitle Legend title corresponding to the positive integer
+#' @param valueLegendTitle Legend title corresponding to the positive integer
 #' column.
 #' @param groupLegendTitle Legend title corresponding to the categorical
 #' column.
@@ -139,25 +140,25 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' @param legendTextSize Legend text size.
 #' @inheritParams pointsOnCircle
 #' @param breakDensity Factor used in calculating the number of breaks for
-#' the degree legend. Higher values add more breaks to the legend, though no
-#' breaks at a distance below 1 will be allowed.
+#' the values legend. Higher values of this argument add more breaks to the
+#' legend, but no breaks at a distance below 1 will be allowed.
 #'
 #' @return An object of class \code{gg}.
 #'
 #' @examples
-#' degreesDF <- data.frame(Protein = paste0('P', seq(20)),
-#' Degree = sample(10, 20, replace=TRUE),
+#' valuesDF <- data.frame(Protein = paste0('P', seq(20)),
+#' Value = sample(10, 20, replace=TRUE),
 #' Group = sample(3, 20, replace=TRUE))
-#' radialPlot(degreesDF)
+#' radialPlot(valuesDF)
 #'
 #' @export
 #'
-radialPlot <- function(degreesDF,
+radialPlot <- function(valuesDF,
                        title = 'Radial plot',
-                       degreeLegendTitle = 'Degree',
+                       valueLegendTitle = 'Value',
                        groupLegendTitle = 'Group',
                        extraCircles = 0,
-                       palette = rpColors(length(unique(degreesDF[, 3]))),
+                       palette = rpColors(length(unique(valuesDF[, 3]))),
                        labelSize = 3,
                        pointSize = 0.8,
                        legendTitleSize = 10,
@@ -169,22 +170,22 @@ radialPlot <- function(degreesDF,
                        seed = 50,
                        ...){
 
-    itemCoordsDF <- itemCoords(degreesDF, seed)
+    itemCoordsDF <- itemCoords(valuesDF, seed)
     circleCoordsDF <- circleCoords(itemCoordsDF, extraCircles)
     legendStep <- as.integer(itemCoordsDF[1, 4] / breakDensity) + 1
     p <- ggplot() +
         geom_circle(aes(x0=.data[['x']],
                         y0=.data[['y']],
                         r=.data[['r']],
-                        fill=.data[['Degree']],
-                        color=.data[['Degree']]),
+                        fill=.data[['Value']],
+                        color=.data[['Value']]),
                     data=circleCoordsDF) +
         scale_fill_viridis(option='viridis', begin=0.4,
                            breaks=seq(itemCoordsDF[1, 4], 1, -legendStep)) +
         scale_color_viridis(option='viridis', begin=0.4,
                             breaks=seq(itemCoordsDF[1, 4], 1, -legendStep),
                             guide='none') +
-        labs(fill=degreeLegendTitle) +
+        labs(fill=valueLegendTitle) +
         theme_classic() + easy_remove_axes() + coord_fixed() +
         theme(plot.margin=margin(0, 0, 0, 0),
               legend.title=element_text(size=legendTitleSize),
