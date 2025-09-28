@@ -265,6 +265,7 @@ splitHull <- function(p,
 #' hull will not be displayed.
 #' @param xLab Label of x axis.
 #' @param yLab Label of y axis.
+#' @param pointSize Point size.
 #' @param pointShape Point shape.
 #' @inheritParams labelPoints
 #' @param labelSize Label size. Ignored if \code{labelDF} is \code{NULL}.
@@ -294,6 +295,7 @@ hullPlot <- function(pointsDF,
                      yLab = 'y',
                      legendLabs = paste0('Group ', seq(4)),
                      legendPos = 'bottom',
+                     pointSize = 1,
                      pointShape = 4,
                      alpha = 0.2,
                      labelDF = NULL,
@@ -365,7 +367,7 @@ hullPlot <- function(pointsDF,
 
     p <- p + geom_point(data=pointsDF, aes(x=.data[[names(pointsDF)[1]]],
                                            y=.data[[names(pointsDF)[2]]]),
-                   size=1, shape=pointShape)
+                   size=pointSize, shape=pointShape)
 
     if(!is.null(labelDF))
         p <- labelPoints(p, labelDF, labelSize, labelColor, labelRepulsion,

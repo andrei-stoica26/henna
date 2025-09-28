@@ -16,6 +16,7 @@ hullPlot(
   yLab = "y",
   legendLabs = paste0("Group ", seq(4)),
   legendPos = "bottom",
+  pointSize = 1,
   pointShape = 4,
   alpha = 0.2,
   labelDF = NULL,
@@ -53,6 +54,8 @@ hull will not be displayed.}
 \item{legendLabs}{Legend labels.}
 
 \item{legendPos}{Legend position.}
+
+\item{pointSize}{Point size.}
 
 \item{pointShape}{Point shape.}
 

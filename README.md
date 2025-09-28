@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.2.7`) 
+Alternatively, you can install the most recent development version (`0.2.8`) 
 using this code:
 
 ```
