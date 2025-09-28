@@ -138,6 +138,9 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' @param legendTitleSize Legend title size.
 #' @param legendTextSize Legend text size.
 #' @inheritParams pointsOnCircle
+#' @param breakDensity Factor used in calculating the number of breaks for
+#' the degree legend. Higher values add more breaks to the legend, though no
+#' breaks at a distance below 1 will be allowed.
 #'
 #' @return An object of class \code{gg}.
 #'
@@ -162,12 +165,13 @@ radialPlot <- function(degreesDF,
                        labelRepulsion = 1,
                        labelPull = 0,
                        maxOverlaps = 15,
+                       breakDensity = 6,
                        seed = 50,
                        ...){
 
     itemCoordsDF <- itemCoords(degreesDF, seed)
     circleCoordsDF <- circleCoords(itemCoordsDF, extraCircles)
-    legendStep <- as.integer(itemCoordsDF[1, 4] / 6) + 1
+    legendStep <- as.integer(itemCoordsDF[1, 4] / breakDensity) + 1
     p <- ggplot() +
         geom_circle(aes(x0=.data[['x']],
                         y0=.data[['y']],

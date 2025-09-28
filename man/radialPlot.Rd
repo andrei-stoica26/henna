@@ -18,6 +18,7 @@ radialPlot(
   labelRepulsion = 1,
   labelPull = 0,
   maxOverlaps = 15,
+  breakDensity = 6,
   seed = 50,
   ...
 )
@@ -54,6 +55,10 @@ and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
 is \code{NULL}.}
+
+\item{breakDensity}{Factor used in calculating the number of breaks for
+the degree legend. Higher values add more breaks to the legend, though no
+breaks at a distance below 1 will be allowed.}
 
 \item{seed}{Random seed.}
 

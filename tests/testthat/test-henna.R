@@ -74,7 +74,7 @@ test_that("radialPlot returns a gg object", {
     degreesDF <- data.frame(Protein = paste0('P', seq(20)),
                             Degree = sample(10, 20, replace=TRUE),
                             Group = sample(3, 20, replace=TRUE))
-    p <- radialPlot(degreesDF, seed=200)
+    p <- radialPlot(degreesDF, seed=200, breakDensity=8)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
@@ -83,6 +83,8 @@ test_that("rankPlot returns a gg object", {
     rownames(df) <- paste('M', seq(10))
     colnames(df) <- paste('R', seq(30))
     p <- rankPlot(df)
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+    p <- rankPlot(df, sigDigits=2, labelScalingFactor=0.85, labelOffset=0.07)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
