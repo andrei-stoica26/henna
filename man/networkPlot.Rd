@@ -11,7 +11,7 @@ networkPlot(
   edgeScale = 2,
   nodeSize = 10,
   nodeTextSize = 2.3,
-  palette = "Pastel 1",
+  palette = "Spectral",
   nodeColor = NULL,
   edgeColor = "black",
   ...
