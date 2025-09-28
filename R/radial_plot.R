@@ -1,9 +1,10 @@
-#'@importFrom dplyr count
-#'@importFrom ggeasy easy_remove_axes
-#'@importFrom ggforce geom_circle
-#'@importFrom ggnewscale new_scale_color new_scale_fill
-#'@importFrom ggrepel geom_text_repel
-#'@importFrom viridis scale_color_viridis scale_fill_viridis
+#' @importFrom dplyr count
+#' @importFrom ggeasy easy_remove_axes
+#' @importFrom ggforce geom_circle
+#' @importFrom ggnewscale new_scale_color new_scale_fill
+#' @importFrom ggrepel geom_text_repel
+#' @importFrom viridis scale_color_viridis scale_fill_viridis
+#' @importFrom withr with_seed
 #'
 NULL
 
@@ -44,13 +45,14 @@ distFreq <- function(degreesDF){
 #'
 #' @param r Radius.
 #' @param nPoints Number of points.
+#' @param seed Random seed.
 #'
 #' @return A data frame with the coordinates of the points.
 #'
-#' @noRd
+#' @keywords internal
 #'
-pointsOnCircle <- function(r, nPoints){
-    angleOffset <- runif(n=1, min=0, max=2 * pi)
+pointsOnCircle <- function(r, nPoints, seed = 50){
+    angleOffset <- with_seed(seed, runif(n=1, min=0, max=2 * pi))
     theta <- 2 * pi / nPoints
     points <- lapply(seq(nPoints),
                      function(k) c(r * cos(k * theta + angleOffset),
@@ -69,17 +71,18 @@ pointsOnCircle <- function(r, nPoints){
 #' @details A wrapper around \code{distFreq} and \code{pointsOnCircle}.
 #'
 #' @inheritParams distFreq
+#' @inheritParams pointsOnCircle
 #'
 #' @return A data frame containing the coordinates of the items.
 #'
 #' @noRd
 #'
-itemCoords <- function(degreesDF){
+itemCoords <- function(degreesDF, seed = 50){
     degreesDF <- degreesDF[order(degreesDF[, 2], decreasing=TRUE), ]
     distFreqDF <- distFreq(degreesDF)
     message('Finding coordinates...')
     circlePoints <- do.call(rbind, lapply(seq_len(nrow(distFreqDF)), function(i)
-        pointsOnCircle(distFreqDF$Dist[i], distFreqDF$Freq[i])))
+        pointsOnCircle(distFreqDF$Dist[i], distFreqDF$Freq[i], seed + i)))
     df <- cbind(degreesDF[, 1, drop=FALSE], circlePoints, degreesDF[, c(2, 3)])
     df[, 5] <- as.factor(df[, 5])
     return(df)
@@ -132,6 +135,9 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' @param palette Color palette.
 #' @param labelSize Label size.
 #' @param pointSize Point size.
+#' @param legendTitleSize Legend title size.
+#' @param legendTextSize Legend text size.
+#' @inheritParams pointsOnCircle
 #'
 #' @return An object of class \code{gg}.
 #'
@@ -151,12 +157,15 @@ radialPlot <- function(degreesDF,
                        palette = rpColors(length(unique(degreesDF[, 3]))),
                        labelSize = 3,
                        pointSize = 0.8,
+                       legendTitleSize = 10,
+                       legendTextSize = 10,
                        labelRepulsion = 1,
                        labelPull = 0,
-                       maxOverlaps = 10,
+                       maxOverlaps = 15,
+                       seed = 50,
                        ...){
 
-    itemCoordsDF <- itemCoords(degreesDF)
+    itemCoordsDF <- itemCoords(degreesDF, seed)
     circleCoordsDF <- circleCoords(itemCoordsDF, extraCircles)
     legendStep <- as.integer(itemCoordsDF[1, 4] / 6) + 1
     p <- ggplot() +
@@ -174,8 +183,8 @@ radialPlot <- function(degreesDF,
         labs(fill=degreeLegendTitle) +
         theme_classic() + easy_remove_axes() + coord_fixed() +
         theme(plot.margin=margin(0, 0, 0, 0),
-              legend.title=element_text(size=10),
-              legend.text=element_text(size=10)) +
+              legend.title=element_text(size=legendTitleSize),
+              legend.text=element_text(size=legendTextSize)) +
         geom_text_repel(aes(x=.data[['x']],
                             y=.data[['y']],
                             label=.data[[names(itemCoordsDF)[1]]]),

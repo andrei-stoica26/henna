@@ -74,7 +74,7 @@ test_that("radialPlot returns a gg object", {
     degreesDF <- data.frame(Protein = paste0('P', seq(20)),
                             Degree = sample(10, 20, replace=TRUE),
                             Group = sample(3, 20, replace=TRUE))
-    p <- radialPlot(degreesDF)
+    p <- radialPlot(degreesDF, seed=200)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
