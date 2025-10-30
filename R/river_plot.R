@@ -6,15 +6,13 @@ NULL
 #'
 #' This function creates an alluvial plot.
 #'
+#' @inheritParams documentFun
 #' @param df A data frame with two categorical columns and a numeric column.
-#' @param title Plot title.
 #' @param fillColIndex Index of column used for coloring the alluvia.
 #' @param curveType Curve type.
 #' @param alpha Opaqueness level for the colors of the alluvia.
 #' @param strataFill Color used for the strata.
 #' @param labelSize Size of labels of strata elements.
-#' @param viridisPal Viridis palette.
-#' @param legendPos Legend position.
 #' @param margins Plot margins. Must be a vector of size 4 listing the desired
 #' top, right, bottom and left margin, in that order.
 #' @param ... Other arguments passed to \code{centerTitle}.
@@ -38,6 +36,8 @@ riverPlot <- function(df,
                       alpha = 0.8,
                       strataFill = 'lightgoldenrod1',
                       labelSize = 3,
+                      axisTextSize = 12,
+                      axisTitleSize = 12,
                       viridisPal = 'turbo',
                       legendPos = 'none',
                       margins = margin(0, -10, -10, -10),
@@ -54,7 +54,9 @@ riverPlot <- function(df,
         scale_fill_viridis_d(option=viridisPal) +
         theme_void() +
         theme(legend.position=legendPos,
-              plot.margin=margins)
+              plot.margin=margins,
+              axis.text=element_text(size=axisTextSize),
+              axis.title=element_text(size=axisTitleSize))
     p <- centerTitle(p, title, ...)
     return(p)
 }

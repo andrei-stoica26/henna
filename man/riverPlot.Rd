@@ -12,6 +12,8 @@ riverPlot(
   alpha = 0.8,
   strataFill = "lightgoldenrod1",
   labelSize = 3,
+  axisTextSize = 12,
+  axisTitleSize = 12,
   viridisPal = "turbo",
   legendPos = "none",
   margins = margin(0, -10, -10, -10),
@@ -32,6 +34,10 @@ riverPlot(
 \item{strataFill}{Color used for the strata.}
 
 \item{labelSize}{Size of labels of strata elements.}
+
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
 
 \item{viridisPal}{Viridis palette.}
 

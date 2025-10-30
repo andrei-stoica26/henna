@@ -6,13 +6,13 @@
 \usage{
 densityPlot(
   df,
-  title = "Density plot",
+  title = NULL,
   colorScheme = c("oasis", "sea", "lava", "custom"),
-  useSchemeDefaults = FALSE,
+  useSchemeDefaults = TRUE,
   drawNN = TRUE,
   drawScores = FALSE,
   palette = NULL,
-  segColor = "plum1",
+  segColor = "black",
   pointSize = 0.8,
   pointColor = "red",
   segType = c("dashed", "solid", "dotted", "dotdash", "longdash", "twodash"),
@@ -24,6 +24,8 @@ densityPlot(
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 1,
+  axisTextSize = 12,
+  axisTitleSize = 12,
   maxOverlaps = Inf,
   verbose = FALSE,
   ...
@@ -74,7 +76,7 @@ set to \code{FALSE}.}
 
 \item{expandPerc}{Percentage by which the grid will be expanded.}
 
-\item{labelSize}{Size of labels of strata elements.}
+\item{labelSize}{Label size.}
 
 \item{labelColor}{Label color. Ignored if \code{useSchemeDefaults}
 is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
@@ -84,11 +86,15 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
+
 \item{maxOverlaps}{Maximum overlaps.}
 
 \item{verbose}{Whether output should be verbose.}
 
-\item{...}{Other arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{centerTitle}.}
 }
 \value{
 An object of class \code{gg}.

@@ -2,16 +2,14 @@
 #'
 #' This function plots a numeric matrix or data frame.
 #'
+#' @inheritParams documentFun
 #' @param mat A numeric matrix or data frame.
-#' @inheritParams classPlot
 #' @param sigDigits Number of significant digits to be displayed for each
 #' matrix element.
 #' @param isCor Whether the matrix is a correlation matrix, in which case the
 #' limits of the color scale will be set to [-1, 1].
 #' @param tileBoundaryColor Tile boundary color.
 #' @param tileBoundaryWidth Tile boundary width.
-#' @inheritParams rankPlot
-#' @inheritParams networkPlot
 #' @param reverseColors Whether to reverse the order of colors in the palette.
 #'
 #' @return An object of class \code{gg}.
@@ -33,6 +31,8 @@ tilePlot <- function(mat,
                      isCor = FALSE,
                      labelSize = 3,
                      labelColor = 'black',
+                     axisTextSize = 12,
+                     axisTitleSize = 12,
                      tileBoundaryColor = 'white',
                      tileBoundaryWidth = 0.2,
                      palette = 'Spectral',
@@ -65,7 +65,9 @@ tilePlot <- function(mat,
                         fill=.data[[names(df)[3]]])) +
         geom_tile(color=tileBoundaryColor, lwd=tileBoundaryWidth) +
         theme_classic() +
-        theme(axis.text.x=element_text(angle=xAngle, vjust=vJust)) +
+        theme(axis.text.x=element_text(angle=xAngle, vjust=vJust),
+              axis.text=element_text(size=axisTextSize),
+              axis.title=element_text(size=axisTitleSize)) +
         geom_text(aes(label=.data[[names(df)[3]]]),
                   color=labelColor,
                   size=labelSize) +

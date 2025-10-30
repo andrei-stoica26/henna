@@ -6,7 +6,7 @@
 \usage{
 hullPlot(
   pointsDF,
-  title = "Hull plot",
+  title = NULL,
   xInt = NULL,
   yInt = NULL,
   palette = hpColors(),
@@ -26,6 +26,8 @@ hullPlot(
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 0,
+  axisTextSize = 12,
+  axisTitleSize = 12,
   maxOverlaps = 10,
   ...
 )
@@ -68,7 +70,7 @@ hull will not be displayed.}
 
 \item{pointShape}{Point shape.}
 
-\item{alpha}{Opaqueness level for the colors of the alluvia.}
+\item{alpha}{Opaqueness level.}
 
 \item{labelDF}{Label data frame.}
 
@@ -81,10 +83,14 @@ hull will not be displayed.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
+
 \item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
 is \code{NULL}.}
 
-\item{...}{Other arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{centerTitle}.}
 }
 \value{
 An object of class \code{gg}.

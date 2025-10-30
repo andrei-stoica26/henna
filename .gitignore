@@ -1,6 +1,7 @@
 .Rbuildignore
 .Rhistory
 .Rproj.user
+R/.abstract.R
 R/.examples.R
 R/.extras.R
 R/.fig_gen.R

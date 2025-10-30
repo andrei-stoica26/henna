@@ -6,13 +6,17 @@
 \usage{
 classPlot(
   df,
-  title = "Class plot",
+  title = NULL,
   xLab = "Value",
   yLab = "Item",
   legendLab = "Class",
   palette = "Spectral",
   labelSize = 2.5,
   labelColor = "black",
+  legendTitleSize = 10,
+  legendTextSize = 10,
+  axisTextSize = 12,
+  axisTitleSize = 12,
   decreasing = TRUE,
   valueCutoff = 0,
   ...
@@ -30,12 +34,19 @@ value as the first three columns. The latter must be numeric.}
 
 \item{legendLab}{Legend label.}
 
-\item{palette}{grDevices palette used for coloring nodes.
-Ignored if nodeColor is not \code{NULL}.}
+\item{palette}{Color palette.}
 
-\item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
+\item{labelSize}{Label size.}
 
 \item{labelColor}{Label color.}
+
+\item{legendTitleSize}{Legend title size.}
+
+\item{legendTextSize}{Legend text size.}
+
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
 
 \item{decreasing}{Whether to display the bars in decreasing order of length.}
 
@@ -43,7 +54,7 @@ Ignored if nodeColor is not \code{NULL}.}
 the value column. Only values greater than this cutoff will be displayed on
 the plot.}
 
-\item{...}{Other arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{centerTitle}.}
 }
 \value{
 An object of class \code{gg}.

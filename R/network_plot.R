@@ -54,7 +54,8 @@ networkPlotDF <- function(df,
 #'
 #' @export
 #'
-networkPlot <- function(df, title = 'Network plot',
+networkPlot <- function(df,
+                        title = NULL,
                         rankCol = 'rank',
                         edgeScale = 2,
                         nodeSize = 10,

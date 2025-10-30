@@ -14,6 +14,8 @@ tilePlot(
   isCor = FALSE,
   labelSize = 3,
   labelColor = "black",
+  axisTextSize = 12,
+  axisTitleSize = 12,
   tileBoundaryColor = "white",
   tileBoundaryWidth = 0.2,
   palette = "Spectral",
@@ -40,16 +42,19 @@ matrix element.}
 \item{isCor}{Whether the matrix is a correlation matrix, in which case the
 limits of the color scale will be set to [-1, 1].}
 
-\item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
+\item{labelSize}{Label size.}
 
 \item{labelColor}{Label color.}
+
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
 
 \item{tileBoundaryColor}{Tile boundary color.}
 
 \item{tileBoundaryWidth}{Tile boundary width.}
 
-\item{palette}{grDevices palette used for coloring nodes.
-Ignored if nodeColor is not \code{NULL}.}
+\item{palette}{Color palette.}
 
 \item{reverseColors}{Whether to reverse the order of colors in the palette.}
 
@@ -57,7 +62,7 @@ Ignored if nodeColor is not \code{NULL}.}
 
 \item{vJust}{Vertical justification in [0, 1].}
 
-\item{...}{Other arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{centerTitle}.}
 }
 \value{
 An object of class \code{gg}.

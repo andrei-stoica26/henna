@@ -25,12 +25,12 @@ createPairSegments <- function(df){
 #'
 #' This function creates a density plot.
 #'
-#' @inheritParams riverPlot
+#' @inheritParams documentFun
+#' @inheritParams labelPoints
 #' @param df A data frame with at least two columns, representing the \code{x}
 #' and \code{y} coordinates of the points. A score column can also be provided
 #' as the third column. Nearest neighbor information can be provided in the last
 #' column as a character vector with elements selected from the rownames.
-#' @inheritParams riverPlot
 #' @param colorScheme Color scheme.
 #' @param useSchemeDefaults Whether to use the default \code{segColor},
 #' \code{pointColor} and \code{labelColor} for scheme. Ignored
@@ -55,7 +55,6 @@ createPairSegments <- function(df){
 #' @param legendPos Legend position. Choose between 'right' and 'none'.
 #' @param nGridPoints Number of grid points in each direction.
 #' @param expandPerc Percentage by which the grid will be expanded.
-#' @inheritParams labelPoints
 #' @param labelColor Label color. Ignored if \code{useSchemeDefaults}
 #' is \code{TRUE} and \code{colorScheme} is different from 'custom'.
 #' @param verbose Whether output should be verbose.
@@ -73,13 +72,13 @@ createPairSegments <- function(df){
 #' @export
 #'
 densityPlot <- function(df,
-                        title = 'Density plot',
+                        title = NULL,
                         colorScheme = c('oasis', 'sea', 'lava', 'custom'),
-                        useSchemeDefaults = FALSE,
+                        useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
                         palette = NULL,
-                        segColor = 'plum1',
+                        segColor = 'black',
                         pointSize = 0.8,
                         pointColor = 'red',
                         segType = c('dashed','solid', 'dotted',
@@ -92,6 +91,8 @@ densityPlot <- function(df,
                         labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 1,
+                        axisTextSize = 12,
+                        axisTitleSize = 12,
                         maxOverlaps = Inf,
                         verbose = FALSE,
                         ...){
@@ -104,7 +105,7 @@ densityPlot <- function(df,
     if (colorScheme == 'oasis'){
         palette <- dpColors('oasis')
         if (useSchemeDefaults){
-            segColor <- 'plum1'
+            segColor <- 'mediumpurple'
             pointColor <- 'red'
             labelColor <- 'black'
         }
@@ -154,7 +155,9 @@ densityPlot <- function(df,
         expand_limits(x=expandRange(df[, 1], expandPerc),
                       y=expandRange(df[, 2], expandPerc)) +
         labs(x='x', y='y', fill='Density') +
-        theme(legend.position=legendPos)
+        theme(legend.position=legendPos,
+              axis.text=element_text(size=axisTextSize),
+              axis.title=element_text(size=axisTitleSize))
 
     if(drawNN){
         lastCol <- df[, ncol(df)]

@@ -274,14 +274,11 @@ splitHull <- function(p,
 #' a vertical or a horizontal line (or both), dividing the hull into areas of
 #' different colors.
 #'
+#' @inheritParams documentFun
 #' @inheritParams convexHull
-#' @inheritParams riverPlot
 #' @inheritParams splitHull
-#' @param palette Color palette.
 #' @param hullWidth Width of the convex hull. If 0 (as default), the convex
 #' hull will not be displayed.
-#' @param xLab Label of x axis.
-#' @param yLab Label of y axis.
 #' @param pointSize Point size.
 #' @param pointShape Point shape.
 #' @inheritParams labelPoints
@@ -302,7 +299,7 @@ splitHull <- function(p,
 #' @export
 #'
 hullPlot <- function(pointsDF,
-                     title = 'Hull plot',
+                     title = NULL,
                      xInt = NULL,
                      yInt = NULL,
                      palette = hpColors(),
@@ -323,6 +320,8 @@ hullPlot <- function(pointsDF,
                      labelColor = 'black',
                      labelRepulsion = 1,
                      labelPull = 0,
+                     axisTextSize = 12,
+                     axisTitleSize = 12,
                      maxOverlaps = 10,
                      ...){
 
@@ -371,7 +370,9 @@ hullPlot <- function(pointsDF,
     p <- ggplot() + theme_classic() +
         labs(x=xLab, y=yLab) +
         theme(legend.title=element_blank(),
-              legend.position=legendPos)
+              legend.position=legendPos,
+              axis.text=element_text(size=axisTextSize),
+              axis.title=element_text(size=axisTitleSize))
 
     if(hullWidth)
         p <- p + geom_segment(data=hullSegments,

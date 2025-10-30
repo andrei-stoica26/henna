@@ -126,19 +126,14 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' more centrally representing higher values.
 #'
 #' @inheritParams distFreq
-#' @inheritParams riverPlot
-#' @inheritParams hullPlot
+#' @inheritParams documentFun
+#' @inheritParams circleCoords
+#' @inheritParams pointsOnCircle
+#' @inheritParams labelPoints
 #' @param valueLegendTitle Legend title corresponding to the positive integer
 #' column.
 #' @param groupLegendTitle Legend title corresponding to the categorical
 #' column.
-#' @inheritParams circleCoords
-#' @param palette Color palette.
-#' @param labelSize Label size.
-#' @param pointSize Point size.
-#' @param legendTitleSize Legend title size.
-#' @param legendTextSize Legend text size.
-#' @inheritParams pointsOnCircle
 #' @param breakDensity Factor used in calculating the number of breaks for
 #' the values legend. Higher values of this argument add more breaks to the
 #' legend, but no breaks at a distance below 1 will be allowed.
@@ -154,7 +149,7 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' @export
 #'
 radialPlot <- function(valuesDF,
-                       title = 'Radial plot',
+                       title = NULL,
                        valueLegendTitle = 'Value',
                        groupLegendTitle = 'Group',
                        extraCircles = 0,

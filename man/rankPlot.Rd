@@ -6,7 +6,7 @@
 \usage{
 rankPlot(
   df,
-  title = "Rank plot",
+  title = NULL,
   summarize = TRUE,
   viridisPal = "turbo",
   xLab = "Item",
@@ -16,6 +16,8 @@ rankPlot(
   labelSize = 2.5,
   labelColor = "black",
   labelFace = c("plain", "bold", "italic", "bold-italic"),
+  axisTextSize = 12,
+  axisTitleSize = 12,
   xAngle = 45,
   vJust = 0.6,
   labelScalingFactor = 0.9,
@@ -55,6 +57,10 @@ Ignored if \code{sigDigits} is \code{NULL}.}
 be one among 'plain', 'bold', 'italic' and 'bold-italic'.
 Ignored if \code{sigDigits} is \code{NULL}.}
 
+\item{axisTextSize}{Axis text size.}
+
+\item{axisTitleSize}{Axis title size.}
+
 \item{xAngle}{Angle of x axis text.}
 
 \item{vJust}{Vertical justification in [0, 1].}
@@ -65,7 +71,7 @@ Ignored if \code{sigDigits} is \code{NULL}.}
 \item{labelOffset}{Vertical offset used when displaying mean ranks.
 Ignored if \code{sigDigits} is \code{NULL}.}
 
-\item{...}{Other arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{centerTitle}.}
 }
 \value{
 An object of class \code{gg}.

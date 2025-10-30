@@ -6,7 +6,7 @@
 \usage{
 networkPlot(
   df,
-  title = "Network plot",
+  title = NULL,
   rankCol = "rank",
   edgeScale = 2,
   nodeSize = 10,
