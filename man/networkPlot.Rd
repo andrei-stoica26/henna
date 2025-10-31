@@ -39,7 +39,7 @@ Ignored if nodeColor is not \code{NULL}.}
 
 \item{edgeColor}{Color used for edges.}
 
-\item{...}{Other arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to \code{centerTitle}.}
 }
 \value{
 An object of class \code{ggraph}.

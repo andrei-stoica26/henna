@@ -34,8 +34,8 @@ networkPlotDF <- function(df,
 #' This function plots the graph of the data frame and optionallt uses different
 #' colors for nodes belonging to different connected components.
 #'
+#' @inheritParams documentFun
 #' @inheritParams networkPlotDF
-#' @inheritParams riverPlot
 #' @param nodeSize Size of graph nodes.
 #' @param nodeTextSize Size of text on graph nodes.
 #' @param palette grDevices palette used for coloring nodes.

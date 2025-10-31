@@ -13,8 +13,6 @@ NULL
 #' @param alpha Opaqueness level for the colors of the alluvia.
 #' @param strataFill Color used for the strata.
 #' @param labelSize Size of labels of strata elements.
-#' @param margins Plot margins. Must be a vector of size 4 listing the desired
-#' top, right, bottom and left margin, in that order.
 #' @param ... Other arguments passed to \code{centerTitle}.
 #'
 #' @return An object of class \code{gg}.

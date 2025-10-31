@@ -10,17 +10,18 @@ documentFun(
   yLab = "y",
   legendPos = "right",
   legendLab = "Label",
-  legendTitleSize = 10,
-  legendTextSize = 10,
   palette = "Spectral",
   viridisPal = "turbo",
   labelSize = 2.5,
   labelColor = "black",
   pointSize = 0.8,
+  legendTitleSize = 10,
+  legendTextSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
   xAngle = 45,
   vJust = 0.6,
+  margins = margin(0, -10, -10, -10),
   ...
 )
 }
@@ -35,10 +36,6 @@ documentFun(
 
 \item{legendLab}{Legend label.}
 
-\item{legendTitleSize}{Legend title size.}
-
-\item{legendTextSize}{Legend text size.}
-
 \item{palette}{Color palette.}
 
 \item{viridisPal}{Viridis palette.}
@@ -49,6 +46,10 @@ documentFun(
 
 \item{pointSize}{Point size.}
 
+\item{legendTitleSize}{Legend title size.}
+
+\item{legendTextSize}{Legend text size.}
+
 \item{axisTextSize}{Axis text size.}
 
 \item{axisTitleSize}{Axis title size.}
@@ -56,6 +57,9 @@ documentFun(
 \item{xAngle}{Angle of x axis text.}
 
 \item{vJust}{Vertical justification in [0, 1].}
+
+\item{margins}{Plot margins. Must be a vector of size 4 listing the desired
+top, right, bottom and left margin, in that order.}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
 }
