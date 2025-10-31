@@ -16,6 +16,8 @@ rankPlot(
   labelSize = 2.5,
   labelColor = "black",
   labelFace = c("plain", "bold", "italic", "bold-italic"),
+  legendTextSize = 10,
+  legendTitleSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
   xAngle = 45,
@@ -56,6 +58,10 @@ Ignored if \code{sigDigits} is \code{NULL}.}
 \item{labelFace}{Font face of label marking average rank for each item. Must
 be one among 'plain', 'bold', 'italic' and 'bold-italic'.
 Ignored if \code{sigDigits} is \code{NULL}.}
+
+\item{legendTextSize}{Legend text size.}
+
+\item{legendTitleSize}{Legend title size.}
 
 \item{axisTextSize}{Axis text size.}
 

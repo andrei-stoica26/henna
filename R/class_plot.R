@@ -57,8 +57,8 @@ classPlot <- function(df,
                     y=.data[[names(df)[4]]])) +
         geom_bar(position='stack', stat='identity') +
         theme_classic() +
-        theme(legend.title=element_text(size=legendTitleSize),
-              legend.text=element_text(size=legendTextSize),
+        theme(legend.text=element_text(size=legendTextSize),
+              legend.title=element_text(size=legendTitleSize),
               axis.ticks.y=element_blank(),
               axis.text.y=element_blank(),
               axis.text.x=element_text(size=axisTextSize),

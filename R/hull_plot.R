@@ -311,7 +311,6 @@ hullPlot <- function(pointsDF,
                      xLab = 'x',
                      yLab = 'y',
                      legendLabs = paste0('Group ', seq(4)),
-                     legendPos = 'bottom',
                      pointSize = 1,
                      pointShape = 4,
                      alpha = 0.2,
@@ -320,6 +319,8 @@ hullPlot <- function(pointsDF,
                      labelColor = 'black',
                      labelRepulsion = 1,
                      labelPull = 0,
+                     legendPos = 'bottom',
+                     legendTextSize = 10,
                      axisTextSize = 12,
                      axisTitleSize = 12,
                      maxOverlaps = 10,
@@ -369,8 +370,9 @@ hullPlot <- function(pointsDF,
 
     p <- ggplot() + theme_classic() +
         labs(x=xLab, y=yLab) +
-        theme(legend.title=element_blank(),
-              legend.position=legendPos,
+        theme(legend.position=legendPos,
+              legend.text=element_text(size=legendTextSize),
+              legend.title=element_blank(),
               axis.text=element_text(size=axisTextSize),
               axis.title=element_text(size=axisTitleSize))
 

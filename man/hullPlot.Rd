@@ -17,7 +17,6 @@ hullPlot(
   xLab = "x",
   yLab = "y",
   legendLabs = paste0("Group ", seq(4)),
-  legendPos = "bottom",
   pointSize = 1,
   pointShape = 4,
   alpha = 0.2,
@@ -26,6 +25,8 @@ hullPlot(
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 0,
+  legendPos = "bottom",
+  legendTextSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
   maxOverlaps = 10,
@@ -64,8 +65,6 @@ hull will not be displayed.}
 
 \item{legendLabs}{Legend labels.}
 
-\item{legendPos}{Legend position.}
-
 \item{pointSize}{Point size.}
 
 \item{pointShape}{Point shape.}
@@ -82,6 +81,10 @@ hull will not be displayed.}
 
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
+
+\item{legendPos}{Legend position.}
+
+\item{legendTextSize}{Legend text size.}
 
 \item{axisTextSize}{Axis text size.}
 

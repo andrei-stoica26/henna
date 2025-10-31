@@ -10,16 +10,18 @@ tilePlot(
   xLab = "x",
   yLab = "y",
   legendLab = "Value",
+  palette = "Spectral",
+  reverseColors = TRUE,
   sigDigits = 2,
   isCor = FALSE,
   labelSize = 3,
   labelColor = "black",
+  legendTextSize = 10,
+  legendTitleSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
   tileBoundaryColor = "white",
   tileBoundaryWidth = 0.2,
-  palette = "Spectral",
-  reverseColors = TRUE,
   xAngle = 45,
   vJust = 0.6,
   ...
@@ -36,6 +38,10 @@ tilePlot(
 
 \item{legendLab}{Legend label.}
 
+\item{palette}{Color palette.}
+
+\item{reverseColors}{Whether to reverse the order of colors in the palette.}
+
 \item{sigDigits}{Number of significant digits to be displayed for each
 matrix element.}
 
@@ -46,6 +52,10 @@ limits of the color scale will be set to [-1, 1].}
 
 \item{labelColor}{Label color.}
 
+\item{legendTextSize}{Legend text size.}
+
+\item{legendTitleSize}{Legend title size.}
+
 \item{axisTextSize}{Axis text size.}
 
 \item{axisTitleSize}{Axis title size.}
@@ -53,10 +63,6 @@ limits of the color scale will be set to [-1, 1].}
 \item{tileBoundaryColor}{Tile boundary color.}
 
 \item{tileBoundaryWidth}{Tile boundary width.}
-
-\item{palette}{Color palette.}
-
-\item{reverseColors}{Whether to reverse the order of colors in the palette.}
 
 \item{xAngle}{Angle of x axis text.}
 

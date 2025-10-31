@@ -17,13 +17,15 @@ densityPlot(
   pointColor = "red",
   segType = c("dashed", "solid", "dotted", "dotdash", "longdash", "twodash"),
   segWidth = 0.4,
-  legendPos = c("right", "none"),
   nGridPoints = 300,
   expandPerc = 20,
   labelSize = 2.5,
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 1,
+  legendPos = c("right", "none"),
+  legendTextSize = 10,
+  legendTitleSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
   maxOverlaps = Inf,
@@ -70,8 +72,6 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 \item{segWidth}{Nearest neighbor segment width. Ignored if \code{drawNN} is
 set to \code{FALSE}.}
 
-\item{legendPos}{Legend position. Choose between 'right' and 'none'.}
-
 \item{nGridPoints}{Number of grid points in each direction.}
 
 \item{expandPerc}{Percentage by which the grid will be expanded.}
@@ -85,6 +85,12 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
+
+\item{legendPos}{Legend position. Choose between 'right' and 'none'.}
+
+\item{legendTextSize}{Legend text size.}
+
+\item{legendTitleSize}{Legend title size.}
 
 \item{axisTextSize}{Axis text size.}
 
