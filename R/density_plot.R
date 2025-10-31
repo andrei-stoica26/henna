@@ -169,7 +169,7 @@ densityPlot <- function(df,
             if(verbose)
                 message('Nearest neighbor information not provided.',
                         ' Will be computed.')
-        }else{
+        } else{
             extraNames <- setdiff(lastCol, rownames(df))
             if (length(extraNames))
                 warning(extraNames[1], ' found in the last column but not',
