@@ -7,7 +7,7 @@
 densityPlot(
   df,
   title = NULL,
-  colorScheme = c("oasis", "sea", "lava", "custom"),
+  colorScheme = c("orichalc", "oasis", "sea", "lava", "custom"),
   useSchemeDefaults = TRUE,
   drawNN = TRUE,
   drawScores = FALSE,

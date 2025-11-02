@@ -7,12 +7,12 @@
 #'
 #' @export
 #'
-dpColors <- function(palette = c('oasis', 'sea', 'lava')){
-    palette <- match.arg(palette, c('oasis', 'sea', 'lava'))
+dpColors <- function(palette = c('orichalc', 'oasis', 'sea', 'lava')){
+    palette <- match.arg(palette, c('orichalc', 'oasis', 'sea', 'lava'))
     if (palette == 'oasis')
         return(c('navajowhite1','bisque1','wheat1',
-                 'darkolivegreen1','palegreen','green',
-                 'cadetblue1', 'turquoise1', 'cyan'))
+                 'darkolivegreen1','chartreuse','green',
+                 'cadetblue1', 'cyan2', 'deepskyblue'))
     if (palette == 'sea')
         return(c('midnightblue','dodgerblue4','dodgerblue3',
                  'dodgerblue2','deepskyblue','cyan2',
@@ -21,6 +21,10 @@ dpColors <- function(palette = c('oasis', 'sea', 'lava')){
         return(c('bisque4','bisque3','bisque2',
                  'bisque1','bisque','lightyellow',
                  'goldenrod1','red2','red3'))
+    if (palette == 'orichalc')
+        return(c('dodgerblue3','dodgerblue2', 'deepskyblue',
+                 'cyan2', 'lightgoldenrodyellow', 'lemonchiffon',
+                 'wheat', 'firebrick1','red'))
 }
 
 #' Create the default hullPlot palette

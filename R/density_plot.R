@@ -73,7 +73,8 @@ createPairSegments <- function(df){
 #'
 densityPlot <- function(df,
                         title = NULL,
-                        colorScheme = c('oasis', 'sea', 'lava', 'custom'),
+                        colorScheme = c('orichalc', 'oasis', 'sea', 'lava',
+                                        'custom'),
                         useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
@@ -99,10 +100,20 @@ densityPlot <- function(df,
                         verbose = FALSE,
                         ...){
 
-    colorScheme <- match.arg(colorScheme, c('oasis', 'sea', 'lava', 'custom'))
+    colorScheme <- match.arg(colorScheme, c('orichalc', 'oasis', 'sea', 'lava',
+                                            'custom'))
     segType <- match.arg(segType, c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'))
     legendPos <- match.arg(legendPos, c('right', 'none'))
+
+    if (colorScheme == 'orichalc'){
+        palette <- dpColors('orichalc')
+        if (useSchemeDefaults){
+            segColor <- 'purple'
+            pointColor <- 'black'
+            labelColor <- 'black'
+        }
+    }
 
     if (colorScheme == 'oasis'){
         palette <- dpColors('oasis')
