@@ -4,7 +4,9 @@
 \alias{dpColors}
 \title{Create a palette designed for densityPlot}
 \usage{
-dpColors(palette = c("cake", "lava", "oasis", "orichalc", "sea", "sky"))
+dpColors(
+  palette = c("cake", "grapes", "lava", "oasis", "orichalc", "sea", "sky")
+)
 }
 \arguments{
 \item{palette}{One of 'lava', 'oasis', 'orichalc', 'sea' and 'sky'.}

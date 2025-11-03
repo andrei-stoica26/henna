@@ -7,7 +7,7 @@
 densityPlot(
   df,
   title = NULL,
-  colorScheme = c("sea", "cake", "lava", "oasis", "orichalc", "sky", "custom"),
+  colorScheme = c("orichalc", "cake", "grapes", "lava", "oasis", "sea", "sky", "custom"),
   useSchemeDefaults = TRUE,
   drawNN = TRUE,
   drawScores = FALSE,
@@ -41,8 +41,8 @@ column as a character vector with elements selected from the rownames.}
 
 \item{title}{Plot title.}
 
-\item{colorScheme}{Color scheme. Choose between 'sea', 'cake', 'lava',
-'oasis', 'orichalc', 'sky' and 'custom'. Default is 'sea'.}
+\item{colorScheme}{Color scheme. Choose between 'cake', 'grapes', 'lava',
+'oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'orichalc'.}
 
 \item{useSchemeDefaults}{Whether to use the default \code{segColor},
 \code{pointColor} and \code{labelColor} for scheme. Ignored
@@ -55,7 +55,8 @@ neighbor.}
 \code{TRUE}, the third column of the input data frame will be numeric and
 scores will be taken from there.}
 
-\item{palette}{Color palette. Used only if color scheme is set to 'custom'.}
+\item{palette}{A character vector of colors. Used only if color scheme is
+set to 'custom'.}
 
 \item{segColor}{Nearest neighbor segment color. Ignored if \code{drawNN} is
 set to \code{FALSE}, or if \code{useSchemeDefaults} is \code{TRUE} and

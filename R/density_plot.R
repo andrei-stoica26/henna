@@ -31,8 +31,8 @@ createPairSegments <- function(df){
 #' and \code{y} coordinates of the points. A score column can also be provided
 #' as the third column. Nearest neighbor information can be provided in the last
 #' column as a character vector with elements selected from the rownames.
-#' @param colorScheme Color scheme. Choose between 'sea', 'cake', 'lava',
-#' 'oasis', 'orichalc', 'sky' and 'custom'. Default is 'sea'.
+#' @param colorScheme Color scheme. Choose between 'cake', 'grapes', 'lava',
+#' 'oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'orichalc'.
 #' @param useSchemeDefaults Whether to use the default \code{segColor},
 #' \code{pointColor} and \code{labelColor} for scheme. Ignored
 #' if \code{colorScheme} is set to 'custom'.
@@ -41,7 +41,8 @@ createPairSegments <- function(df){
 #' @param drawScores Whether to render scores on the plot. If set to
 #' \code{TRUE}, the third column of the input data frame will be numeric and
 #' scores will be taken from there.
-#' @param palette Color palette. Used only if color scheme is set to 'custom'.
+#' @param palette A character vector of colors. Used only if color scheme is
+#' set to 'custom'.
 #' @param segColor Nearest neighbor segment color. Ignored if \code{drawNN} is
 #' set to \code{FALSE}, or if \code{useSchemeDefaults} is \code{TRUE} and
 #' \code{colorScheme} is different from 'custom'.
@@ -74,8 +75,8 @@ createPairSegments <- function(df){
 #'
 densityPlot <- function(df,
                         title = NULL,
-                        colorScheme = c('sea', 'cake', 'lava', 'oasis',
-                                        'orichalc', 'sky', 'custom'),
+                        colorScheme = c('orichalc', 'cake', 'grapes', 'lava',
+                                        'oasis', 'sea', 'sky', 'custom'),
                         useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
@@ -101,8 +102,9 @@ densityPlot <- function(df,
                         verbose = FALSE,
                         ...){
 
-    colorScheme <- match.arg(colorScheme, c('sea', 'cake', 'lava', 'oasis',
-                                            'orichalc', 'sky', 'custom'))
+    colorScheme <- match.arg(colorScheme, c('orichalc', 'cake', 'grapes',
+                                            'lava', 'oasis', 'sea',
+                                            'sky', 'custom'))
     segType <- match.arg(segType, c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'))
     legendPos <- match.arg(legendPos, c('right', 'none'))

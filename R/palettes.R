@@ -10,13 +10,16 @@
 #'
 #' @export
 #'
-dpColors <- function(palette = c('cake', 'lava', 'oasis', 'orichalc', 'sea',
-                                 'sky')){
-    palette <- match.arg(palette, c('cake', 'lava', 'oasis', 'orichalc', 'sea',
-                                    'sky'))
+dpColors <- function(palette = c('cake', 'grapes', 'lava', 'oasis',
+                                 'orichalc', 'sea','sky')){
+    palette <- match.arg(palette, c('cake', 'grapes', 'lava', 'oasis',
+                                    'orichalc', 'sea','sky'))
     palList <- list(cake = c('orangered4', 'brown4','tomato4',
                              'coral4', 'lightyellow', 'snow',
                              'mistyrose', 'red2', 'firebrick3'),
+                    grapes = c('olivedrab1', 'darkolivegreen1', 'mistyrose1',
+                               'lightpink','palevioletred', 'palevioletred4',
+                               'orchid4', 'darkorchid4', 'purple4'),
                     lava = c('bisque4','bisque3','bisque2',
                               'bisque1','bisque','lightyellow',
                               'goldenrod1','red2','red3'),
@@ -47,6 +50,7 @@ dpColors <- function(palette = c('cake', 'lava', 'oasis', 'orichalc', 'sea',
 #'
 lpsColors <- function(){
     df <- data.frame(cake = c('black', 'blue', 'deepskyblue'),
+                     grapes = c('black', 'blue', 'deepskyblue'),
                      lava = c('black', 'black', 'dodgerblue3'),
                      oasis = c('black', 'red', 'mediumpurple'),
                      orichalc = c('black', 'black', 'lightpink1'),
