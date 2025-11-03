@@ -31,7 +31,8 @@ createPairSegments <- function(df){
 #' and \code{y} coordinates of the points. A score column can also be provided
 #' as the third column. Nearest neighbor information can be provided in the last
 #' column as a character vector with elements selected from the rownames.
-#' @param colorScheme Color scheme.
+#' @param colorScheme Color scheme. Choose between 'sea', 'cake', 'lava',
+#' 'oasis', 'orichalc', 'sky' and 'custom'. Default is 'sea'.
 #' @param useSchemeDefaults Whether to use the default \code{segColor},
 #' \code{pointColor} and \code{labelColor} for scheme. Ignored
 #' if \code{colorScheme} is set to 'custom'.
@@ -73,8 +74,8 @@ createPairSegments <- function(df){
 #'
 densityPlot <- function(df,
                         title = NULL,
-                        colorScheme = c('sea', 'lava', 'oasis', 'orichalc',
-                                        'sky', 'custom'),
+                        colorScheme = c('sea', 'cake', 'lava', 'oasis',
+                                        'orichalc', 'sky', 'custom'),
                         useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
@@ -100,8 +101,8 @@ densityPlot <- function(df,
                         verbose = FALSE,
                         ...){
 
-    colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'oasis', 'orichalc',
-                                            'sky', 'custom'))
+    colorScheme <- match.arg(colorScheme, c('sea', 'cake', 'lava', 'oasis',
+                                            'orichalc', 'sky', 'custom'))
     segType <- match.arg(segType, c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'))
     legendPos <- match.arg(legendPos, c('right', 'none'))

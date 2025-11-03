@@ -7,7 +7,7 @@
 densityPlot(
   df,
   title = NULL,
-  colorScheme = c("sea", "lava", "oasis", "orichalc", "sky", "custom"),
+  colorScheme = c("sea", "cake", "lava", "oasis", "orichalc", "sky", "custom"),
   useSchemeDefaults = TRUE,
   drawNN = TRUE,
   drawScores = FALSE,
@@ -41,7 +41,8 @@ column as a character vector with elements selected from the rownames.}
 
 \item{title}{Plot title.}
 
-\item{colorScheme}{Color scheme.}
+\item{colorScheme}{Color scheme. Choose between 'sea', 'cake', 'lava',
+'oasis', 'orichalc', 'sky' and 'custom'. Default is 'sea'.}
 
 \item{useSchemeDefaults}{Whether to use the default \code{segColor},
 \code{pointColor} and \code{labelColor} for scheme. Ignored
