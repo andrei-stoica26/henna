@@ -2,29 +2,52 @@
 #'
 #' This function returns a palette designed for \code{densityPlot}.
 #'
-#' @param palette One of 'sea' and 'lava'.
+#' @param palette One of 'lava', 'oasis', 'orichalc', 'sea' and 'sky'.
 #' @return A character vector of colors.
+#'
+#' @examples
+#' dpColors('sea')
 #'
 #' @export
 #'
-dpColors <- function(palette = c('orichalc', 'oasis', 'sea', 'lava')){
-    palette <- match.arg(palette, c('orichalc', 'oasis', 'sea', 'lava'))
-    if (palette == 'oasis')
-        return(c('navajowhite1','bisque1','wheat1',
-                 'darkolivegreen1','chartreuse','green',
-                 'cadetblue1', 'cyan2', 'deepskyblue'))
-    if (palette == 'sea')
-        return(c('midnightblue','dodgerblue4','dodgerblue3',
-                 'dodgerblue2','deepskyblue','cyan2',
-                 'lightgoldenrodyellow','darkolivegreen1','green'))
-    if (palette == 'lava')
-        return(c('bisque4','bisque3','bisque2',
-                 'bisque1','bisque','lightyellow',
-                 'goldenrod1','red2','red3'))
-    if (palette == 'orichalc')
-        return(c('dodgerblue3','dodgerblue2', 'deepskyblue',
-                 'cyan2', 'lightgoldenrodyellow', 'lemonchiffon',
-                 'wheat', 'firebrick1','red'))
+dpColors <- function(palette = c('lava', 'oasis', 'orichalc', 'sea', 'sky')){
+    palette <- match.arg(palette, c('lava', 'oasis', 'orichalc', 'sea', 'sky'))
+    palList <- list(lava = c('bisque4','bisque3','bisque2',
+                              'bisque1','bisque','lightyellow',
+                              'goldenrod1','red2','red3'),
+                    oasis = c('navajowhite1','bisque1','wheat1',
+                              'darkolivegreen1','chartreuse','green',
+                              'cadetblue1', 'cyan2', 'deepskyblue'),
+                    orichalc = c('dodgerblue3','dodgerblue2', 'deepskyblue',
+                                 'cyan2', 'honeydew1', 'lightgoldenrodyellow',
+                                 'lemonchiffon','wheat','red'),
+                    sea = c('midnightblue','dodgerblue4','dodgerblue3',
+                            'dodgerblue2','deepskyblue','cyan2',
+                            'lightgoldenrodyellow','darkolivegreen1','green'),
+                    sky = c('deepskyblue', 'deepskyblue1', 'skyblue1',
+                            'lightskyblue','lightskyblue1', 'lightblue1',
+                            'snow', 'snow1', 'snow2'))
+    return(palList[[palette]])
+}
+
+#' Return default label, point and segment colors for the dpColors palettes
+#'
+#' This function returns default label, point and segment colors for
+#' the \code{dpColors} palettes.
+#'
+#' @inheritParams dpColors
+#' @return A data frame of colors.
+#'
+#' @noRd
+#'
+lpsColors <- function(){
+    df <- data.frame(lava = c('black', 'black', 'dodgerblue3'),
+                     oasis = c('black', 'red', 'mediumpurple'),
+                     orichalc = c('black', 'black', 'lightpink1'),
+                     sea = c('darkorange', 'red', 'plum1'),
+                     sky = c('black', 'red', 'thistle'))
+    rownames(df) <- c('label', 'point', 'segment')
+    return(df)
 }
 
 #' Create the default hullPlot palette

@@ -73,21 +73,21 @@ createPairSegments <- function(df){
 #'
 densityPlot <- function(df,
                         title = NULL,
-                        colorScheme = c('orichalc', 'oasis', 'sea', 'lava',
-                                        'custom'),
+                        colorScheme = c('sea', 'lava', 'oasis', 'orichalc',
+                                        'sky', 'custom'),
                         useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
                         palette = NULL,
                         segColor = 'black',
-                        pointSize = 0.8,
+                        pointSize = 1,
                         pointColor = 'red',
                         segType = c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'),
                         segWidth = 0.4,
                         nGridPoints = 300,
                         expandPerc = 20,
-                        labelSize = 2.5,
+                        labelSize = 3,
                         labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 1,
@@ -100,52 +100,24 @@ densityPlot <- function(df,
                         verbose = FALSE,
                         ...){
 
-    colorScheme <- match.arg(colorScheme, c('orichalc', 'oasis', 'sea', 'lava',
-                                            'custom'))
+    colorScheme <- match.arg(colorScheme, c('sea', 'lava', 'oasis', 'orichalc',
+                                            'sky', 'custom'))
     segType <- match.arg(segType, c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'))
     legendPos <- match.arg(legendPos, c('right', 'none'))
-
-    if (colorScheme == 'orichalc'){
-        palette <- dpColors('orichalc')
-        if (useSchemeDefaults){
-            segColor <- 'purple'
-            pointColor <- 'black'
-            labelColor <- 'black'
-        }
-    }
-
-    if (colorScheme == 'oasis'){
-        palette <- dpColors('oasis')
-        if (useSchemeDefaults){
-            segColor <- 'mediumpurple'
-            pointColor <- 'red'
-            labelColor <- 'black'
-        }
-    }
-
-    if (colorScheme == 'sea'){
-        palette <- dpColors('sea')
-        if (useSchemeDefaults){
-            segColor <- 'thistle'
-            pointColor <- 'red'
-            labelColor <- 'black'
-        }
-    }
-
-    if (colorScheme == 'lava'){
-        palette <- dpColors('lava')
-        if (useSchemeDefaults){
-            segColor <- 'dodgerblue3'
-            pointColor <- 'black'
-            labelColor <- 'black'
-        }
-    }
 
     if (colorScheme == 'custom'){
         if (is.null(palette))
             stop('The custom color scheme requires an input palette.')
         palette <- palette
+    } else {
+        palette <- dpColors(colorScheme)
+        if (useSchemeDefaults){
+            colorsDF <- lpsColors()
+            labelColor <- colorsDF['label', colorScheme]
+            pointColor <- colorsDF['point', colorScheme]
+            segColor <- colorsDF['segment', colorScheme]
+        }
     }
 
     pointLabs <- rownames(df)
