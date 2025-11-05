@@ -98,6 +98,13 @@ test_that("riverPlot returns a gg object", {
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
+test_that("reorderDF works", {
+    df <- data.frame(a = c(2, 4, 1, 3), b = c(2, 8, 3, 19))
+    df <- reorderDF(df)
+    expect_identical(df[, 1], c(1, 2, 3, 4))
+    expect_identical(df[, 2], factor(c(3, 2, 19, 8), levels=c(3, 2, 19, 8)))
+})
+
 test_that("tilePlot returns a gg object", {
     mat <- matrix(round(runif(100, 0, 1), 2), nrow=10)
     rownames(mat) <- paste0('R', seq(10))

@@ -1,3 +1,26 @@
+#' Sort a data frame by the first column and convert the second to a factor
+#'
+#' This function sort a data frame by the first column and convert the second
+#' to a factor.
+#'
+#' @param df A data frame.
+#'
+#' @return An object of class \code{gg}.
+#'
+#' @examples
+#' df <- data.frame(a = c(2, 4, 1, 3, 6),
+#' b = c(2, 8, 3, 19, 3))
+#' reorderDF(df)
+#'
+#' @export
+#'
+reorderDF <- function(df){
+    df <- df[order(df[, 2], decreasing=TRUE), ]
+    df <- df[order(df[, 1]), ]
+    df[, 2] <- factor(df[, 2], levels=unique(df[, 2]))
+    return(df)
+}
+
 #' Plot a numeric matrix or data frame
 #'
 #' This function plots a numeric matrix or data frame.
@@ -54,13 +77,11 @@ tilePlot <- function(mat,
 
     if(isCor){
         limits <- c(-1, 1)
-        df <- df[order(df[, 2], decreasing=TRUE), ]
-        df <- df[order(df[, 1]), ]
-        df[, 2] <- factor(df[, 2], levels=unique(df[, 2]))
-        xLab <- NULL
-        yLab <- NULL
+
     }else
         limits <- c(min(df[, 3]), max(df[, 3]))
+
+    df <- reorderDF(df)
 
     p <- ggplot(df, aes(x=.data[[names(df)[1]]],
                         y=.data[[names(df)[2]]],
