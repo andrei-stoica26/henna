@@ -4,12 +4,7 @@
 \alias{correlationPlot}
 \title{Plot a correlation matrix}
 \usage{
-correlationPlot(
-  mat,
-  title = "Correlation plot",
-  legendLab = "Correlation",
-  ...
-)
+correlationPlot(mat, title = NULL, legendLab = "Correlation", ...)
 }
 \arguments{
 \item{mat}{A numeric matrix or data frame.}

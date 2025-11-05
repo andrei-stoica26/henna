@@ -6,7 +6,7 @@
 \usage{
 riverPlot(
   df,
-  title = "River plot",
+  title = NULL,
   fillColIndex = 2,
   curveType = "sigmoid",
   alpha = 0.8,

@@ -6,7 +6,7 @@
 \usage{
 tilePlot(
   mat,
-  title = "Tile plot",
+  title = NULL,
   xLab = "x",
   yLab = "y",
   legendLab = "Value",

@@ -23,7 +23,7 @@
 #' @export
 #'
 tilePlot <- function(mat,
-                     title = 'Tile plot',
+                     title = NULL,
                      xLab = 'x',
                      yLab = 'y',
                      legendLab = 'Value',
@@ -101,6 +101,6 @@ tilePlot <- function(mat,
 #'
 #' @export
 #'
-correlationPlot <- function(mat, title='Correlation plot',
+correlationPlot <- function(mat, title = NULL,
                             legendLab = 'Correlation', ...)
     return(tilePlot(mat, title, legendLab = legendLab, isCor=TRUE, ...))
