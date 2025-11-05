@@ -80,6 +80,9 @@ densityPlot <- function(df,
                         useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
+                        xLab = NULL,
+                        yLab = NULL,
+                        legendLab = 'Density',
                         palette = NULL,
                         segColor = 'black',
                         pointSize = 1,
@@ -142,7 +145,7 @@ densityPlot <- function(df,
         scale_fill_gradientn(colors=palette) + theme_classic() +
         expand_limits(x=expandRange(df[, 1], expandPerc),
                       y=expandRange(df[, 2], expandPerc)) +
-        labs(x='x', y='y', fill='Density') +
+        labs(x=xLab, y=yLab, fill=legendLab) +
         theme(legend.position=legendPos,
               legend.text=element_text(size=legendTextSize),
               legend.title=element_text(size=legendTitleSize),

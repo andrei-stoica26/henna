@@ -11,6 +11,9 @@ densityPlot(
   useSchemeDefaults = TRUE,
   drawNN = TRUE,
   drawScores = FALSE,
+  xLab = NULL,
+  yLab = NULL,
+  legendLab = "Density",
   palette = NULL,
   segColor = "black",
   pointSize = 1,
@@ -54,6 +57,12 @@ neighbor.}
 \item{drawScores}{Whether to render scores on the plot. If set to
 \code{TRUE}, the third column of the input data frame will be numeric and
 scores will be taken from there.}
+
+\item{xLab}{Label of x axis.}
+
+\item{yLab}{Label of y axis.}
+
+\item{legendLab}{Legend label.}
 
 \item{palette}{A character vector of colors. Used only if color scheme is
 set to 'custom'.}

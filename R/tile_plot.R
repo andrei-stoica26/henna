@@ -24,8 +24,8 @@
 #'
 tilePlot <- function(mat,
                      title = NULL,
-                     xLab = 'x',
-                     yLab = 'y',
+                     xLab = NULL,
+                     yLab = NULL,
                      legendLab = 'Value',
                      palette = 'Spectral',
                      reverseColors = TRUE,
