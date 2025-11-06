@@ -54,7 +54,7 @@ lpsColors <- function(){
                      lava = c('black', 'black', 'dodgerblue3'),
                      oasis = c('black', 'red', 'mediumpurple'),
                      orichalc = c('black', 'black', 'lightpink1'),
-                     sea = c('darkorange', 'red', 'plum1'),
+                     sea = c('black', 'red', 'plum1'),
                      sky = c('black', 'red', 'thistle'))
     rownames(df) <- c('label', 'point', 'segment')
     return(df)

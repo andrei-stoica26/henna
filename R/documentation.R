@@ -30,6 +30,8 @@
 #' @param margins Plot margins. Must be a vector of size 4 listing the desired
 #' top, right, bottom and left margin, in that order.
 #' @param theme Plot theme.
+#' @param pvalOffset Offset added to p-values to avoid infinite values when
+#' taking logarithms.
 #' @param ... Additional arguments passed to \code{centerTitle}.
 #'
 #' @return \code{NULL}. This function is only used internally for
@@ -57,4 +59,5 @@ documentFun <- function(title = NULL,
                         vJust = 0.6,
                         margins = margin(0, -10, -10, -10),
                         theme = 'linedraw',
+                        pvalOffset = 1e-317,
                         ...){}

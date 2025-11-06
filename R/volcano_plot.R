@@ -21,10 +21,18 @@ NULL
 #' @param labPvalThr Threshold used to plot gene labels based on p-values.
 #' Ignored if \code{labeledGenes} is not \code{NULL}.
 #' @param alpha Opaqueness level of point color.
-#' @param theme Plot theme. Choose between 'linedraw', 'bw', 'classic' and
-#' 'minimal'. Default is 'linedraw'.
+#' @param theme Plot theme. Choose between 'bw', 'classic', 'linedraw'
+#' and 'minimal'. Default is 'minimal'.
 #'
 #' @return An object of class \code{gg}.
+#'
+#' @examples
+#' filePath <- system.file('extdata', 'volcanoPlot.qs', package='henna')
+#' df <- qs::qread(filePath)
+#' p <- volcanoPlot(df, title='Volcano plot - beta cells', pvalThr=1e-10,
+#' logFCThr=1,
+#' labPvalThr=1e-150,
+#' labLogFCThr=5.3)
 #'
 #' @export
 #'
@@ -47,24 +55,24 @@ volcanoPlot <- function(df,
                         labLogFCThr = 1.8,
                         labPvalThr = 1e-12,
                         labelType = c('boxed', 'free'),
-                        labelSize = 2.5,
+                        labelSize = 2.2,
                         labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 0,
                         maxOverlaps = 100,
-                        pointSize = 1,
+                        pointSize = 0.8,
                         alpha = 0.7,
-                        palette = c("dodgerblue4", "goldenrod2", "slateblue3",
+                        palette = c("seagreen4", "goldenrod2", "orchid3",
                                     "red2"),
                         legendTextSize = 10,
                         legendTitleSize = 10,
                         axisTextSize = 12,
                         axisTitleSize = 12,
-                        theme = c('linedraw', 'bw', 'classic', 'minimal'),
+                        theme = c('minimal', 'bw', 'classic', 'linedraw'),
                         ...){
 
     legendPos <- match.arg(legendPos, c('right', 'top', 'left', 'bottom'))
-    theme <- match.arg(theme, c('linedraw', 'bw', 'classic', 'minimal'))
+    theme <- match.arg(theme, c('minimal', 'bw', 'classic', 'linedraw'))
     labelType <- match.arg(labelType, c('boxed', 'free'))
 
     noGenes <- paste0(rep('#', max(vapply(rownames(df), nchar, integer(1)))
@@ -87,7 +95,6 @@ volcanoPlot <- function(df,
                          legendLabels=legendLabs,
                          col=palette,
                          colAlpha=alpha,
-                         boxedLabels=TRUE,
                          ...) + labs(color=legendTitle)
 
     if (is.null(labeledGenes)){
@@ -96,6 +103,9 @@ volcanoPlot <- function(df,
         labeledGenes <- rownames(labelDF)
     } else
         labelDF <- df[labeledGenes, ]
+
+    df[, pvalCol][df[, pvalCol] == 0] <- 2
+    labelDF[, pvalCol][labelDF[, pvalCol] == 0] <- min(df[, pvalCol]) / 10
 
     labelDF <- data.frame(log = labelDF[, logCol],
                           nlogPadj = -log(labelDF[, pvalCol], 10))
@@ -112,5 +122,3 @@ volcanoPlot <- function(df,
     p <- centerTitle(p, title)
     return(p)
 }
-
-

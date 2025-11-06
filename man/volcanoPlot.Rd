@@ -21,19 +21,19 @@ volcanoPlot(
   labLogFCThr = 1.8,
   labPvalThr = 1e-12,
   labelType = c("boxed", "free"),
-  labelSize = 2.5,
+  labelSize = 2.2,
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 0,
   maxOverlaps = 100,
-  pointSize = 1,
+  pointSize = 0.8,
   alpha = 0.7,
-  palette = c("dodgerblue4", "goldenrod2", "slateblue3", "red2"),
+  palette = c("seagreen4", "goldenrod2", "orchid3", "red2"),
   legendTextSize = 10,
   legendTitleSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
-  theme = c("linedraw", "bw", "classic", "minimal"),
+  theme = c("minimal", "bw", "classic", "linedraw"),
   ...
 )
 }
@@ -99,8 +99,8 @@ and its data point.}
 
 \item{axisTitleSize}{Axis title size.}
 
-\item{theme}{Plot theme. Choose between 'linedraw', 'bw', 'classic' and
-'minimal'. Default is 'linedraw'.}
+\item{theme}{Plot theme. Choose between 'bw', 'classic', 'linedraw'
+and 'minimal'. Default is 'minimal'.}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
 }
@@ -109,4 +109,13 @@ An object of class \code{gg}.
 }
 \description{
 This function creates a volcano plot.
+}
+\examples{
+filePath <- system.file('extdata', 'volcanoPlot.qs', package='henna')
+df <- qs::qread(filePath)
+p <- volcanoPlot(df, title='Volcano plot - beta cells', pvalThr=1e-10,
+logFCThr=1,
+labPvalThr=1e-150,
+labLogFCThr=5.3)
+
 }

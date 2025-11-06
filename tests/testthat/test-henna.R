@@ -174,3 +174,15 @@ test_that("isPointOnBoundary works", {
     expect_false(isPointOnBoundary(2, 3, hullSegments))
     expect_true(isPointOnBoundary(12, 2.6, hullSegments))
 })
+
+test_that("volcanoPlot returns a gg object", {
+    filePath <- system.file('extdata', 'volcanoPlot.qs', package='henna')
+    df <- qs::qread(filePath)
+    p <- volcanoPlot(df,
+                     title='Volcano plot - beta cells',
+                     pvalThr=1e-10,
+                     logFCThr=1,
+                     labPvalThr=1e-150,
+                     labLogFCThr=5.3)
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+})

@@ -37,8 +37,6 @@ riverPlot <- function(df,
                       axisTextSize = 12,
                       axisTitleSize = 12,
                       viridisPal = 'turbo',
-                      legendPos = 'none',
-                      margins = margin(0, -10, -10, -10),
                       ...){
     p <- ggplot(data=df, aes(axis1=.data[[names(df)[1]]],
                              axis2=.data[[names(df)[2]]],
@@ -51,10 +49,7 @@ riverPlot <- function(df,
                   size=labelSize) +
         scale_fill_viridis_d(option=viridisPal) +
         theme_void() +
-        theme(legend.position=legendPos,
-              plot.margin=margins,
-              axis.text=element_text(size=axisTextSize),
-              axis.title=element_text(size=axisTitleSize))
+        theme(legend.position='none')
     p <- centerTitle(p, title, ...)
     return(p)
 }

@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.5.8`), 
+Alternatively, you can install the most recent development version (`0.6.3`), 
 using this code:
 
 ```
@@ -52,9 +52,9 @@ subsequent MDS reduction in order to generate the coordinates of the points:
 
 ### hullPlot
 
-This function plots a set of points together with the convex hull. Optionally,
-it divides the points into 2 or 4 classes of different colors by drawing a 
-vertical and/or a horizontal line that intersects the hull.
+This function plots a set of points together with their convex hull. 
+Optionally, it divides the points into 2 or 4 classes of different colors by 
+drawing a vertical and/or a horizontal line that intersects the hull.
 
 An application is visualizing shared cluster markers. Here, we display the
 shared markers of the alpha and delta clusters from the HBP dataset, 
@@ -106,3 +106,11 @@ This function plots a numeric matrix. Here, we use shared cluster markers as
 an example:
 
 ![](man/figures/tile_plot.png)
+
+### volcanoPlot
+
+This function generates a volcano plot. We use the beta cell upregulated
+and downregulated markers as an example:
+
+![](man/figures/volcano_plot.png)
+
