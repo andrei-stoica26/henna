@@ -11,7 +11,7 @@ rankPlot(
   viridisPal = "turbo",
   xLab = "Item",
   yLab = "Rank count",
-  legendLab = "Rank",
+  legendTitle = "Rank",
   sigDigits = NULL,
   labelSize = 2.5,
   labelColor = "black",
@@ -44,7 +44,7 @@ Must be set to \code{FALSE} if the input data frame has been generated with
 
 \item{yLab}{Label of y axis.}
 
-\item{legendLab}{Legend label.}
+\item{legendTitle}{Legend title.}
 
 \item{sigDigits}{Number of significant digits used when displaying mean
 ranks. If \code{NULL}, the mean ranks will not be displayed.}

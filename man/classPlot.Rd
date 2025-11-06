@@ -9,7 +9,7 @@ classPlot(
   title = NULL,
   xLab = "Value",
   yLab = "Item",
-  legendLab = "Class",
+  legendTitle = "Class",
   palette = "Spectral",
   labelSize = 2.5,
   labelColor = "black",
@@ -32,7 +32,7 @@ value as the first three columns. The latter must be numeric.}
 
 \item{yLab}{Label of y axis.}
 
-\item{legendLab}{Legend label.}
+\item{legendTitle}{Legend title.}
 
 \item{palette}{Color palette.}
 

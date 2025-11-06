@@ -8,13 +8,15 @@ documentFun(
   title = NULL,
   xLab = "x",
   yLab = "y",
+  legendTitle = "Legend",
+  legendLabs = c("a", "b"),
   legendPos = "right",
-  legendLab = "Label",
   palette = "Spectral",
   viridisPal = "turbo",
   labelSize = 2.5,
   labelColor = "black",
   pointSize = 0.8,
+  pointShape = 1,
   legendTitleSize = 10,
   legendTextSize = 10,
   axisTextSize = 12,
@@ -22,6 +24,7 @@ documentFun(
   xAngle = 45,
   vJust = 0.6,
   margins = margin(0, -10, -10, -10),
+  theme = "linedraw",
   ...
 )
 }
@@ -32,9 +35,11 @@ documentFun(
 
 \item{yLab}{Label of y axis.}
 
-\item{legendPos}{Legend position.}
+\item{legendTitle}{Legend title.}
 
-\item{legendLab}{Legend label.}
+\item{legendLabs}{Legend labels.}
+
+\item{legendPos}{Legend position.}
 
 \item{palette}{Color palette.}
 
@@ -45,6 +50,8 @@ documentFun(
 \item{labelColor}{Label color.}
 
 \item{pointSize}{Point size.}
+
+\item{pointShape}{Point shape.}
 
 \item{legendTitleSize}{Legend title size.}
 
@@ -61,7 +68,21 @@ documentFun(
 \item{margins}{Plot margins. Must be a vector of size 4 listing the desired
 top, right, bottom and left margin, in that order.}
 
+\item{theme}{Plot theme.}
+
 \item{...}{Additional arguments passed to \code{centerTitle}.}
+
+\item{labelDF}{Label data frame.}
+
+\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
+(option 'free'). Default is 'free'.}
+
+\item{labelRepulsion}{Repulsion strength between labels.}
+
+\item{labelPull}{Attraction strength between a text label
+and its data point.}
+
+\item{maxOverlaps}{Maximum overlaps.}
 }
 \value{
 \code{NULL}. This function is only used internally for

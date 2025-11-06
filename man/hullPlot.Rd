@@ -21,15 +21,16 @@ hullPlot(
   pointShape = 4,
   alpha = 0.2,
   labelDF = NULL,
+  labelType = c("free", "boxed"),
   labelSize = 2.5,
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 0,
+  maxOverlaps = 10,
   legendPos = "bottom",
   legendTextSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
-  maxOverlaps = 10,
   ...
 )
 }
@@ -73,6 +74,9 @@ hull will not be displayed.}
 
 \item{labelDF}{Label data frame.}
 
+\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
+(option 'free'). Default is 'free'.}
+
 \item{labelSize}{Label size. Ignored if \code{labelDF} is \code{NULL}.}
 
 \item{labelColor}{Label color. Ignored if \code{labelDF} is \code{NULL}.}
@@ -82,6 +86,9 @@ hull will not be displayed.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
+\item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
+is \code{NULL}.}
+
 \item{legendPos}{Legend position.}
 
 \item{legendTextSize}{Legend text size.}
@@ -89,9 +96,6 @@ and its data point.}
 \item{axisTextSize}{Axis text size.}
 
 \item{axisTitleSize}{Axis title size.}
-
-\item{maxOverlaps}{Maximum overlaps. Ignored if \code{labelDF}
-is \code{NULL}.}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
 }

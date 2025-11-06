@@ -13,7 +13,7 @@ densityPlot(
   drawScores = FALSE,
   xLab = NULL,
   yLab = NULL,
-  legendLab = "Density",
+  legendTitle = "Density",
   palette = NULL,
   segColor = "black",
   pointSize = 1,
@@ -62,7 +62,7 @@ scores will be taken from there.}
 
 \item{yLab}{Label of y axis.}
 
-\item{legendLab}{Legend label.}
+\item{legendTitle}{Legend title.}
 
 \item{palette}{A character vector of colors. Used only if color scheme is
 set to 'custom'.}

@@ -9,7 +9,7 @@ tilePlot(
   title = NULL,
   xLab = NULL,
   yLab = NULL,
-  legendLab = "Value",
+  legendTitle = "Value",
   palette = "Spectral",
   reverseColors = TRUE,
   sigDigits = 2,
@@ -36,7 +36,7 @@ tilePlot(
 
 \item{yLab}{Label of y axis.}
 
-\item{legendLab}{Legend label.}
+\item{legendTitle}{Legend title.}
 
 \item{palette}{Color palette.}
 

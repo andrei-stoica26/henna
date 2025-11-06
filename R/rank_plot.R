@@ -99,7 +99,7 @@ rankPlot <- function(df,
                      viridisPal = 'turbo',
                      xLab = 'Item',
                      yLab = 'Rank count',
-                     legendLab = 'Rank',
+                     legendTitle = 'Rank',
                      sigDigits = NULL,
                      labelSize = 2.5,
                      labelColor = 'black',
@@ -128,7 +128,7 @@ rankPlot <- function(df,
         theme_classic() +
         scale_fill_viridis_d(option=viridisPal) + labs(x=xLab,
                                                        y=yLab,
-                                                       fill=legendLab) +
+                                                       fill=legendTitle) +
         theme(legend.text=element_text(size=legendTextSize),
               legend.title=element_text(size=legendTitleSize),
               axis.text.x=element_text(angle=xAngle, vjust=vJust),

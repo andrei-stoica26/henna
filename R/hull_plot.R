@@ -55,6 +55,7 @@ borderCoords <- function(df, axis, axisIntersect){
 #' horizontal line.
 #'
 #'
+#' @inheritParams documentFun
 #' @param p A ggplot object representing the hull.
 #' @inheritParams convexHull
 #' @inheritParams borderCoords
@@ -62,7 +63,6 @@ borderCoords <- function(df, axis, axisIntersect){
 #' perpendicular to the input border line.
 #' @param borderPoints The points where the border line intersects the
 #' convex hull.
-#' @param legendLabs Legend labels.
 #' @param alpha Opaqueness level.
 #'
 #' @return A ggplot object showing the hull split in two parts along the input
@@ -279,9 +279,6 @@ splitHull <- function(p,
 #' @inheritParams splitHull
 #' @param hullWidth Width of the convex hull. If 0 (as default), the convex
 #' hull will not be displayed.
-#' @param pointSize Point size.
-#' @param pointShape Point shape.
-#' @inheritParams labelPoints
 #' @param labelSize Label size. Ignored if \code{labelDF} is \code{NULL}.
 #' @param labelColor Label color. Ignored if \code{labelDF} is \code{NULL}.
 #' @param maxOverlaps Maximum overlaps. Ignored if \code{labelDF}
@@ -315,16 +312,19 @@ hullPlot <- function(pointsDF,
                      pointShape = 4,
                      alpha = 0.2,
                      labelDF = NULL,
+                     labelType = c('free', 'boxed'),
                      labelSize = 2.5,
                      labelColor = 'black',
                      labelRepulsion = 1,
                      labelPull = 0,
+                     maxOverlaps = 10,
                      legendPos = 'bottom',
                      legendTextSize = 10,
                      axisTextSize = 12,
                      axisTitleSize = 12,
-                     maxOverlaps = 10,
                      ...){
+
+    labelType <- match.arg(labelType, c('free', 'boxed'))
 
     if (nrow(pointsDF) < 2)
         stop('The hull plot requires at least two points.')
@@ -394,8 +394,8 @@ hullPlot <- function(pointsDF,
                    size=pointSize, shape=pointShape)
 
     if(!is.null(labelDF))
-        p <- labelPoints(p, labelDF, labelSize, labelColor, labelRepulsion,
-                         labelPull, maxOverlaps)
+        p <- labelPoints(p, labelDF, labelType, labelSize, labelColor,
+                         labelRepulsion, labelPull, maxOverlaps)
 
     p <- centerTitle(p, title, ...)
     return(p)

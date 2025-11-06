@@ -2,7 +2,7 @@
 #' @importFrom ggeasy easy_remove_axes
 #' @importFrom ggforce geom_circle
 #' @importFrom ggnewscale new_scale_color new_scale_fill
-#' @importFrom ggrepel geom_text_repel
+#' @importFrom ggrepel geom_label_repel geom_text_repel
 #' @importFrom viridis scale_color_viridis scale_fill_viridis
 #' @importFrom withr with_seed
 #'

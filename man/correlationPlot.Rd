@@ -4,14 +4,14 @@
 \alias{correlationPlot}
 \title{Plot a correlation matrix}
 \usage{
-correlationPlot(mat, title = NULL, legendLab = "Correlation", ...)
+correlationPlot(mat, title = NULL, legendTitle = "Correlation", ...)
 }
 \arguments{
 \item{mat}{A numeric matrix or data frame.}
 
 \item{title}{Plot title.}
 
-\item{legendLab}{Legend label.}
+\item{legendTitle}{Legend title.}
 
 \item{...}{Additional parameters passed to tilePlot.}
 }

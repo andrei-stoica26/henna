@@ -1,7 +1,7 @@
 Package: henna
 Type: Package
 Title: A Versatile Visualization Suite
-Version: 0.5.3
+Version: 0.5.8
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
@@ -16,6 +16,7 @@ License: MIT + file LICENSE
 Imports:
     abdiv,
     dplyr,
+    EnhancedVolcano,
     ggalluvial,
     ggeasy,
     ggforce,

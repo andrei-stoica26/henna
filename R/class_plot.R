@@ -34,7 +34,7 @@ classPlot <- function(df,
                       title = NULL,
                       xLab = 'Value',
                       yLab = 'Item',
-                      legendLab = 'Class',
+                      legendTitle = 'Class',
                       palette = 'Spectral',
                       labelSize = 2.5,
                       labelColor ='black',
@@ -63,7 +63,7 @@ classPlot <- function(df,
               axis.text.y=element_blank(),
               axis.text.x=element_text(size=axisTextSize),
               axis.title.x=element_text(size=axisTitleSize)) +
-        labs(x=xLab, y=yLab, fill=legendLab) +
+        labs(x=xLab, y=yLab, fill=legendTitle) +
         scale_fill_manual(values=hcl.colors(nClasses, palette)) +
         geom_text(aes(x=.data[[names(df)[3]]] / 2,
                       y=.data[[names(df)[4]]],

@@ -1,5 +1,5 @@
 #'@importFrom abdiv euclidean
-#'@importFrom ggplot2 aes after_stat coord_fixed element_blank element_text expand_limits geom_bar geom_point geom_polygon geom_segment geom_text geom_tile ggplot ggproto ggtitle labs margin scale_color_discrete scale_color_manual scale_fill_gradientn scale_fill_manual scale_fill_viridis_d stat_density_2d theme theme_classic theme_void xlab
+#'@importFrom ggplot2 aes after_stat coord_fixed element_blank element_text expand_limits geom_bar geom_point geom_polygon geom_segment geom_text geom_tile ggplot ggproto ggtitle labs margin scale_color_discrete scale_color_manual scale_fill_gradientn scale_fill_manual scale_fill_viridis_d stat_density_2d theme theme_bw theme_classic theme_linedraw theme_minimal theme_void xlab
 #'@importFrom stats density runif setNames
 #'
 NULL
@@ -100,33 +100,37 @@ expandRange <- function(v, expandPerc = 10){
 #' This function labels points in a ggplot object.
 #'
 #' @inheritParams centerTitle
-#' @param labelDF Label data frame.
-#' @param labelSize Label size.
-#' @param labelColor Label color.
-#' @param labelRepulsion Repulsion strength between labels.
-#' @param labelPull Attraction strength between a text label
-#' and its data point.
-#' @param maxOverlaps Maximum overlaps.
+#' @inheritParams documentFun
+#' @param ... Additional arguments passed to \code{geom_text_repel}
+#' (if \code{labelType} is 'free') or \code{geom_text_label}
+#' (if \code{labelType} is 'boxed').
 #'
 #' @return A ggplot object.
 #'
-#' @keywords internal
+#' @export
 #'
 labelPoints <- function(p,
                         labelDF,
+                        labelType = c('free', 'boxed'),
                         labelSize = 2,
                         labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 1,
-                        maxOverlaps = Inf){
-    p <- p + geom_text_repel(data=labelDF,
-                             aes(x=labelDF[, 1],
-                                 y=labelDF[, 2],
-                                 label=rownames(labelDF)),
-                             size=labelSize,
-                             color=labelColor,
-                             force=labelRepulsion,
-                             force_pull=labelPull,
-                             max.overlaps=maxOverlaps)
+                        maxOverlaps = Inf,
+                        ...){
+
+    labelType <- match.arg(labelType, c('free', 'boxed'))
+    plotFuns <- setNames(list(geom_text_repel, geom_label_repel),
+                         c('free', 'boxed'))
+    p <- p + plotFuns[[labelType]](data=labelDF,
+                                   aes(x=labelDF[, 1],
+                                       y=labelDF[, 2],
+                                       label=rownames(labelDF)),
+                                       size=labelSize,
+                                       color=labelColor,
+                                       force=labelRepulsion,
+                                       force_pull=labelPull,
+                                       max.overlaps=maxOverlaps,
+                                       ...)
     return(p)
 }

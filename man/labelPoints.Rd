@@ -7,17 +7,22 @@
 labelPoints(
   p,
   labelDF,
+  labelType = c("free", "boxed"),
   labelSize = 2,
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 1,
-  maxOverlaps = Inf
+  maxOverlaps = Inf,
+  ...
 )
 }
 \arguments{
 \item{p}{A ggplot object.}
 
 \item{labelDF}{Label data frame.}
+
+\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
+(option 'free'). Default is 'free'.}
 
 \item{labelSize}{Label size.}
 
@@ -29,6 +34,10 @@ labelPoints(
 and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps.}
+
+\item{...}{Additional arguments passed to \code{geom_text_repel}
+(if \code{labelType} is 'free') or \code{geom_text_label}
+(if \code{labelType} is 'boxed').}
 }
 \value{
 A ggplot object.
@@ -36,4 +45,3 @@ A ggplot object.
 \description{
 This function labels points in a ggplot object.
 }
-\keyword{internal}

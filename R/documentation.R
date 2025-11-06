@@ -5,13 +5,22 @@
 #' @param title Plot title.
 #' @param xLab Label of x axis.
 #' @param yLab Label of y axis.
+#' @param legendTitle Legend title.
+#' @param legendLabs Legend labels.
 #' @param legendPos Legend position.
-#' @param legendLab Legend label.
 #' @param palette Color palette.
 #' @param viridisPal Viridis palette.
+#' @param labelDF Label data frame.
+#' @param labelType Whether to draw a box around labels (option 'boxed') or not
+#' (option 'free'). Default is 'free'.
 #' @param labelSize Label size.
 #' @param labelColor Label color.
+#' @param labelRepulsion Repulsion strength between labels.
+#' @param labelPull Attraction strength between a text label
+#' and its data point.
+#' @param maxOverlaps Maximum overlaps.
 #' @param pointSize Point size.
+#' @param pointShape Point shape.
 #' @param legendTitleSize Legend title size.
 #' @param legendTextSize Legend text size.
 #' @param axisTextSize Axis text size.
@@ -20,6 +29,7 @@
 #' @param vJust Vertical justification in [0, 1].
 #' @param margins Plot margins. Must be a vector of size 4 listing the desired
 #' top, right, bottom and left margin, in that order.
+#' @param theme Plot theme.
 #' @param ... Additional arguments passed to \code{centerTitle}.
 #'
 #' @return \code{NULL}. This function is only used internally for
@@ -30,13 +40,15 @@
 documentFun <- function(title = NULL,
                         xLab = 'x',
                         yLab = 'y',
+                        legendTitle = 'Legend',
+                        legendLabs = c('a', 'b'),
                         legendPos = 'right',
-                        legendLab = 'Label',
                         palette = 'Spectral',
                         viridisPal = 'turbo',
                         labelSize = 2.5,
                         labelColor ='black',
                         pointSize = 0.8,
+                        pointShape = 1,
                         legendTitleSize = 10,
                         legendTextSize = 10,
                         axisTextSize = 12,
@@ -44,4 +56,5 @@ documentFun <- function(title = NULL,
                         xAngle = 45,
                         vJust = 0.6,
                         margins = margin(0, -10, -10, -10),
+                        theme = 'linedraw',
                         ...){}

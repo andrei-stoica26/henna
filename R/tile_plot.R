@@ -49,7 +49,7 @@ tilePlot <- function(mat,
                      title = NULL,
                      xLab = NULL,
                      yLab = NULL,
-                     legendLab = 'Value',
+                     legendTitle = 'Value',
                      palette = 'Spectral',
                      reverseColors = TRUE,
                      sigDigits = 2,
@@ -97,7 +97,7 @@ tilePlot <- function(mat,
                   color=labelColor,
                   size=labelSize) +
         scale_fill_gradientn(colors=palColors, limits=limits) +
-        labs(x=xLab, y=yLab, fill=legendLab)
+        labs(x=xLab, y=yLab, fill=legendTitle)
 
     p <- centerTitle(p, title, ...)
     return(p)
@@ -123,5 +123,5 @@ tilePlot <- function(mat,
 #' @export
 #'
 correlationPlot <- function(mat, title = NULL,
-                            legendLab = 'Correlation', ...)
-    return(tilePlot(mat, title, legendLab = legendLab, isCor=TRUE, ...))
+                            legendTitle = 'Correlation', ...)
+    return(tilePlot(mat, title, legendTitle=legendTitle, isCor=TRUE, ...))
