@@ -9,7 +9,7 @@ createPlot1 <- function(){
                               xLab='Count',
                               yLab='Cell type',
                               legendTitle='Donor',
-                              labelSize=2.2,
+                              labelSize=2.1,
                               valueCutoff=100)
         ggplot2::ggsave("man/figures/class_plot.png", p, width=6, height=4)
     }
@@ -30,7 +30,9 @@ createPlot3 <- function(){
                          quietly=TRUE)){
         df <- qs::qread('inst/extdata/densityPlot.qs')
         p <- henna::densityPlot(df, 'Density plot', colorScheme='sea',
-                                labelSize=2)
+                                labelSize=2, labelType='boxed',
+                                labelPadding=0.1,
+                                boxPadding=0.2)
         ggplot2::ggsave("man/figures/density_plot.png", p, width=6,
                         height=4)
     }
@@ -85,9 +87,11 @@ createPlot6 <- function(){
 createPlot7 <- function(){
     if (requireNamespace(c('ggplot2', 'henna', 'qs'), quietly=TRUE)){
         ranksDF <- qs::qread('inst/extdata/rankPlot.qs')
-        p <- rankPlot(ranksDF, 'Marker ranks for alpha, beta, delta and gamma cells',
-                      sigDigits=1, labelColor='mediumpurple',labelFace='bold',
-                      xLab='Gene')
+        p <- henna::rankPlot(ranksDF,
+                             paste0('Marker ranks for alpha, beta, delta ',
+                                    'and gamma cells'),
+                             sigDigits=2,
+                             xLab='Gene')
         ggplot2::ggsave("man/figures/rank_plot.png", p, width=6,
                         height=4)
     }
@@ -107,9 +111,10 @@ createPlot8 <- function(){
 createPlot9 <- function(){
     if (requireNamespace(c('ggplot2', 'henna', 'qs'), quietly=TRUE)){
         mat <- qs::qread('inst/extdata/tilePlot.qs')
-        p <- tilePlot(mat, title='Number of shared markers', xLab=NULL,
-                      yLab=NULL,
-                      labelSize=2)
+        p <- henna::tilePlot(mat,
+                             title='Number of shared markers',
+                             xLab=NULL,
+                             yLab=NULL)
         ggsave("man/figures/tile_plot.png", p, width=6, height=4)
     }
 }
@@ -117,12 +122,12 @@ createPlot9 <- function(){
 createPlot10 <- function(){
     if (requireNamespace(c('ggplot2', 'henna', 'qs'), quietly=TRUE)){
         df <- qs::qread('inst/extdata/volcanoPlot.qs')
-        p <- volcanoPlot(df,
-                         title='Volcano plot - beta cells',
-                         pvalThr=1e-10,
-                         logFCThr=1,
-                         labPvalThr=1e-150,
-                         labLogFCThr=5.3)
+        p <- henna::volcanoPlot(df,
+                                title='Volcano plot - beta cells',
+                                pvalThr=1e-10,
+                                logFCThr=1,
+                                labPvalThr=1e-150,
+                                labLogFCThr=5.3)
         ggsave("man/figures/volcano_plot.png", p, width=6, height=4)
     }
 }
@@ -132,3 +137,4 @@ createFigures <- function()
         eval(as.name(paste0('createPlot', i)))()
 
 createFigures()
+

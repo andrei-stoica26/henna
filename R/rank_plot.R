@@ -141,13 +141,13 @@ rankPlot <- function(df,
         nRanks <- sum(df[, 3]) / length(unique(df[, 1]))
         labelHeights <- labelScalingFactor * nRanks *
             (liver::minmax(meanRanks[, 2]) + labelOffset)
-        p <- p + geom_text(data=meanRanks,
-                           aes(x=.data[[names(meanRanks)[1]]],
+        p <- p + geom_label(data=meanRanks,
+                            aes(x=.data[[names(meanRanks)[1]]],
                                y=labelHeights,
                                label=.data[[names(meanRanks)[2]]]),
-                           size=labelSize,
-                           color=labelColor,
-                           fontface=labelFace)
+                            size=labelSize,
+                            color=labelColor,
+                            fontface=labelFace)
     }
 
     p <- centerTitle(p, title, ...)

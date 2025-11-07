@@ -22,16 +22,19 @@ densityPlot(
   segWidth = 0.4,
   nGridPoints = 300,
   expandPerc = 20,
+  labelType = c("free", "boxed"),
   labelSize = 3,
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 1,
+  maxOverlaps = Inf,
+  labelPadding = 0,
+  boxPadding = 0,
   legendPos = c("right", "none"),
   legendTextSize = 10,
   legendTitleSize = 10,
   axisTextSize = 12,
   axisTitleSize = 12,
-  maxOverlaps = Inf,
   verbose = FALSE,
   ...
 )
@@ -87,6 +90,9 @@ set to \code{FALSE}.}
 
 \item{expandPerc}{Percentage by which the grid will be expanded.}
 
+\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
+(option 'free'). Default is 'free'.}
+
 \item{labelSize}{Label size.}
 
 \item{labelColor}{Label color. Ignored if \code{useSchemeDefaults}
@@ -97,6 +103,12 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
+\item{maxOverlaps}{Maximum overlaps.}
+
+\item{labelPadding}{Amount of padding around label.}
+
+\item{boxPadding}{Amount of padding around box.}
+
 \item{legendPos}{Legend position. Choose between 'right' and 'none'.}
 
 \item{legendTextSize}{Legend text size.}
@@ -106,8 +118,6 @@ and its data point.}
 \item{axisTextSize}{Axis text size.}
 
 \item{axisTitleSize}{Axis title size.}
-
-\item{maxOverlaps}{Maximum overlaps.}
 
 \item{verbose}{Whether output should be verbose.}
 

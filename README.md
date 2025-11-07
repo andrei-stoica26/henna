@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.6.3`), 
+Alternatively, you can install the most recent development version (`0.6.4`), 
 using this code:
 
 ```
@@ -94,23 +94,37 @@ the HBP dataset:
 
 ### riverPlot
 This function generates an alluvial plot for a data frame with two categorical 
-columns and a weights column. As an example, it can represent the significance
-overlaps between cell type markers and donor markers in the HBP dataset. 
-Stronger overlaps correspond to thicker connecting curves:
+columns and a numeric column.
+
+In the example below, it represents the significance of pairs of overlaps 
+between the markers of groups belonging to two identity classes 
+(cell type and donor). 
 
 ![](man/figures/river_plot.png)
 
+Stronger overlaps correspond to thicker connecting curves.
+
 ### tilePlot
 
-This function plots a numeric matrix. Here, we use shared cluster markers as
-an example:
+This function plots a numeric matrix. It is a more general version of
+`correlationPlot`.
 
 ![](man/figures/tile_plot.png)
 
 ### volcanoPlot
 
-This function generates a volcano plot. We use the beta cell upregulated
-and downregulated markers as an example:
+This function creates a volcano plot for a data frame with a log column and
+a p-value column. The gene names must be provided as row names.
+
+Users can input labeled genes in two ways: 
+
+1. By using p-value and log fold-change thresholds (the default option). 
+2. By inputting a list of labels. 
+
+The default option is preferred in the example below. To emphasize the usage 
+of different thresholds for labeling and significance, the thresholds for
+labeling are set much higher than the thresholds for significance.
 
 ![](man/figures/volcano_plot.png)
+
 

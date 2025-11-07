@@ -4,7 +4,6 @@
 R/.abstract.R
 R/.examples.R
 R/.extras.R
-R/.fig_gen.R
 R/.test_code.R
 henna.Rproj
 inst/doc

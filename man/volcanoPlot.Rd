@@ -27,7 +27,7 @@ volcanoPlot(
   labelPull = 0,
   maxOverlaps = 100,
   pointSize = 0.8,
-  alpha = 0.7,
+  alpha = 0.6,
   palette = c("seagreen4", "goldenrod2", "orchid3", "red2"),
   legendTextSize = 10,
   legendTitleSize = 10,
@@ -38,7 +38,7 @@ volcanoPlot(
 )
 }
 \arguments{
-\item{df}{A data frame with rownames as genes, one log column and one
+\item{df}{A data frame with rownames as genes, a log column and a
 p-value column.}
 
 \item{title}{Plot title.}
@@ -62,8 +62,8 @@ p-value column.}
 \item{pvalThr}{Threshold used to separate significant p-values.}
 
 \item{labeledGenes}{Gene labels to be displayed on the plot. Default is
-\code{NULL} (gene labels will be displayed on the basis
-of \code{labLogFCThr }) and \code{labPvalThr}).}
+\code{NULL}, entailing that gene labels will be displayed on the basis
+of \code{labLogFCThr } and \code{labPvalThr}.}
 
 \item{labLogFCThr}{Threshold used to plot gene labels based on log values.
 Ignored if \code{labeledGenes} is not \code{NULL}.}
@@ -102,13 +102,22 @@ and its data point.}
 \item{theme}{Plot theme. Choose between 'bw', 'classic', 'linedraw'
 and 'minimal'. Default is 'minimal'.}
 
-\item{...}{Additional arguments passed to \code{centerTitle}.}
+\item{...}{Additional arguments passed to
+\code{EnhancedVolcano::EnhancedVolcano}.}
 }
 \value{
 An object of class \code{gg}.
 }
 \description{
-This function creates a volcano plot.
+This function creates a volcano plot for a data frame with a log column and
+a p-value column. The gene names must be provided as row names.
+}
+\details{
+Users can input labeled genes in two ways:
+
+1) By using p-value and log fold-change thresholds (the default option).
+
+2) By inputting a list of labels.
 }
 \examples{
 filePath <- system.file('extdata', 'volcanoPlot.qs', package='henna')

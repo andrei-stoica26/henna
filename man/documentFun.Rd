@@ -15,6 +15,11 @@ documentFun(
   viridisPal = "turbo",
   labelSize = 2.5,
   labelColor = "black",
+  labelRepulsion = 1,
+  labelPull = 1,
+  maxOverlaps = 50,
+  boxPadding = 0.2,
+  labelPadding = 0.1,
   pointSize = 0.8,
   pointShape = 1,
   legendTitleSize = 10,
@@ -50,6 +55,17 @@ documentFun(
 
 \item{labelColor}{Label color.}
 
+\item{labelRepulsion}{Repulsion strength between labels.}
+
+\item{labelPull}{Attraction strength between a text label
+and its data point.}
+
+\item{maxOverlaps}{Maximum overlaps.}
+
+\item{boxPadding}{Amount of padding around box.}
+
+\item{labelPadding}{Amount of padding around label.}
+
 \item{pointSize}{Point size.}
 
 \item{pointShape}{Point shape.}
@@ -80,13 +96,6 @@ taking logarithms.}
 
 \item{labelType}{Whether to draw a box around labels (option 'boxed') or not
 (option 'free'). Default is 'free'.}
-
-\item{labelRepulsion}{Repulsion strength between labels.}
-
-\item{labelPull}{Attraction strength between a text label
-and its data point.}
-
-\item{maxOverlaps}{Maximum overlaps.}
 }
 \value{
 \code{NULL}. This function is only used internally for

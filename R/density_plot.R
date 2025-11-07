@@ -92,16 +92,19 @@ densityPlot <- function(df,
                         segWidth = 0.4,
                         nGridPoints = 300,
                         expandPerc = 20,
+                        labelType = c('free', 'boxed'),
                         labelSize = 3,
                         labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 1,
+                        maxOverlaps = Inf,
+                        labelPadding = 0,
+                        boxPadding = 0,
                         legendPos = c('right', 'none'),
                         legendTextSize = 10,
                         legendTitleSize = 10,
                         axisTextSize = 12,
                         axisTitleSize = 12,
-                        maxOverlaps = Inf,
                         verbose = FALSE,
                         ...){
 
@@ -110,6 +113,7 @@ densityPlot <- function(df,
                                             'sky', 'custom'))
     segType <- match.arg(segType, c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'))
+    labelType <- match.arg(labelType, c('free', 'boxed'))
     legendPos <- match.arg(legendPos, c('right', 'none'))
 
     if (colorScheme == 'custom'){
@@ -176,13 +180,9 @@ densityPlot <- function(df,
                               linewidth=segWidth)
     }
 
-    p <- p + geom_point(size=pointSize, color=pointColor) +
-        geom_text_repel(aes(label=pointLabs),
-                        size=labelSize,
-                        color=labelColor,
-                        force=labelRepulsion,
-                        force_pull=labelPull,
-                        max.overlaps=maxOverlaps)
+    p <- p + geom_point(size=pointSize, color=pointColor)
+    p <- labelPoints(p, df, labelType, labelSize, labelColor, labelRepulsion,
+                     labelPull, maxOverlaps, labelPadding, boxPadding)
 
     p <- centerTitle(p, title, ...)
     return(p)

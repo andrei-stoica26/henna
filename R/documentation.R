@@ -19,6 +19,8 @@
 #' @param labelPull Attraction strength between a text label
 #' and its data point.
 #' @param maxOverlaps Maximum overlaps.
+#' @param boxPadding Amount of padding around box.
+#' @param labelPadding Amount of padding around label.
 #' @param pointSize Point size.
 #' @param pointShape Point shape.
 #' @param legendTitleSize Legend title size.
@@ -49,6 +51,11 @@ documentFun <- function(title = NULL,
                         viridisPal = 'turbo',
                         labelSize = 2.5,
                         labelColor ='black',
+                        labelRepulsion = 1,
+                        labelPull = 1,
+                        maxOverlaps = 50,
+                        boxPadding = 0.2,
+                        labelPadding = 0.1,
                         pointSize = 0.8,
                         pointShape = 1,
                         legendTitleSize = 10,
