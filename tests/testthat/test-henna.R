@@ -181,8 +181,8 @@ test_that("isPointOnBoundary works", {
 })
 
 test_that("volcanoPlot returns a gg object", {
-    filePath <- system.file('extdata', 'volcanoPlot.qs', package='henna')
-    df <- qs::qread(filePath)
+    filePath <- system.file('extdata', 'volcanoPlot.qs2', package='henna')
+    df <- qs2::qs_read(filePath)
     p <- volcanoPlot(df,
                      title='Volcano plot - beta cells',
                      pvalThr=1e-10,

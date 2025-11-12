@@ -1,7 +1,7 @@
 # henna
-`henna` provides nine versatile visualization utilities. They are designed with 
-scRNA-seq data analysis in mind, but can be used for a variety of other 
-applications as well.
+`henna` is a suite comprising several versatile visualization utilities. 
+They are designed with scRNA-seq data analysis in mind, but are well-suited to
+to other applications as well.
 
 ## Installation
 
@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.6.5`), 
+Alternatively, you can install the most recent development version (`0.6.6`), 
 using this code:
 
 ```

@@ -1,21 +1,21 @@
 # A self-contained script to generate the data in inst/extdata
 #'
 createExtData <- function(){
-    if (requireNamespace(c('CSOA', 'dplyr', 'hammers', 'LISTO', 'qs', 'scRNAseq',
-                           'scuttle','Seurat'), quietly=TRUE)){
+    if (requireNamespace(c('CSOA', 'dplyr', 'hammers', 'LISTO', 'qs2',
+                           'scRNAseq','scuttle','Seurat'), quietly=TRUE)){
         scObj <- scRNAseq::BaronPancreasData('human')
         scObj <- scuttle::logNormCounts(scObj)
         scObj <- Seurat::as.Seurat(scObj)
 
         df <- dplyr::count(scObj[[]], donor, label)
-        qs::qsave(df, 'inst/extdata/classPlot.qs')
+        qs2::qs_save(df, 'inst/extdata/classPlot.qs2')
 
         genes <- sort(c('FLNA','SERPING1', 'SERPINH1', 'CHGA', 'CHGB','COL1A1',
                         'COL6A1', 'CELA3B', 'CELA3A', 'CD24', 'KRT8', 'KRT18',
                         'NOTCH3'))
         mat <- hammers::scExpMat(scObj, genes=genes)
         corMat <- cor(t(mat))
-        qs::qsave(corMat, 'inst/extdata/correlationPlot.qs')
+        qs2::qs_save(corMat, 'inst/extdata/correlationPlot.qs2')
 
         genes <- c('COX7B', 'SMURF2', 'MINOS1','C19orf43', 'EIF3D', 'PTGES3',
                    'TMED4', 'ARL2', 'C12orf75', 'NUCKS1', 'RNF187',
@@ -25,13 +25,13 @@ createExtData <- function(){
         mat <- hammers::scExpMat(scObj, genes=genes)
         d <- stats::dist(mat, 'euclidean')
         df <- data.frame(cmdscale(d))
-        qs::qsave(df, 'inst/extdata/densityPlot.qs')
+        qs2::qs_save(df, 'inst/extdata/densityPlot.qs2')
 
         markers <- LISTO::buildMarkerList(scObj, 'label',
                                           ids1=c('alpha', 'beta',
                                                  'gamma', 'delta'))
         sharedDF <- LISTO::sharedMarkers(markers[[1]], markers[[4]])
-        qs::qsave(sharedDF, 'inst/extdata/hullPlot.qs')
+        qs2::qs_save(sharedDF, 'inst/extdata/hullPlot.qs2')
 
         alphaMarkers <- c('GCG', 'TTR', 'PCSK2', 'FXYD5', 'LDB2', 'MAFB',
                           'CHGA', 'SCGB2A1', 'GLS', 'FAP', 'DPP4', 'GPR119',
@@ -70,11 +70,11 @@ createExtData <- function(){
         geneSetExp <- hammers::scExpMat(scObj, genes=genes)
         overlapDF <- CSOA::generateOverlaps(geneSetExp)
         overlapDF <- CSOA::processOverlaps(overlapDF)
-        qs::qsave(overlapDF, 'inst/extdata/networkPlot.qs')
+        qs2::qs_save(overlapDF, 'inst/extdata/networkPlot.qs2')
 
         overlapObj <- CSOA:::edgeLists.data.frame(overlapDF)
         degreesDF <- CSOA:::geneDegrees(overlapObj)
-        qs::qsave(degreesDF, 'inst/extdata/radialPlot.qs')
+        qs2::qs_save(degreesDF, 'inst/extdata/radialPlot.qs2')
 
         shared <- Reduce(intersect, list(
             rownames(markers[['alpha']]), rownames(markers[['beta']]),
@@ -87,14 +87,14 @@ createExtData <- function(){
                              gammaLog = markers[['gamma']][shared, ]$avg_log2FC)
         rownames(logsDF) <- shared
         ranksDF <- apply(logsDF, 2, function(x) rank(-x, ties.method='min'))
-        qs::qsave(ranksDF, 'inst/extdata/rankPlot.qs')
+        qs2::qs_save(ranksDF, 'inst/extdata/rankPlot.qs2')
 
         donorMarkers <- LISTO::buildMarkerList(scObj, 'donor')
         markerOverlaps <- LISTO::markerDFListOverlap(markers,
                                                      donorMarkers,
                                                      rownames(scObj))
         riverDF <- hammers::prepAlluvial(markerOverlaps)
-        qs::qsave(riverDF, 'inst/extdata/riverPlot.qs')
+        qs2::qs_save(riverDF, 'inst/extdata/riverPlot.qs2')
 
         celltypes <- names(markers)
         mat <- do.call(rbind, lapply(celltypes, function(i){
@@ -104,7 +104,7 @@ createExtData <- function(){
         }))
         rownames(mat) <- celltypes
         colnames(mat) <- celltypes
-        qs::qsave(mat, 'inst/extdata/tilePlot.qs')
+        qs2::qs_save(mat, 'inst/extdata/tilePlot.qs2')
 
         df <- Seurat::FindMarkers(scObj,
                                   group.by='label',
@@ -112,7 +112,7 @@ createExtData <- function(){
                                   logfc.threshold=0,
                                   min.pct=0)
         df <- df[df$p_val_adj < 0.05, ]
-        qs::qsave(df, 'inst/extdata/volcanoPlot.qs')
+        qs2::qs_save(df, 'inst/extdata/volcanoPlot.qs2')
 
     }
 }

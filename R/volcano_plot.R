@@ -41,8 +41,8 @@ NULL
 #' @return An object of class \code{gg}.
 #'
 #' @examples
-#' filePath <- system.file('extdata', 'volcanoPlot.qs', package='henna')
-#' df <- qs::qread(filePath)
+#' filePath <- system.file('extdata', 'volcanoPlot.qs2', package='henna')
+#' df <- qs2::qs_read(filePath)
 #' p <- volcanoPlot(df, title='Volcano plot - beta cells', pvalThr=1e-10,
 #' logFCThr=1,
 #' labPvalThr=1e-150,

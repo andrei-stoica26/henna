@@ -1,17 +1,17 @@
 Package: henna
 Type: Package
 Title: A Versatile Visualization Suite
-Version: 0.6.5
+Version: 0.6.6
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
      comment=c(ORCID='0000-0002-5253-0826'))
 Description: A visualization suite primarily designed for single-cell
-    RNA-sequencing data analysis applications, but adaptable to
+    RNA-sequencing data analysis applications but well-suited to
     other purposes as well. It introduces novel plots to represent two-variable
     and frequency data and optimizes some commonly used plotting options
-    (e.g., correlation, network, density and alluvial plots) for ease of usage
-    and flexibility.
+    (e.g., correlation, network, density, alluvial and volcano plots) 
+    for ease of usage and flexibility.
 License: MIT + file LICENSE
 Imports:
     abdiv,
@@ -36,7 +36,7 @@ Imports:
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Suggests: 
-    qs,
+    qs2,
     testthat (>= 3.0.0)
 URL: https://github.com/andrei-stoica26/henna
 BugReports: https://github.com/andrei-stoica26/henna/issues

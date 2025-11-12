@@ -58,8 +58,8 @@ A ggplot object.
 This function labels points in a ggplot object.
 }
 \examples{
-filePath <- system.file('extdata', 'hullPlot.qs', package='henna')
-sharedDF <- qs::qread(filePath)
+filePath <- system.file('extdata', 'hullPlot.qs2', package='henna')
+sharedDF <- qs2::qs_read(filePath)
 name1 <- 'alpha'
 name2 <- 'delta'
 legendLabs <- as.factor(c('Non-top',
