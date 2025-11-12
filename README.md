@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.6.4`), 
+Alternatively, you can install the most recent development version (`0.6.5`), 
 using this code:
 
 ```
@@ -21,57 +21,57 @@ devtools::install_github("andrei-stoica26/henna")
 
 ## Visualization tools
 
-All tools are demonstrated here using the human Baron pancreas (HBP) dataset,
-available as part of the [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
-package.
+The data used to generate the figures presented here comes from the human Baron 
+pancreas (HBP) dataset, which can be accessed through the [scRNAseq](https://bioconductor.org/packages/release/data/experiment/html/scRNAseq.html)
+package.  The code used to generate the figures is provided in the 
+[scripts](https://github.com/andrei-stoica26/henna/tree/main/inst/scripts) 
+folder.
 
 ### classPlot
 
-This function creates a bar plot for a set of items grouped by class, ordering
-the items and classes based on counts. An application is representing data 
-coming from two categorical columns of a scRNA-seq expression object. Here, we
-render selected donor and label information from the HBP dataset:
+This function creates a bar plot that quantifies the items belonging
+to different classes. Its required input is a data frame whose first two
+columns are categorical (classes and items) and third column is numeric
+(counts).
 
-![](man/figures/class_plot.png)
+![](inst/figures/class_plot.png)
 
 ### correlationPlot
 
-This function plots a correlation matrix. We use gene expression data
-from the HBP dataset:
+This function plots a correlation matrix. It accepts a matrix or data frame
+as input.
 
-![](man/figures/correlation_plot.png)
+![](inst/figures/correlation_plot.png)
 
 ### densityPlot
 
 This function creates a density plot for a set of points, optionally displaying
-segements between each point and its nearest neighbor. Here, we subject 
-expression data from the HBP dataset to a distance matrix calculation and
-subsequent MDS reduction in order to generate the coordinates of the points:
+segements between each point and its nearest neighbor. It requires a data frame
+with the `x` and `y` coordinates of the points, which may additionally
+contain score and nearest-neighbor columns.
 
-![](man/figures/density_plot.png)
+![](inst/figures/density_plot.png)
 
 ### hullPlot
 
 This function plots a set of points together with their convex hull. 
 Optionally, it divides the points into 2 or 4 classes of different colors by 
-drawing a vertical and/or a horizontal line that intersects the hull.
+drawing a vertical and/or a horizontal line that intersects the hull. It can
+also label selected points. The required input is a data frame with `x` 
+and `y` coordinates.
 
-An application is visualizing shared cluster markers. Here, we display the
-shared markers of the alpha and delta clusters from the HBP dataset, 
-highlighting the top ones in purple:
-
-![](man/figures/hull_plot.png)
+![](inst/figures/hull_plot.png)
 
 ### networkPlot
 
 This function plots a graph using different colors for nodes that are part of 
-different connected components.
+different connected components. It requires as input a data frame whose first
+two columns are categorical and represent the vertices of the edges in a graph.
+A numeric column representing either edge weights or edge ranks (these will
+be converted into weights) can also be provided. If available, this column will
+be used to vary edge width.
 
-An application is visualizing genes with a strong overlapping expression in 
-terms of cells showing the highest (90th percentile and above) expression
-of the gene.
-
-![](man/figures/network_plot.png)
+![](inst/figures/network_plot.png)
 
 ### radialPlot
 
@@ -82,7 +82,7 @@ It can be used to showcase genes involved in a network. Just like
 `networkPlot`, `radialPlot` can distinguish genes belonging to different
 connected components:
 
-![](man/figures/radial_plot.png)
+![](inst/figures/radial_plot.png)
 
 ### rankPlot
 This function aggregates multiple ranks available for a group of items in a 
@@ -90,7 +90,7 @@ single plot. Average ranks can be displayed on the plot. Here, we visualize the
 ranks of 12 genes as markers of the alpha, beta, delta and gamma clusters in 
 the HBP dataset:
 
-![](man/figures/rank_plot.png)
+![](inst/figures/rank_plot.png)
 
 ### riverPlot
 This function generates an alluvial plot for a data frame with two categorical 
@@ -100,7 +100,7 @@ In the example below, it represents the significance of pairs of overlaps
 between the markers of groups belonging to two identity classes 
 (cell type and donor). 
 
-![](man/figures/river_plot.png)
+![](inst/figures/river_plot.png)
 
 Stronger overlaps correspond to thicker connecting curves.
 
@@ -109,7 +109,7 @@ Stronger overlaps correspond to thicker connecting curves.
 This function plots a numeric matrix. It is a more general version of
 `correlationPlot`.
 
-![](man/figures/tile_plot.png)
+![](inst/figures/tile_plot.png)
 
 ### volcanoPlot
 
@@ -125,6 +125,6 @@ The default option is preferred in the example below. To emphasize the usage
 of different thresholds for labeling and significance, the thresholds for
 labeling are set much higher than the thresholds for significance.
 
-![](man/figures/volcano_plot.png)
+![](inst/figures/volcano_plot.png)
 
 

@@ -63,7 +63,12 @@ test_that("hullPlot works", {
 test_that("networkPlot returns a ggraph object", {
     df <- data.frame(gene1 = paste0('G', c(1, 2, 5, 6, 7, 17)),
                      gene2 = paste0('G', c(2, 5, 8, 11, 11, 11)),
-                     rank = c(1, 1, 3, 3, 3, 3))
+                     rank = c(1, 1, 3, 3, 3, 3),
+                     weight = c(8, 2, 1, 12, 3, 4))
+    p <- networkPlot(df, numCol='rank', numColType='ranks')
+    expect_equal(is(p), 'ggraph')
+    p <- networkPlot(df, numCol='weight', numColType='weights')
+    expect_equal(is(p), 'ggraph')
     p <- networkPlot(df)
     expect_equal(is(p), 'ggraph')
     p <- networkPlot(df, nodeColor='orange', edgeColor='green4')

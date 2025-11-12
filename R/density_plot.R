@@ -97,9 +97,10 @@ densityPlot <- function(df,
                         labelColor = 'black',
                         labelRepulsion = 1,
                         labelPull = 1,
-                        maxOverlaps = Inf,
+                        maxOverlaps = 10,
                         labelPadding = 0,
                         boxPadding = 0,
+                        labelSegWidth = 0.4,
                         legendPos = c('right', 'none'),
                         legendTextSize = 10,
                         legendTitleSize = 10,
@@ -135,7 +136,7 @@ densityPlot <- function(df,
         if(drawScores)
             if(is(df[, 3])[1] == 'numeric')
                 pointLabs <- mapply(function(x, y) paste0(x, '\n', y),
-                                    pointLabs, round(df[, 3], 2)) else
+                                       rownames(df), round(df[, 3], 2)) else
                                         warning('drawScores is set to TRUE but ',
                                                 'no scores are available in ',
                                                 'the third column. Scores will ',
@@ -181,8 +182,9 @@ densityPlot <- function(df,
     }
 
     p <- p + geom_point(size=pointSize, color=pointColor)
-    p <- labelPoints(p, df, labelType, labelSize, labelColor, labelRepulsion,
-                     labelPull, maxOverlaps, labelPadding, boxPadding)
+    p <- labelPoints(p, df, pointLabs, labelType, labelSize, labelColor,
+                     labelRepulsion, labelPull, maxOverlaps,
+                     labelPadding, boxPadding, labelSegWidth)
 
     p <- centerTitle(p, title, ...)
     return(p)

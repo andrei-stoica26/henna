@@ -277,6 +277,7 @@ splitHull <- function(p,
 #' @inheritParams documentFun
 #' @inheritParams convexHull
 #' @inheritParams splitHull
+#' @inheritParams createLabelDFTemplate
 #' @param hullWidth Width of the convex hull. If 0 (as default), the convex
 #' hull will not be displayed.
 #' @param labelSize Label size. Ignored if \code{labelDF} is \code{NULL}.
@@ -311,7 +312,10 @@ hullPlot <- function(pointsDF,
                      pointSize = 1,
                      pointShape = 4,
                      alpha = 0.2,
-                     labelDF = NULL,
+                     labeledPoints = NULL,
+                     labelOutside = FALSE,
+                     labXThr = NULL,
+                     labYThr = NULL,
                      labelType = c('free', 'boxed'),
                      labelSize = 2.5,
                      labelColor = 'black',
@@ -393,9 +397,12 @@ hullPlot <- function(pointsDF,
                                            y=.data[[names(pointsDF)[2]]]),
                    size=pointSize, shape=pointShape)
 
+    labelDF <- createLabelDFHull(pointsDF, 1, 2, labeledPoints,
+                                 labelOutside, labXThr, labYThr)
+
     if(!is.null(labelDF))
-        p <- labelPoints(p, labelDF, labelType, labelSize, labelColor,
-                         labelRepulsion, labelPull, maxOverlaps)
+        p <- labelPoints(p, labelDF, rownames(labelDF), labelType, labelSize,
+                         labelColor, labelRepulsion, labelPull, maxOverlaps)
 
     p <- centerTitle(p, title, ...)
     return(p)

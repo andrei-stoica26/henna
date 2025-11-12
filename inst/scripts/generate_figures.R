@@ -11,7 +11,7 @@ createPlot1 <- function(){
                               legendTitle='Donor',
                               labelSize=2.1,
                               valueCutoff=100)
-        ggplot2::ggsave("man/figures/class_plot.png", p, width=6, height=4)
+        ggplot2::ggsave("inst/figures/class_plot.png", p, width=6, height=4)
     }
 }
 
@@ -20,7 +20,7 @@ createPlot2 <- function(){
                          quietly=TRUE)){
         corMat <- qs::qread('inst/extdata/correlationPlot.qs')
         p <- henna::correlationPlot(corMat, labelSize=2.5)
-        ggplot2::ggsave("man/figures/correlation_plot.png", p, width=6,
+        ggplot2::ggsave("inst/figures/correlation_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -30,10 +30,8 @@ createPlot3 <- function(){
                          quietly=TRUE)){
         df <- qs::qread('inst/extdata/densityPlot.qs')
         p <- henna::densityPlot(df, 'Density plot', colorScheme='sea',
-                                labelSize=2, labelType='boxed',
-                                labelPadding=0.1,
-                                boxPadding=0.2)
-        ggplot2::ggsave("man/figures/density_plot.png", p, width=6,
+                                labelSize=2)
+        ggplot2::ggsave("inst/figures/density_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -53,10 +51,12 @@ createPlot4 <- function(){
                              xInt=1.5,
                              yInt=1.3,
                              hullWidth=0.5,
+                             labXThr=1.5,
+                             labYThr=1.3,
                              xLab=paste0('avg_log2FC (', name1, ')'),
                              yLab=paste0('avg_log2FC (', name2, ')'),
                              legendLabs=legendLabs)
-        ggplot2::ggsave("man/figures/hull_plot.png", p, width=6,
+        ggplot2::ggsave("inst/figures/hull_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -65,8 +65,10 @@ createPlot5 <- function(){
     if (requireNamespace(c('ggplot2', 'henna', 'qs'), quietly=TRUE)){
         overlapDF <- qs::qread('inst/extdata/networkPlot.qs')
         p <- henna::networkPlot(overlapDF,
-                                'Genes with strongly overlapping expression')
-        ggplot2::ggsave("man/figures/network_plot.png", p, width=6,
+                                'Genes with strongly overlapping expression',
+                                'rank',
+                                'ranks')
+        ggplot2::ggsave("inst/figures/network_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -79,7 +81,7 @@ createPlot6 <- function(){
                                groupLegendTitle='Component',
                                valueLegendTitle='Degree',
                                extraCircles=2)
-        ggplot2::ggsave("man/figures/radial_plot.png", p, width=6,
+        ggplot2::ggsave("inst/figures/radial_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -92,7 +94,7 @@ createPlot7 <- function(){
                                     'and gamma cells'),
                              sigDigits=2,
                              xLab='Gene')
-        ggplot2::ggsave("man/figures/rank_plot.png", p, width=6,
+        ggplot2::ggsave("inst/figures/rank_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -103,7 +105,7 @@ createPlot8 <- function(){
         p <- henna::riverPlot(riverDF,
                               paste0('Overlaps between cell type markers ',
                                      'and donor markers'))
-        ggplot2::ggsave("man/figures/river_plot.png", p, width=6,
+        ggplot2::ggsave("inst/figures/river_plot.png", p, width=6,
                         height=4)
     }
 }
@@ -115,7 +117,7 @@ createPlot9 <- function(){
                              title='Number of shared markers',
                              xLab=NULL,
                              yLab=NULL)
-        ggsave("man/figures/tile_plot.png", p, width=6, height=4)
+        ggplot2::ggsave("inst/figures/tile_plot.png", p, width=6, height=4)
     }
 }
 
@@ -128,7 +130,7 @@ createPlot10 <- function(){
                                 logFCThr=1,
                                 labPvalThr=1e-150,
                                 labLogFCThr=5.3)
-        ggsave("man/figures/volcano_plot.png", p, width=6, height=4)
+        ggplot2::ggsave("inst/figures/volcano_plot.png", p, width=6, height=4)
     }
 }
 
@@ -137,4 +139,3 @@ createFigures <- function()
         eval(as.name(paste0('createPlot', i)))()
 
 createFigures()
-

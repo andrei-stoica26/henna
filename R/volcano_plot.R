@@ -22,7 +22,12 @@ NULL
 #' @param pvalThr Threshold used to separate significant p-values.
 #' @param labeledGenes Gene labels to be displayed on the plot. Default is
 #' \code{NULL}, entailing that gene labels will be displayed on the basis
-#' of \code{labLogFCThr } and \code{labPvalThr}.
+#' of \code{labLogFCThr} and \code{labPvalThr}, if at least one of
+#' them is not \code{NULL}.
+#' @param labelOutside Display labels for points specified by
+#' \code{labeledGenes} even if they fall outside the boundaries imposed by
+#' \code{labLogFCThr} and \code{labPvalThr}. Ignored if \code{labeledGenes} is
+#' \code{NULL} or both \code{labLogFCThr} and \code{labPvalThr} are \code{NULL}.
 #' @param labLogFCThr Threshold used to plot gene labels based on log values.
 #' Ignored if \code{labeledGenes} is not \code{NULL}.
 #' @param labPvalThr Threshold used to plot gene labels based on p-values.
@@ -61,6 +66,7 @@ volcanoPlot <- function(df,
                         logFCThr = 1,
                         pvalThr = 1e-05,
                         labeledGenes = NULL,
+                        labelOutside = FALSE,
                         labLogFCThr = 1.8,
                         labPvalThr = 1e-12,
                         labelType = c('boxed', 'free'),
@@ -69,9 +75,12 @@ volcanoPlot <- function(df,
                         labelRepulsion = 1,
                         labelPull = 0,
                         maxOverlaps = 100,
+                        boxPadding = 0.2,
+                        labelPadding = 0.1,
+                        labelSegWidth = 0.4,
                         pointSize = 0.8,
                         alpha = 0.6,
-                        palette = c("seagreen4", "goldenrod2", "orchid3",
+                        palette = c("gray31", "goldenrod2", "orchid3",
                                     "red2"),
                         legendTextSize = 10,
                         legendTitleSize = 10,
@@ -106,22 +115,13 @@ volcanoPlot <- function(df,
                          colAlpha=alpha,
                          ...) + labs(color=legendTitle)
 
-    if (is.null(labeledGenes)){
-        labelDF <- df[abs(df[, logCol]) >= labLogFCThr &
-                          df[, pvalCol] < labPvalThr, ]
-        labeledGenes <- rownames(labelDF)
-    } else
-        labelDF <- df[labeledGenes, ]
+    labelDF <- createLabelDFVolcano(df, logCol, pvalCol, labeledGenes,
+                                    labelOutside, labLogFCThr, labPvalThr)
 
-    df[, pvalCol][df[, pvalCol] == 0] <- 2
-    labelDF[, pvalCol][labelDF[, pvalCol] == 0] <- min(df[, pvalCol]) / 10
-
-    labelDF <- data.frame(log = labelDF[, logCol],
-                          nlogPadj = -log(labelDF[, pvalCol], 10))
-    rownames(labelDF) <- labeledGenes
-
-    p <- labelPoints(p, labelDF, labelType, labelSize, labelColor,
-                     labelRepulsion, labelPull, maxOverlaps)
+    if(!is.null(labelDF))
+        p <- labelPoints(p, labelDF, rownames(labelDF), labelType, labelSize,
+                         labelColor, labelRepulsion, labelPull, maxOverlaps,
+                         boxPadding,labelPadding, labelSegWidth)
     p <- p + eval(as.name(paste0('theme_', theme)))()
     p <- p + theme(legend.position=legendPos,
                    legend.text=element_text(size=legendTextSize),

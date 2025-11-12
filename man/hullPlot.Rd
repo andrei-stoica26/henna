@@ -20,7 +20,10 @@ hullPlot(
   pointSize = 1,
   pointShape = 4,
   alpha = 0.2,
-  labelDF = NULL,
+  labeledPoints = NULL,
+  labelOutside = FALSE,
+  labXThr = NULL,
+  labYThr = NULL,
   labelType = c("free", "boxed"),
   labelSize = 2.5,
   labelColor = "black",
@@ -72,7 +75,16 @@ hull will not be displayed.}
 
 \item{alpha}{Opaqueness level.}
 
-\item{labelDF}{Label data frame.}
+\item{labeledPoints}{Point labels to be displayed on the plot.}
+
+\item{labelOutside}{Display labels for points specified by
+\code{labeledPoints} even if they fall outside the boundaries imposed by
+\code{labXThr} and \code{labYThr}. Ignored if \code{labeledPoints} is
+\code{NULL} or both \code{labXThr} and \code{labYThr} are \code{NULL}.}
+
+\item{labXThr}{Threshold used to plot labels based on \code{xCol} values.}
+
+\item{labYThr}{Threshold used to plot labels based on \code{yCol} values.}
 
 \item{labelType}{Whether to draw a box around labels (option 'boxed') or not
 (option 'free'). Default is 'free'.}

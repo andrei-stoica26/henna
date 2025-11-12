@@ -13,6 +13,8 @@ documentFun(
   legendPos = "right",
   palette = "Spectral",
   viridisPal = "turbo",
+  labeledPoints = NULL,
+  labelOutside = TRUE,
   labelSize = 2.5,
   labelColor = "black",
   labelRepulsion = 1,
@@ -20,6 +22,7 @@ documentFun(
   maxOverlaps = 50,
   boxPadding = 0.2,
   labelPadding = 0.1,
+  labelSegWidth = 0.4,
   pointSize = 0.8,
   pointShape = 1,
   legendTitleSize = 10,
@@ -51,6 +54,8 @@ documentFun(
 
 \item{viridisPal}{Viridis palette.}
 
+\item{labeledPoints}{Point labels to be displayed on the plot.}
+
 \item{labelSize}{Label size.}
 
 \item{labelColor}{Label color.}
@@ -65,6 +70,8 @@ and its data point.}
 \item{boxPadding}{Amount of padding around box.}
 
 \item{labelPadding}{Amount of padding around label.}
+
+\item{labelSegWidth}{Thickness of segment connecting label to point.}
 
 \item{pointSize}{Point size.}
 
@@ -91,8 +98,6 @@ top, right, bottom and left margin, in that order.}
 taking logarithms.}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
-
-\item{labelDF}{Label data frame.}
 
 \item{labelType}{Whether to draw a box around labels (option 'boxed') or not
 (option 'free'). Default is 'free'.}

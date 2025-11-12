@@ -27,9 +27,10 @@ densityPlot(
   labelColor = "black",
   labelRepulsion = 1,
   labelPull = 1,
-  maxOverlaps = Inf,
+  maxOverlaps = 10,
   labelPadding = 0,
   boxPadding = 0,
+  labelSegWidth = 0.4,
   legendPos = c("right", "none"),
   legendTextSize = 10,
   legendTitleSize = 10,
@@ -108,6 +109,8 @@ and its data point.}
 \item{labelPadding}{Amount of padding around label.}
 
 \item{boxPadding}{Amount of padding around box.}
+
+\item{labelSegWidth}{Thickness of segment connecting label to point.}
 
 \item{legendPos}{Legend position. Choose between 'right' and 'none'.}
 

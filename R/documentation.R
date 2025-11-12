@@ -10,7 +10,7 @@
 #' @param legendPos Legend position.
 #' @param palette Color palette.
 #' @param viridisPal Viridis palette.
-#' @param labelDF Label data frame.
+#' @param labeledPoints Point labels to be displayed on the plot.
 #' @param labelType Whether to draw a box around labels (option 'boxed') or not
 #' (option 'free'). Default is 'free'.
 #' @param labelSize Label size.
@@ -21,6 +21,7 @@
 #' @param maxOverlaps Maximum overlaps.
 #' @param boxPadding Amount of padding around box.
 #' @param labelPadding Amount of padding around label.
+#' @param labelSegWidth Thickness of segment connecting label to point.
 #' @param pointSize Point size.
 #' @param pointShape Point shape.
 #' @param legendTitleSize Legend title size.
@@ -49,6 +50,8 @@ documentFun <- function(title = NULL,
                         legendPos = 'right',
                         palette = 'Spectral',
                         viridisPal = 'turbo',
+                        labeledPoints = NULL,
+                        labelOutside = TRUE,
                         labelSize = 2.5,
                         labelColor ='black',
                         labelRepulsion = 1,
@@ -56,6 +59,7 @@ documentFun <- function(title = NULL,
                         maxOverlaps = 50,
                         boxPadding = 0.2,
                         labelPadding = 0.1,
+                        labelSegWidth = 0.4,
                         pointSize = 0.8,
                         pointShape = 1,
                         legendTitleSize = 10,

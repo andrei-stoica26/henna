@@ -18,6 +18,7 @@ volcanoPlot(
   logFCThr = 1,
   pvalThr = 1e-05,
   labeledGenes = NULL,
+  labelOutside = FALSE,
   labLogFCThr = 1.8,
   labPvalThr = 1e-12,
   labelType = c("boxed", "free"),
@@ -26,9 +27,12 @@ volcanoPlot(
   labelRepulsion = 1,
   labelPull = 0,
   maxOverlaps = 100,
+  boxPadding = 0.2,
+  labelPadding = 0.1,
+  labelSegWidth = 0.4,
   pointSize = 0.8,
   alpha = 0.6,
-  palette = c("seagreen4", "goldenrod2", "orchid3", "red2"),
+  palette = c("gray31", "goldenrod2", "orchid3", "red2"),
   legendTextSize = 10,
   legendTitleSize = 10,
   axisTextSize = 12,
@@ -63,7 +67,13 @@ p-value column.}
 
 \item{labeledGenes}{Gene labels to be displayed on the plot. Default is
 \code{NULL}, entailing that gene labels will be displayed on the basis
-of \code{labLogFCThr } and \code{labPvalThr}.}
+of \code{labLogFCThr} and \code{labPvalThr}, if at least one of
+them is not \code{NULL}.}
+
+\item{labelOutside}{Display labels for points specified by
+\code{labeledGenes} even if they fall outside the boundaries imposed by
+\code{labLogFCThr} and \code{labPvalThr}. Ignored if \code{labeledGenes} is
+\code{NULL} or both \code{labLogFCThr} and \code{labPvalThr} are \code{NULL}.}
 
 \item{labLogFCThr}{Threshold used to plot gene labels based on log values.
 Ignored if \code{labeledGenes} is not \code{NULL}.}
@@ -84,6 +94,12 @@ Ignored if \code{labeledGenes} is not \code{NULL}.}
 and its data point.}
 
 \item{maxOverlaps}{Maximum overlaps.}
+
+\item{boxPadding}{Amount of padding around box.}
+
+\item{labelPadding}{Amount of padding around label.}
+
+\item{labelSegWidth}{Thickness of segment connecting label to point.}
 
 \item{pointSize}{Point size.}
 
