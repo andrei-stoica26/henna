@@ -1,7 +1,7 @@
 # henna
-`henna` is a suite comprising several versatile visualization utilities. 
-They are designed with scRNA-seq data analysis in mind, but are well-suited to
-to other applications as well.
+`henna` is a suite comprising several visualization utilities. 
+They are designed with scRNA-seq data analysis in mind but are well-suited
+to a variety of other applications as well.
 
 ## Installation
 
@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.6.6`), 
+Alternatively, you can install the most recent development version (`0.6.7`), 
 using this code:
 
 ```
@@ -75,20 +75,19 @@ be used to vary edge width.
 
 ### radialPlot
 
-This function plots positive integer-valued points over concentric circles, 
-with points located more centrally representing higher values. 
+This function plots positive numeric-valued points over concentric circles, 
+with points located more centrally representing higher values. Optionally, the
+points can be assigned to groups and colored on the basis of thes groups. 
 
-It can be used to showcase genes involved in a network. Just like 
-`networkPlot`, `radialPlot` can distinguish genes belonging to different
-connected components:
+The input data frame must store the point labels in its first column and their
+numeric values in its second column. A third column (categorical) representing
+the group where each point is assigned can also be provided.
 
 ![](inst/figures/radial_plot.png)
 
 ### rankPlot
 This function aggregates multiple ranks available for a group of items in a 
-single plot. Average ranks can be displayed on the plot. Here, we visualize the
-ranks of 12 genes as markers of the alpha, beta, delta and gamma clusters in 
-the HBP dataset:
+single plot. Average ranks can be displayed on the plot.
 
 ![](inst/figures/rank_plot.png)
 

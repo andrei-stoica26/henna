@@ -1,13 +1,13 @@
 Package: henna
 Type: Package
 Title: A Versatile Visualization Suite
-Version: 0.6.6
+Version: 0.6.7
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),
      comment=c(ORCID='0000-0002-5253-0826'))
 Description: A visualization suite primarily designed for single-cell
-    RNA-sequencing data analysis applications but well-suited to
+    RNA-sequencing data analysis applications but well-suited for
     other purposes as well. It introduces novel plots to represent two-variable
     and frequency data and optimizes some commonly used plotting options
     (e.g., correlation, network, density, alluvial and volcano plots) 

@@ -144,14 +144,14 @@ circleCoords <- function(itemCoordsDF, extraCircles = 0){
 #' valuesDF <- data.frame(Protein = paste0('P', seq(20)),
 #' Value = sample(10, 20, replace=TRUE),
 #' Group = sample(3, 20, replace=TRUE))
-#' radialPlot(valuesDF)
+#' radialPlot(valuesDF, groupLegendTitle='Group')
 #'
 #' @export
 #'
 radialPlot <- function(valuesDF,
                        title = NULL,
                        valueLegendTitle = 'Value',
-                       groupLegendTitle = 'Group',
+                       groupLegendTitle = NULL,
                        extraCircles = 0,
                        palette = rpColors(length(unique(valuesDF[, 3]))),
                        labelSize = 3,
