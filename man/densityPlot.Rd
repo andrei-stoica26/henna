@@ -7,7 +7,8 @@
 densityPlot(
   df,
   title = NULL,
-  colorScheme = c("orichalc", "cake", "grapes", "lava", "oasis", "sea", "sky", "custom"),
+  colorScheme = c("cloudy", "cake", "grapes", "lava", "oasis", "orichalc", "sea", "sky",
+    "custom"),
   useSchemeDefaults = TRUE,
   drawNN = TRUE,
   drawScores = FALSE,
@@ -48,8 +49,8 @@ column as a character vector with elements selected from the rownames.}
 
 \item{title}{Plot title.}
 
-\item{colorScheme}{Color scheme. Choose between 'cake', 'grapes', 'lava',
-'oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'orichalc'.}
+\item{colorScheme}{Color scheme. Choose between 'cake', 'cloudy', 'grapes',
+'lava', oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'cloudy'.}
 
 \item{useSchemeDefaults}{Whether to use the default \code{segColor},
 \code{pointColor} and \code{labelColor} for scheme. Ignored

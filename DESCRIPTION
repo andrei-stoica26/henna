@@ -1,7 +1,7 @@
 Package: henna
 Type: Package
 Title: A Versatile Visualization Suite
-Version: 0.6.7
+Version: 0.6.8
 Authors@R: person('Andrei-Florian', 'Stoica', 
       email='andreistoica@foxmail.com',
      role=c('aut','cre'),

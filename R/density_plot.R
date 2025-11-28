@@ -31,8 +31,8 @@ createPairSegments <- function(df){
 #' and \code{y} coordinates of the points. A score column can also be provided
 #' as the third column. Nearest neighbor information can be provided in the last
 #' column as a character vector with elements selected from the rownames.
-#' @param colorScheme Color scheme. Choose between 'cake', 'grapes', 'lava',
-#' 'oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'orichalc'.
+#' @param colorScheme Color scheme. Choose between 'cake', 'cloudy', 'grapes',
+#' 'lava', oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'cloudy'.
 #' @param useSchemeDefaults Whether to use the default \code{segColor},
 #' \code{pointColor} and \code{labelColor} for scheme. Ignored
 #' if \code{colorScheme} is set to 'custom'.
@@ -75,8 +75,9 @@ createPairSegments <- function(df){
 #'
 densityPlot <- function(df,
                         title = NULL,
-                        colorScheme = c('orichalc', 'cake', 'grapes', 'lava',
-                                        'oasis', 'sea', 'sky', 'custom'),
+                        colorScheme = c('cloudy', 'cake', 'grapes', 'lava',
+                                        'oasis', 'orichalc', 'sea', 'sky',
+                                        'custom'),
                         useSchemeDefaults = TRUE,
                         drawNN = TRUE,
                         drawScores = FALSE,
@@ -109,9 +110,9 @@ densityPlot <- function(df,
                         verbose = FALSE,
                         ...){
 
-    colorScheme <- match.arg(colorScheme, c('orichalc', 'cake', 'grapes',
-                                            'lava', 'oasis', 'sea',
-                                            'sky', 'custom'))
+    colorScheme <- match.arg(colorScheme, c('cloudy', 'cake', 'grapes',
+                                            'lava', 'oasis', 'orichalc',
+                                            'sea', 'sky', 'custom'))
     segType <- match.arg(segType, c('dashed','solid', 'dotted',
                                     'dotdash', 'longdash', 'twodash'))
     labelType <- match.arg(labelType, c('free', 'boxed'))
