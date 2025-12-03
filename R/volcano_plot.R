@@ -1,7 +1,3 @@
-#' @importFrom EnhancedVolcano EnhancedVolcano
-#'
-NULL
-
 #' Create a volcano plot
 #'
 #' This function creates a volcano plot for a data frame with a log column and
@@ -41,12 +37,14 @@ NULL
 #' @return An object of class \code{gg}.
 #'
 #' @examples
+#' if (requireNamespace("EnhancedVolcano", quietly=TRUE)){
 #' filePath <- system.file('extdata', 'volcanoPlot.qs2', package='henna')
 #' df <- qs2::qs_read(filePath)
 #' p <- volcanoPlot(df, title='Volcano plot - beta cells', pvalThr=1e-10,
 #' logFCThr=1,
 #' labPvalThr=1e-150,
 #' labLogFCThr=5.3)
+#' }
 #'
 #' @export
 #'
@@ -89,6 +87,9 @@ volcanoPlot <- function(df,
                         theme = c('minimal', 'bw', 'classic', 'linedraw'),
                         ...){
 
+    if (!requireNamespace("EnhancedVolcano", quietly=TRUE))
+        stop("You need to install the EnhancedVolcano package from Bioconductor
+             to use volcanoPlot.")
     legendPos <- match.arg(legendPos, c('right', 'top', 'left', 'bottom'))
     theme <- match.arg(theme, c('minimal', 'bw', 'classic', 'linedraw'))
     labelType <- match.arg(labelType, c('boxed', 'free'))
@@ -96,24 +97,25 @@ volcanoPlot <- function(df,
     noGenes <- paste0(rep('#', max(vapply(rownames(df), nchar, integer(1)))
                           + 1), collapse='')
 
-    p <- EnhancedVolcano(df,
-                         lab=rownames(df),
-                         x=logCol,
-                         y=pvalCol,
-                         title=NULL,
-                         xlab=xLab,
-                         ylab=yLab,
-                         subtitle=NULL,
-                         caption=NULL,
-                         pCutoff=pvalThr,
-                         FCcutoff=logFCThr,
-                         selectLab=noGenes,
-                         labSize=labelSize,
-                         pointSize=pointSize,
-                         legendLabels=legendLabs,
-                         col=palette,
-                         colAlpha=alpha,
-                         ...) + labs(color=legendTitle)
+    p <- EnhancedVolcano::EnhancedVolcano(df,
+                                          lab=rownames(df),
+                                          x=logCol,
+                                          y=pvalCol,
+                                          title=NULL,
+                                          xlab=xLab,
+                                          ylab=yLab,
+                                          subtitle=NULL,
+                                          caption=NULL,
+                                          pCutoff=pvalThr,
+                                          FCcutoff=logFCThr,
+                                          selectLab=noGenes,
+                                          labSize=labelSize,
+                                          pointSize=pointSize,
+                                          legendLabels=legendLabs,
+                                          col=palette,
+                                          colAlpha=alpha,
+                                          ...) +
+        labs(color=legendTitle)
 
     labelDF <- createLabelDFVolcano(df, logCol, pvalCol, labeledGenes,
                                     labelOutside, labLogFCThr, labPvalThr)

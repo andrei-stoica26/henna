@@ -183,11 +183,13 @@ test_that("isPointOnBoundary works", {
 test_that("volcanoPlot returns a gg object", {
     filePath <- system.file('extdata', 'volcanoPlot.qs2', package='henna')
     df <- qs2::qs_read(filePath)
-    p <- volcanoPlot(df,
-                     title='Volcano plot - beta cells',
-                     pvalThr=1e-10,
-                     logFCThr=1,
-                     labPvalThr=1e-150,
-                     labLogFCThr=5.3)
-    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+    if (requireNamespace("EnhancedVolcano", quietly=TRUE)){
+        p <- volcanoPlot(df,
+                         title='Volcano plot - beta cells',
+                         pvalThr=1e-10,
+                         logFCThr=1,
+                         labPvalThr=1e-150,
+                         labLogFCThr=5.3)
+        expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+    } else expect_error(volcanoPlot(df))
 })

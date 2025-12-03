@@ -112,8 +112,10 @@ This function plots a numeric matrix. It is a more general version of
 
 ### volcanoPlot
 
-This function creates a volcano plot for a data frame with a log column and
-a p-value column. The gene names must be provided as row names.
+If the Bioconductor dependency [EnhancedVolcano](https://bioconductor.org/packages/release/bioc/html/EnhancedVolcano.html)
+(not installed automatically with `henna`) is available, this function can be used
+to create a volcano plot for a data frame with a log column and a p-value 
+column. The gene names must be provided as row names.
 
 Users can input labeled genes in two ways: 
 
