@@ -40,10 +40,11 @@ createLabelDFTemplate <- function(df,
                                   adjFunY = identity,
                                   compFunX = `>=`,
                                   compFunY = `>=`){
-    if (min(vapply(list(xCol, yCol, labeledPoints), is.null, integer(1))))
+    if (min(vapply(list(labXThr, labYThr, labeledPoints),
+                   is.null, integer(1))))
         return(NULL)
 
-    if (min(vapply(c(xCol, yCol), is.null, integer(1))))
+    if (min(vapply(c(labXThr, labYThr), is.null, integer(1))))
         return(df[labeledPoints, ])
 
     xyDF <- df[, c(xCol, yCol)]
