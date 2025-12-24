@@ -39,7 +39,7 @@ labelPoints(
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
-\item{maxOverlaps}{Maximum overlaps.}
+\item{maxOverlaps}{Maximum number of allowed overlaps.}
 
 \item{boxPadding}{Amount of padding around box.}
 

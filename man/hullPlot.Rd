@@ -63,9 +63,9 @@ Choose between 'dashed','solid', 'dotted', 'dotdash', 'longdash' and
 \item{hullWidth}{Width of the convex hull. If 0 (as default), the convex
 hull will not be displayed.}
 
-\item{xLab}{Label of x axis.}
+\item{xLab}{x axis label.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendLabs}{Legend labels.}
 

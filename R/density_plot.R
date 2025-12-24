@@ -34,7 +34,7 @@ createPairSegments <- function(df){
 #' @param colorScheme Color scheme. Choose between 'cake', 'cloudy', 'grapes',
 #' 'lava', oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'cloudy'.
 #' @param useSchemeDefaults Whether to use the default \code{segColor},
-#' \code{pointColor} and \code{labelColor} for scheme. Ignored
+#' \code{pointColor} and \code{labelColor} values for scheme. Ignored
 #' if \code{colorScheme} is set to 'custom'.
 #' @param drawNN Whether to draw segments linking each point to its nearest
 #' neighbor.
@@ -49,7 +49,7 @@ createPairSegments <- function(df){
 #' @param pointSize Point size.
 #' @param pointColor Point color. Ignored if \code{useSchemeDefaults}
 #' is \code{TRUE} and \code{colorScheme} is different from 'custom'.
-#' @param segType Nearest neighbor segment type. Must choose between 'solid',
+#' @param segType Nearest neighbor segment type. Choose between 'solid',
 #' 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
 #' \code{drawNN} is set to \code{FALSE}.
 #' @param segWidth Nearest neighbor segment width. Ignored if \code{drawNN} is

@@ -53,7 +53,7 @@ the points.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
-\item{maxOverlaps}{Maximum overlaps.}
+\item{maxOverlaps}{Maximum number of allowed overlaps.}
 
 \item{breakDensity}{Factor used in calculating the number of breaks for
 the values legend. Higher values of this argument add more breaks to the

@@ -42,7 +42,7 @@ Must be set to \code{FALSE} if the input data frame has been generated with
 
 \item{xLab}{Label of x axis.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendTitle}{Legend title.}
 

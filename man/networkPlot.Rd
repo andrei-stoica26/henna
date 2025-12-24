@@ -55,7 +55,7 @@ if \code{numCol} is \code{NULL}; otherwise ignored.}
 An object of class \code{ggraph}.
 }
 \description{
-This function plots the graph of the data frame and optionallt uses different
+This function plots the graph of the data frame and optionally uses different
 colors for nodes belonging to different connected components.
 }
 \examples{

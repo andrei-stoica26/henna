@@ -26,7 +26,7 @@ networkPlotDF <- function(df,
 
 #' Plot graph with the option of using different colors for connected components
 #'
-#' This function plots the graph of the data frame and optionallt uses different
+#' This function plots the graph of the data frame and optionally uses different
 #' colors for nodes belonging to different connected components.
 #'
 #' @inheritParams documentFun

@@ -32,9 +32,9 @@ tilePlot(
 
 \item{title}{Plot title.}
 
-\item{xLab}{Label of x axis.}
+\item{xLab}{x axis label.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendTitle}{Legend title.}
 

@@ -25,13 +25,13 @@ classPlot(
 \arguments{
 \item{df}{A data frame with at least three columns. Its first column
 (categorical) colors the plot bars. The second column (categorical)
-labels the plots bars. The third column (numeric) determines the bar lengths.}
+labels the plots bars. The third column (numeric) sets the bar lengths.}
 
 \item{title}{Plot title.}
 
-\item{xLab}{Label of x axis.}
+\item{xLab}{x axis label.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendTitle}{Legend title.}
 

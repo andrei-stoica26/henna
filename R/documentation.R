@@ -3,8 +3,8 @@
 #' This function is used internally to help document other functions.
 #'
 #' @param title Plot title.
-#' @param xLab Label of x axis.
-#' @param yLab Label of y axis.
+#' @param xLab x axis label.
+#' @param yLab y axis label.
 #' @param legendTitle Legend title.
 #' @param legendLabs Legend labels.
 #' @param legendPos Legend position.
@@ -18,7 +18,7 @@
 #' @param labelRepulsion Repulsion strength between labels.
 #' @param labelPull Attraction strength between a text label
 #' and its data point.
-#' @param maxOverlaps Maximum overlaps.
+#' @param maxOverlaps Maximum number of allowed overlaps.
 #' @param boxPadding Amount of padding around box.
 #' @param labelPadding Amount of padding around label.
 #' @param labelSegWidth Thickness of segment connecting label to point.

@@ -40,9 +40,9 @@ documentFun(
 \arguments{
 \item{title}{Plot title.}
 
-\item{xLab}{Label of x axis.}
+\item{xLab}{x axis label.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendTitle}{Legend title.}
 
@@ -65,7 +65,7 @@ documentFun(
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
-\item{maxOverlaps}{Maximum overlaps.}
+\item{maxOverlaps}{Maximum number of allowed overlaps.}
 
 \item{boxPadding}{Amount of padding around box.}
 

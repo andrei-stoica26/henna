@@ -53,7 +53,7 @@ column as a character vector with elements selected from the rownames.}
 'lava', oasis', 'orichalc', 'sea', 'sky' and 'custom'. Default is 'cloudy'.}
 
 \item{useSchemeDefaults}{Whether to use the default \code{segColor},
-\code{pointColor} and \code{labelColor} for scheme. Ignored
+\code{pointColor} and \code{labelColor} values for scheme. Ignored
 if \code{colorScheme} is set to 'custom'.}
 
 \item{drawNN}{Whether to draw segments linking each point to its nearest
@@ -63,9 +63,9 @@ neighbor.}
 \code{TRUE}, the third column of the input data frame will be numeric and
 scores will be taken from there.}
 
-\item{xLab}{Label of x axis.}
+\item{xLab}{x axis label.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendTitle}{Legend title.}
 
@@ -81,7 +81,7 @@ set to \code{FALSE}, or if \code{useSchemeDefaults} is \code{TRUE} and
 \item{pointColor}{Point color. Ignored if \code{useSchemeDefaults}
 is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 
-\item{segType}{Nearest neighbor segment type. Must choose between 'solid',
+\item{segType}{Nearest neighbor segment type. Choose between 'solid',
 'dashed', 'dotted','dotdash', 'longdash' and 'twodash'. Ignored if
 \code{drawNN} is set to \code{FALSE}.}
 
@@ -105,7 +105,7 @@ is \code{TRUE} and \code{colorScheme} is different from 'custom'.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
-\item{maxOverlaps}{Maximum overlaps.}
+\item{maxOverlaps}{Maximum number of allowed overlaps.}
 
 \item{labelPadding}{Amount of padding around label.}
 

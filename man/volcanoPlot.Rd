@@ -51,9 +51,9 @@ p-value column.}
 
 \item{pvalCol}{P-value column.}
 
-\item{xLab}{Label of x axis.}
+\item{xLab}{x axis label.}
 
-\item{yLab}{Label of y axis.}
+\item{yLab}{y axis label.}
 
 \item{legendTitle}{Legend title.}
 
@@ -93,7 +93,7 @@ Ignored if \code{labeledGenes} is not \code{NULL}.}
 \item{labelPull}{Attraction strength between a text label
 and its data point.}
 
-\item{maxOverlaps}{Maximum overlaps.}
+\item{maxOverlaps}{Maximum number of allowed overlaps.}
 
 \item{boxPadding}{Amount of padding around box.}
 

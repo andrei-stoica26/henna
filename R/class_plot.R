@@ -9,7 +9,7 @@ NULL
 #' @inheritParams documentFun
 #' @param df A data frame with at least three columns. Its first column
 #' (categorical) colors the plot bars. The second column (categorical)
-#' labels the plots bars. The third column (numeric) determines the bar lengths.
+#' labels the plots bars. The third column (numeric) sets the bar lengths.
 #' @param decreasing Whether to display the bars in decreasing order of length.
 #' @param valueCutoff Cutoff used for filtering the input data frame based on
 #' the third (value) column. Only values above this cutoff will be displayed on
