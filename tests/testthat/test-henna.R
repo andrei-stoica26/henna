@@ -17,7 +17,13 @@ test_that("correlationPlot returns a ggplot object", {
     colnames(mat) <- paste0('I', seq(10))
     mat <- round(cor(mat), 2)
     p <- correlationPlot(mat)
+    class(p)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+})
+
+test_that('a', {
+    x <- 2
+    expect_equal(x, 2)
 })
 
 test_that("densityPlot returns a ggplot object", {

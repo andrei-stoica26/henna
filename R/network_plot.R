@@ -1,5 +1,5 @@
 #' @importFrom dplyr mutate
-#' @importFrom grDevices chull
+#' @importFrom grDevices chull hcl.colors
 #' @importFrom ggraph geom_edge_link geom_node_point geom_node_text ggraph scale_edge_width
 #' @importFrom paletteer paletteer_c
 #' @importFrom tidygraph activate as_tbl_graph
