@@ -85,8 +85,8 @@ test_that("radialPlot returns a gg object", {
 
 test_that("rankPlot returns a gg object", {
     df <- do.call(cbind, lapply(seq(30), function(i) sample(10, 10)))
-    rownames(df) <- paste('M', seq(10))
-    colnames(df) <- paste('R', seq(30))
+    rownames(df) <- paste0('M', seq(10))
+    colnames(df) <- paste0('R', seq(30))
     p <- rankPlot(df)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
     p <- rankPlot(df, sigDigits=2, labelScalingFactor=0.85, labelOffset=0.07)

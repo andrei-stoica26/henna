@@ -1,6 +1,7 @@
 #' @importFrom dplyr mutate
-#' @importFrom grDevices chull hcl.colors
+#' @importFrom grDevices chull
 #' @importFrom ggraph geom_edge_link geom_node_point geom_node_text ggraph scale_edge_width
+#' @importFrom paletteer paletteer_c
 #' @importFrom tidygraph activate as_tbl_graph
 #'
 NULL
@@ -64,7 +65,7 @@ networkPlot <- function(df,
                         numColType = c('weights', 'ranks'),
                         nodeSize = 10,
                         nodeTextSize = 2.3,
-                        palette = 'Spectral',
+                        palette = 'grDevices::Spectral',
                         nodeColor = NULL,
                         edgeWidth = 1,
                         edgeColor = 'black',
@@ -99,7 +100,7 @@ networkPlot <- function(df,
         scale_edge_width(range=edgeScales) +
         theme_void() +
         theme(legend.position='none') +
-        scale_color_manual(values=hcl.colors(nComp, palette))
+        scale_color_manual(values=paletteer_c(palette, nComp))
 
     if (is.null(nodeColor))
         p <- p + geom_node_point(aes(color=.data[['component']]),

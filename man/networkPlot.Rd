@@ -11,7 +11,7 @@ networkPlot(
   numColType = c("weights", "ranks"),
   nodeSize = 10,
   nodeTextSize = 2.3,
-  palette = "Spectral",
+  palette = "grDevices::Spectral",
   nodeColor = NULL,
   edgeWidth = 1,
   edgeColor = "black",
