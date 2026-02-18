@@ -14,6 +14,7 @@ documentFun(
   palette = "Spectral",
   viridisPal = "turbo",
   labeledPoints = NULL,
+  labelType = "free",
   labelOutside = TRUE,
   labelSize = 2.5,
   labelColor = "black",
@@ -55,6 +56,9 @@ documentFun(
 \item{viridisPal}{Viridis palette.}
 
 \item{labeledPoints}{Point labels to be displayed on the plot.}
+
+\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
+(option 'free'). Default is 'free'.}
 
 \item{labelSize}{Label size.}
 
@@ -98,9 +102,6 @@ top, right, bottom and left margin, in that order.}
 taking logarithms.}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
-
-\item{labelType}{Whether to draw a box around labels (option 'boxed') or not
-(option 'free'). Default is 'free'.}
 }
 \value{
 \code{NULL}. This function is only used internally for

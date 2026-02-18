@@ -19,7 +19,7 @@ code:
 devtools::install_github("andrei-stoica26/henna")
 ```
 
-Currently, both versions are the same (`0.7.4`).
+Currently, both versions are the same (`0.7.5`).
 
 ## Visualization tools
 
