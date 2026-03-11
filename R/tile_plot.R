@@ -29,8 +29,8 @@ reorderDF <- function(df){
 #' @param mat A numeric matrix or data frame.
 #' @param sigDigits Number of significant digits to be displayed for each
 #' matrix element.
-#' @param isCor Whether the matrix is a correlation matrix, in which case the
-#' limits of the color scale will be set to [-1, 1].
+#' @param limits Limits of the color scale. If \code{NULL}, they will be taken
+#' as the minimum and maximum of the values in the input object.
 #' @param tileBoundaryColor Tile boundary color.
 #' @param tileBoundaryWidth Tile boundary width.
 #' @param reverseColors Whether to reverse the order of colors in the palette.
@@ -53,7 +53,7 @@ tilePlot <- function(mat,
                      palette = 'Spectral',
                      reverseColors = TRUE,
                      sigDigits = 2,
-                     isCor = FALSE,
+                     limits = NULL,
                      labelSize = 3,
                      labelColor = 'black',
                      legendTextSize = 10,
@@ -75,10 +75,7 @@ tilePlot <- function(mat,
     if (reverseColors)
          palColors <- rev(palColors)
 
-    if(isCor){
-        limits <- c(-1, 1)
-
-    }else
+    if(is.null(limits))
         limits <- c(min(df[, 3]), max(df[, 3]))
 
     df <- reorderDF(df)
@@ -124,4 +121,4 @@ tilePlot <- function(mat,
 #'
 correlationPlot <- function(mat, title = NULL,
                             legendTitle = 'Correlation', ...)
-    return(tilePlot(mat, title, legendTitle=legendTitle, isCor=TRUE, ...))
+    return(tilePlot(mat, title, legendTitle=legendTitle, limits=c(-1, 1), ...))

@@ -13,7 +13,7 @@ tilePlot(
   palette = "Spectral",
   reverseColors = TRUE,
   sigDigits = 2,
-  isCor = FALSE,
+  limits = NULL,
   labelSize = 3,
   labelColor = "black",
   legendTextSize = 10,
@@ -45,8 +45,8 @@ tilePlot(
 \item{sigDigits}{Number of significant digits to be displayed for each
 matrix element.}
 
-\item{isCor}{Whether the matrix is a correlation matrix, in which case the
-limits of the color scale will be set to [-1, 1].}
+\item{limits}{Limits of the color scale. If \code{NULL}, they will be taken
+as the minimum and maximum of the values in the input object.}
 
 \item{labelSize}{Label size.}
 

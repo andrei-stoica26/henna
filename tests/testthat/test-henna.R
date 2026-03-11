@@ -120,7 +120,7 @@ test_that("tilePlot returns a gg object", {
     mat <- matrix(round(runif(100, 0, 1), 2), nrow=10)
     rownames(mat) <- paste0('R', seq(10))
     colnames(mat) <- paste0('C', seq(10))
-    p <- tilePlot(mat)
+    p <- tilePlot(mat, limits=c(0, 1))
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
