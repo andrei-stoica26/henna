@@ -12,6 +12,7 @@ tilePlot(
   legendTitle = "Value",
   palette = "Spectral",
   reverseColors = TRUE,
+  showNumbers = TRUE,
   sigDigits = 2,
   limits = NULL,
   labelSize = 3,
@@ -41,6 +42,8 @@ tilePlot(
 \item{palette}{Color palette.}
 
 \item{reverseColors}{Whether to reverse the order of colors in the palette.}
+
+\item{showNumbers}{Whether to show a numeric value for each matrix element.}
 
 \item{sigDigits}{Number of significant digits to be displayed for each
 matrix element.}

@@ -27,6 +27,7 @@ reorderDF <- function(df){
 #'
 #' @inheritParams documentFun
 #' @param mat A numeric matrix or data frame.
+#' @param showNumbers Whether to show a numeric value for each matrix element.
 #' @param sigDigits Number of significant digits to be displayed for each
 #' matrix element.
 #' @param limits Limits of the color scale. If \code{NULL}, they will be taken
@@ -52,6 +53,7 @@ tilePlot <- function(mat,
                      legendTitle = 'Value',
                      palette = 'Spectral',
                      reverseColors = TRUE,
+                     showNumbers = TRUE,
                      sigDigits = 2,
                      limits = NULL,
                      labelSize = 3,
@@ -90,11 +92,13 @@ tilePlot <- function(mat,
               axis.text.x=element_text(angle=xAngle, vjust=vJust),
               axis.text=element_text(size=axisTextSize),
               axis.title=element_text(size=axisTitleSize)) +
-        geom_text(aes(label=.data[[names(df)[3]]]),
-                  color=labelColor,
-                  size=labelSize) +
         scale_fill_gradientn(colors=palColors, limits=limits) +
         labs(x=xLab, y=yLab, fill=legendTitle)
+
+    if (showNumbers)
+        p <- p + geom_text(aes(label=.data[[names(df)[3]]]),
+                          color=labelColor,
+                          size=labelSize)
 
     p <- centerTitle(p, title, ...)
     return(p)
