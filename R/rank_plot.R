@@ -109,7 +109,8 @@ rankPlot <- function(df,
                      axisTextSize = 12,
                      axisTitleSize = 12,
                      xAngle = 45,
-                     vJust = 0.6,
+                     vJust = 1,
+                     hJust = 1,
                      labelScalingFactor = 0.9,
                      labelOffset = 0.05,
                      ...){
@@ -131,7 +132,7 @@ rankPlot <- function(df,
                                                        fill=legendTitle) +
         theme(legend.text=element_text(size=legendTextSize),
               legend.title=element_text(size=legendTitleSize),
-              axis.text.x=element_text(angle=xAngle, vjust=vJust),
+              axis.text.x=element_text(angle=xAngle, vjust=vJust, hjust=hJust),
               axis.text=element_text(size=axisTextSize),
               axis.title=element_text(size=axisTitleSize))
 

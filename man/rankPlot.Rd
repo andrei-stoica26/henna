@@ -21,7 +21,8 @@ rankPlot(
   axisTextSize = 12,
   axisTitleSize = 12,
   xAngle = 45,
-  vJust = 0.6,
+  vJust = 1,
+  hJust = 1,
   labelScalingFactor = 0.9,
   labelOffset = 0.05,
   ...
@@ -70,6 +71,8 @@ Ignored if \code{sigDigits} is \code{NULL}.}
 \item{xAngle}{Angle of x axis text.}
 
 \item{vJust}{Vertical justification in [0, 1].}
+
+\item{hJust}{Horizontal justification in [0, 1].}
 
 \item{labelScalingFactor}{Scaling factor used when displaying mean ranks.
 Ignored if \code{sigDigits} is \code{NULL}.}
