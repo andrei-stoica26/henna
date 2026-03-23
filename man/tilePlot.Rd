@@ -24,7 +24,8 @@ tilePlot(
   tileBoundaryColor = "white",
   tileBoundaryWidth = 0.2,
   xAngle = 45,
-  vJust = 0.6,
+  vJust = 1,
+  hJust = 1,
   ...
 )
 }
@@ -70,6 +71,8 @@ as the minimum and maximum of the values in the input object.}
 \item{xAngle}{Angle of x axis text.}
 
 \item{vJust}{Vertical justification in [0, 1].}
+
+\item{hJust}{Horizontal justification in [0, 1].}
 
 \item{...}{Additional arguments passed to \code{centerTitle}.}
 }

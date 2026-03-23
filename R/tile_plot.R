@@ -65,7 +65,8 @@ tilePlot <- function(mat,
                      tileBoundaryColor = 'white',
                      tileBoundaryWidth = 0.2,
                      xAngle = 45,
-                     vJust = 0.6,
+                     vJust = 1,
+                     hJust = 1,
                      ...){
     if (is(mat)[1] != 'matrix')
         mat <- as.matrix(mat)
@@ -89,7 +90,7 @@ tilePlot <- function(mat,
         theme_classic() +
         theme(legend.text=element_text(size=legendTextSize),
               legend.title=element_text(size=legendTitleSize),
-              axis.text.x=element_text(angle=xAngle, vjust=vJust),
+              axis.text.x=element_text(angle=xAngle, vjust=vJust, hjust=hJust),
               axis.text=element_text(size=axisTextSize),
               axis.title=element_text(size=axisTitleSize)) +
         scale_fill_gradientn(colors=palColors, limits=limits) +

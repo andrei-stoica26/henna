@@ -31,7 +31,8 @@ documentFun(
   axisTextSize = 12,
   axisTitleSize = 12,
   xAngle = 45,
-  vJust = 0.6,
+  vJust = 1,
+  hJust = 1,
   margins = margin(0, -10, -10, -10),
   theme = "linedraw",
   pvalOffset = 1.00000023069254e-317,
@@ -92,6 +93,8 @@ and its data point.}
 \item{xAngle}{Angle of x axis text.}
 
 \item{vJust}{Vertical justification in [0, 1].}
+
+\item{hJust}{Horizontal justification in [0, 1].}
 
 \item{margins}{Plot margins. Must be a vector of size 4 listing the desired
 top, right, bottom and left margin, in that order.}
