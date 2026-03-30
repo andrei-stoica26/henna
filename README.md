@@ -12,11 +12,11 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.7.9`) 
+Alternatively, you can install the most recent development version (`0.8.0`) 
 using this code: 
 
 ```
-devtools::install_github("andrei-stoica26/henna")
+pak::pak("andrei-stoica26/henna")
 ```
 
 ## Visualization tools
