@@ -8,14 +8,14 @@ to a variety of other applications as well.
 To install the version of `henna` currently available on CRAN (`0.7.5`), run the 
 following R code:
 
-```
+```r
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.8.0`) 
+Alternatively, you can install the most recent development version (`0.8.1`) 
 using this code: 
 
-```
+```r
 pak::pak("andrei-stoica26/henna")
 ```
 
@@ -38,7 +38,7 @@ columns are categorical (classes and items) and third column is numeric
 
 ### correlationPlot
 
-This function plots a correlation matrix. It accepts a matrix or data frame
+This function plots a correlation matrix. It accepts a matrix or a data frame
 as input.
 
 ![](inst/figures/correlation_plot.png)
@@ -66,7 +66,7 @@ and `y` coordinates.
 
 This function plots a graph using different colors for nodes that are part of 
 different connected components. It requires as input a data frame whose first
-two columns are categorical and represent the vertices of the edges in a graph.
+two columns are categorical and represent the edges in a graph.
 A numeric column representing either edge weights or edge ranks (these will
 be converted into weights) can also be provided. If available, this column will
 be used to vary edge width.
@@ -77,7 +77,7 @@ be used to vary edge width.
 
 This function plots positive numeric-valued points over concentric circles, 
 with points located more centrally representing higher values. Optionally, the
-points can be assigned to groups and colored on the basis of thes groups. 
+points can be assigned to groups and colored based on these groups. 
 
 The input data frame must store the point labels in its first column and their
 numeric values in its second column. A third column (categorical) representing
@@ -87,7 +87,7 @@ the group where each point is assigned can also be provided.
 
 ### rankPlot
 This function aggregates multiple ranks available for a group of items in a 
-single plot. Average ranks can be displayed on the plot.
+single plot. Mean ranks can be displayed on the plot.
 
 ![](inst/figures/rank_plot.png)
 

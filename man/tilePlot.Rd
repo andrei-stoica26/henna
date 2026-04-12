@@ -9,6 +9,7 @@ tilePlot(
   title = NULL,
   xLab = NULL,
   yLab = NULL,
+  doMelt = TRUE,
   legendTitle = "Value",
   palette = "Spectral",
   reverseColors = TRUE,
@@ -37,6 +38,9 @@ tilePlot(
 \item{xLab}{x axis label.}
 
 \item{yLab}{y axis label.}
+
+\item{doMelt}{Whether the input needs to be melted using
+\code{reshape2::melt}.}
 
 \item{legendTitle}{Legend title.}
 

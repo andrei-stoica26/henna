@@ -27,6 +27,8 @@ reorderDF <- function(df){
 #'
 #' @inheritParams documentFun
 #' @param mat A numeric matrix or data frame.
+#' @param doMelt Whether the input needs to be melted using
+#' \code{reshape2::melt}.
 #' @param showNumbers Whether to show a numeric value for each matrix element.
 #' @param sigDigits Number of significant digits to be displayed for each
 #' matrix element.
@@ -50,6 +52,7 @@ tilePlot <- function(mat,
                      title = NULL,
                      xLab = NULL,
                      yLab = NULL,
+                     doMelt = TRUE,
                      legendTitle = 'Value',
                      palette = 'Spectral',
                      reverseColors = TRUE,
@@ -68,11 +71,15 @@ tilePlot <- function(mat,
                      vJust = 1,
                      hJust = 1,
                      ...){
-    if (is(mat)[1] != 'matrix')
-        mat <- as.matrix(mat)
 
-    mat <- round(mat, sigDigits)
-    df <- reshape2::melt(mat)
+    if(doMelt){
+        if (is(mat)[1] != 'matrix')
+            mat <- as.matrix(mat)
+
+        mat <- round(mat, sigDigits)
+        df <- reshape2::melt(mat)
+    } else
+        df <- mat
 
     palColors <- hcl.colors(50, palette)
     if (reverseColors)
