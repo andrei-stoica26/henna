@@ -58,6 +58,10 @@ test_that("hullPlot works", {
 
     p <- hullPlot(pointsDF, 'Hull plot',15.4, 1.5)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
+
+    rownames(pointsDF) <- paste0('P', seq(9))
+    p <- hullPlot(pointsDF, 7, 1.5, labeledPoints=c('P1', 'P4', 'P9'))
+    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("networkPlot returns a ggraph object", {
