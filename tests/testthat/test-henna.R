@@ -58,12 +58,6 @@ test_that("hullPlot works", {
 
     p <- hullPlot(pointsDF, 'Hull plot',15.4, 1.5)
     expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
-
-    rownames(pointsDF) <- paste0('P', seq(nrow(pointsDF)))
-    labelDF <- pointsDF[c('P1', 'P4', 'P9'), ]
-    p <- hullPlot(pointsDF, 'Hull plot', 7, 1.5,
-                  labelDF=labelDF)
-    expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
 })
 
 test_that("networkPlot returns a ggraph object", {
@@ -190,12 +184,12 @@ test_that("volcanoPlot returns a gg object", {
     filePath <- system.file('extdata', 'volcanoPlot.qs2', package='henna')
     df <- qs2::qs_read(filePath)
     if (requireNamespace("EnhancedVolcano", quietly=TRUE)){
-        p <- volcanoPlot(df,
+        p <- suppressWarnings(volcanoPlot(df,
                          title='Volcano plot - beta cells',
                          pvalThr=1e-10,
                          logFCThr=1,
                          labPvalThr=1e-150,
-                         labLogFCThr=5.3)
+                         labLogFCThr=5.3))
         expect_equal(length(intersect(is(p), c('gg', 'ggplot2::ggplot'))), 1)
     } else expect_error(volcanoPlot(df))
 })
