@@ -12,7 +12,7 @@ following R code:
 install.packages("henna")
 ```
 
-Alternatively, you can install the most recent development version (`0.8.3`) 
+Alternatively, you can install the most recent development version (`0.8.4`) 
 using this code: 
 
 ```r
@@ -29,7 +29,7 @@ folder.
 
 ### classPlot
 
-This function creates a bar plot that quantifies the items belonging
+This function creates a bar plot that quantifies items belonging
 to different classes. Its required input is a data frame whose first two
 columns are categorical (classes and items) and third column is numeric
 (counts).
@@ -46,7 +46,7 @@ as input.
 ### densityPlot
 
 This function creates a density plot for a set of points, optionally displaying
-segements between each point and its nearest neighbor. It requires a data frame
+segments between each point and its nearest neighbor. It requires a data frame
 with the `x` and `y` coordinates of the points, which may additionally
 contain score and nearest-neighbor columns.
 
@@ -93,11 +93,9 @@ single plot. Mean ranks can be displayed on the plot.
 
 ### riverPlot
 This function generates an alluvial plot for a data frame with two categorical 
-columns and a numeric column.
-
-In the example below, it represents the significance of pairs of overlaps 
-between the markers of groups belonging to two identity classes 
-(cell type and donor). 
+columns and a numeric column. In the example below, it represents the 
+significance of pairs of overlaps between the markers of groups belonging to 
+two identity classes (cell type and donor). 
 
 ![](inst/figures/river_plot.png)
 
